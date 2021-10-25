@@ -1,0 +1,113 @@
+package co.uniquindio.proyectoFinalGrupo1.model;
+
+/**
+ * Clase estudiante
+ * @author Juan Camilo Ramos R.
+ *
+ */
+public class Estudiante extends Usuario
+{
+	private String nombre;
+	private String documento;
+	private String tipoDocumento;
+	private int edad;
+
+	/**
+	 * Constructor de la clase estudiante
+	 */
+	public Estudiante()
+	{
+
+	}
+
+	/**
+	 * Método que permite obtener el nombre
+	 * del estudiante
+	 * @return nombre
+	 */
+	public String getNombre()
+	{
+		return nombre;
+	}
+
+	/**
+	 * Método que permite asignar y/o actualizar
+	 * el nombre del estudiante
+	 * @param nombre
+	 */
+	public void setNombre(String nombre)
+	{
+		this.nombre = nombre;
+	}
+
+	/**
+	 * Método que permite obtener el documento
+	 * del estudiante
+	 * @return documento
+	 */
+	public String getDocumento()
+	{
+		return documento;
+	}
+
+	/**
+	 * Método que permite asignar y/o actualizar
+	 * el documento del estudiante
+	 * @param documento
+	 */
+	public void setDocumento(String documento)
+	{
+		this.documento = documento;
+	}
+
+	/**
+	 * Método que permite obtener el tipo de documento del estudiante
+	 * @return tipoDocumento
+	 */
+	public String getTipoDocumento()
+	{
+		return tipoDocumento;
+	}
+
+	/**
+	 * Método que permite asignar y/o actualizar
+	 * el tipo de documento del estudiante
+	 * @param tipoDocumento
+	 */
+	public void setTipoDocumento(String tipoDocumento)
+	{
+		this.tipoDocumento = tipoDocumento;
+	}
+
+	/**
+	 * Método que permite obtener la edad del estudiante
+	 * @return estudiante
+	 */
+	public int getEdad()
+	{
+		return edad;
+	}
+
+	/**
+	 * Método que permite asignar y/o actualizar
+	 * la edad del estudiante
+	 * @param edad
+	 */
+	public void setEdad(int edad)
+	{
+		this.edad = edad;
+	}
+
+	/**
+	 * Método que permite imprimir las propiedades del estudiante
+	 */
+	@Override
+	public String toString() {
+		return "Estudiante [nombre=" + nombre + ", documento=" + documento + ", tipoDocumento=" + tipoDocumento
+				+ ", edad=" + edad + "]";
+	}
+
+
+
+
+}
