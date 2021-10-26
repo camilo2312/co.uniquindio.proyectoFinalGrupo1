@@ -5,7 +5,7 @@ package co.uniquindio.proyectoFinalGrupo1.model;
  * @author Juan Camilo Ramos R.
  *
  */
-public class Instructor
+public class Instructor extends Usuario
 {
 	private String nombre;
 	private String documento;

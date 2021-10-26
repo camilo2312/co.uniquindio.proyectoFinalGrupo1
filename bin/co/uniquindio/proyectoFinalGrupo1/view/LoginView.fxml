@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
@@ -7,42 +8,48 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="475.0" prefWidth="403.0" style="-fx-background-color: linear-gradient(#0e468e, #8fbffd);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.proyectoFinalGrupo1.controller.LoginController">
+<AnchorPane prefHeight="475.0" prefWidth="403.0" snapToPixel="false" style="-fx-background-color: linear-gradient(#0e468e, #8fbffd);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.proyectoFinalGrupo1.controller.LoginController">
    <children>
-      <ImageView fitHeight="96.0" fitWidth="89.0" layoutX="157.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="96.0" fitWidth="89.0" layoutX="157.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/user.png" />
          </image>
       </ImageView>
-      <Label layoutX="113.0" layoutY="125.0" text="BIENVENIDO" textFill="WHITE">
+      <Label layoutX="113.0" layoutY="112.0" text="BIENVENIDO" textFill="WHITE">
          <font>
             <Font name="Century Gothic" size="30.0" />
          </font>
       </Label>
-      <TextField fx:id="txtUsuario" layoutX="115.0" layoutY="194.0" prefHeight="38.0" prefWidth="216.0" promptText="Usuario" style="-fx-background-color: transparent; -fx-border-color: #FFFF; -fx-border-width: 0px 0px 2px 0px; -fx-fill: red;">
+      <TextField fx:id="txtUsuario" layoutX="115.0" layoutY="181.0" prefHeight="38.0" prefWidth="216.0" promptText="Usuario" style="-fx-background-color: transparent; -fx-border-color: #FFFF; -fx-border-width: 0px 0px 2px 0px; -fx-fill: red;">
          <font>
             <Font name="Century Gothic" size="20.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtContrasena" layoutX="115.0" layoutY="258.0" prefHeight="38.0" prefWidth="216.0" promptText="Contraseña" style="-fx-background-color: transparent; -fx-border-color: #FFFF; -fx-border-width: 0px 0px 2px 0px;">
-         <font>
-            <Font name="Century Gothic" size="20.0" />
-         </font>
-      </TextField>
-      <ImageView fitHeight="48.0" fitWidth="49.0" layoutX="53.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="48.0" fitWidth="49.0" layoutX="53.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/login.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="48.0" fitWidth="49.0" layoutX="53.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="48.0" fitWidth="49.0" layoutX="53.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/password.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnIngresar" layoutX="137.0" layoutY="350.0" mnemonicParsing="false" onAction="#ingresarAction" style="-fx-border-color: transparent; -fx-background-color: linear-gradient(#8fbffd, #0e468e); -fx-cursor: pointer;" text="Ingresar" textFill="WHITE">
+      <Button fx:id="btnIngresar" layoutX="137.0" layoutY="399.0" mnemonicParsing="false" onAction="#ingresarAction" style="-fx-border-color: transparent; -fx-background-color: linear-gradient(#8fbffd, #0e468e); -fx-cursor: pointer;" text="Ingresar" textFill="WHITE">
          <font>
             <Font name="Century Gothic" size="25.0" />
          </font>
       </Button>
+      <PasswordField fx:id="txtContrasena" layoutX="115.0" layoutY="249.0" prefHeight="41.0" prefWidth="216.0" promptText="Contraseña" style="-fx-background-color: transparent; -fx-border-color: #FFFF; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font name="Century Gothic" size="20.0" />
+         </font>
+      </PasswordField>
+      <ComboBox fx:id="comboBoxTipoUsuario" layoutX="115.0" layoutY="322.0" prefHeight="38.0" prefWidth="216.0" promptText="Seleccione" style="-fx-background-color: transparent; -fx-border-color: #FFFF; -fx-border-width: 0px 0px 2px 0px;" />
+      <ImageView fitHeight="48.0" fitWidth="49.0" layoutX="53.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/spy.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

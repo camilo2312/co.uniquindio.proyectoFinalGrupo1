@@ -140,5 +140,56 @@ public class BienestarEstudiantil
 		this.lstLugares = lstLugares;
 	}
 
+	/**
+	 * Método que permite ingresar a la aplicación
+	 * @param usuario
+	 * @param contrasena
+	 * @param tipoUsuario
+	 * @return ingreso
+	 */
+	public boolean ingresar(String usuario, String contrasena, TipoUsuario tipoUsuario)
+	{
+		boolean ingreso = false;
+		Estudiante estudiante = null;
+		Instructor instructor = null;
+
+		switch (tipoUsuario) {
+		case ESTUDIANTE:
+			estudiante = lstEstudiantes.stream().filter(x -> x.getUsuario().equals(usuario) && x.getContrasena().equals(contrasena)).findAny().orElse(null);
+
+			if(estudiante != null)
+				ingreso = true;
+
+			break;
+		case INSTRUCTOR:
+			instructor = lstInstructores.stream().filter(x -> x.getUsuario().equals(usuario) && x.getContrasena().equals(contrasena)).findAny().orElse(null);
+
+			if(instructor != null)
+				ingreso = true;
+			break;
+		case ADMINISTRADOR:
+			if(usuario.trim().equals("admin") && contrasena.trim().equals("1234"))
+				ingreso = true;
+			break;
+		default:
+			break;
+		}
+
+		return ingreso;
+	}
+
+	/**
+	 * Método que permite obtener la lista de tipos de usuario
+	 * @return lstTiposUsuario
+	 */
+	public ArrayList<TipoUsuario> obtenerListaTiposUsuario()
+	{
+		ArrayList<TipoUsuario> lstTipoUsuarios = new ArrayList<TipoUsuario>();
+		lstTipoUsuarios.add(TipoUsuario.ESTUDIANTE);
+		lstTipoUsuarios.add(TipoUsuario.ADMINISTRADOR);
+		lstTipoUsuarios.add(TipoUsuario.INSTRUCTOR);
+		return lstTipoUsuarios;
+	}
+
 
 }
