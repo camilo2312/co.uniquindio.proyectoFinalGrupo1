@@ -3,9 +3,11 @@ package co.uniquindio.proyectoFinalGrupo1;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import co.uniquindio.proyectoFinalGrupo1.controller.DashBoardController;
 import co.uniquindio.proyectoFinalGrupo1.controller.LoginController;
 import co.uniquindio.proyectoFinalGrupo1.model.BienestarEstudiantil;
 import co.uniquindio.proyectoFinalGrupo1.model.TipoUsuario;
+import co.uniquindio.proyectoFinalGrupo1.model.Usuario;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -57,11 +59,29 @@ public class Aplicacion extends Application {
 
 	/**
 	 * Método que permite mostrar la ventana principal de la aplicación
+	 * @param tipoUsuario
 	 */
-	public void mostrarVentanaPrincipal()
+	public void mostrarVentanaPrincipal(TipoUsuario tipoUsuario, String nombreUsuario)
 	{
-		// TODO Auto-generated method stub
+		try
+		{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(Aplicacion.class.getResource("view/DashBoardView.fxml"));
+			AnchorPane rootLayout = (AnchorPane) loader.load();
 
+			DashBoardController ventanaPrincipalController = loader.getController();
+			ventanaPrincipalController.setAplicacion(this, tipoUsuario, nombreUsuario);
+
+			Scene scene = new Scene(rootLayout);
+			primaryStage.setScene(scene);
+			primaryStage.show();
+
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -71,7 +91,7 @@ public class Aplicacion extends Application {
 	 * @param tipoUsuario
 	 * @return ingreso
 	 */
-	public boolean ingresar(String usuario, String contrasena, TipoUsuario tipoUsuario)
+	public Usuario ingresar(String usuario, String contrasena, TipoUsuario tipoUsuario)
 	{
 		return bienestarEstudiantil.ingresar(usuario, contrasena, tipoUsuario);
 	}

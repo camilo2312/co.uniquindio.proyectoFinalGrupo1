@@ -10,16 +10,16 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="570.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="570.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.proyectoFinalGrupo1.controller.DashBoardController">
    <children>
       <VBox layoutY="-15.0" prefHeight="585.0" prefWidth="241.0" style="-fx-background-color: #000077;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane prefHeight="161.0" prefWidth="210.0" style="-fx-background-color: transparent; -fx-border-color: #FFFF; -fx-border-width: 0px 0px 2px 0px;">
                <children>
                   <ImageView fx:id="imgUser" fitHeight="76.0" fitWidth="96.0" layoutX="72.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
-                  <Label fx:id="lblNombreUsuario" layoutX="75.0" layoutY="111.0" textFill="WHITE">
+                  <Label fx:id="lblNombreUsuario" alignment="CENTER" contentDisplay="CENTER" layoutX="-1.0" layoutY="117.0" prefHeight="19.0" prefWidth="241.0" text="Juan Camilo Ramos R." textAlignment="CENTER" textFill="WHITE">
                      <font>
-                        <Font name="Century Gothic" size="18.0" />
+                        <Font name="Century Gothic" size="15.0" />
                      </font>
                   </Label>
                </children>
@@ -110,5 +110,9 @@
             </Button>
          </children>
       </VBox>
+      <AnchorPane fx:id="anchorPanePrincipal" layoutX="241.0" layoutY="-1.0" prefHeight="576.0" prefWidth="749.0" style="-fx-background-color: gray;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="241.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane layoutX="102.0" layoutY="42.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: red;" />
+         </children></AnchorPane>
    </children>
 </AnchorPane>

@@ -15,6 +15,7 @@ public class BienestarEstudiantil
 	private ArrayList<Credito> lstCreditos;
 	private ArrayList<Horario> lstHorarios;
 	private ArrayList<Lugar> lstLugares;
+	private Administrador administrador;
 
 	/**
 	 * Constructor de la clase
@@ -28,6 +29,7 @@ public class BienestarEstudiantil
 		lstHorarios     = new ArrayList<Horario>();
 		lstCreditos     = new ArrayList<Credito>();
 		lstLugares      = new ArrayList<Lugar>();
+		inicializarDatos();
 	}
 
 	/**
@@ -141,41 +143,55 @@ public class BienestarEstudiantil
 	}
 
 	/**
+	 * Método que permite inicializar los datos
+	 */
+	private void inicializarDatos()
+	{
+		administrador = new Administrador();
+		administrador.setNombre("Orlando Narvaez Baracaldo");
+		administrador.setDocumento("1005308685");
+		administrador.setTipoDocumento("CC");
+		administrador.setEdad(21);
+		administrador.setUsuario("admin");
+		administrador.setContrasena("1234");
+	}
+
+	/**
 	 * Método que permite ingresar a la aplicación
 	 * @param usuario
 	 * @param contrasena
 	 * @param tipoUsuario
 	 * @return ingreso
 	 */
-	public boolean ingresar(String usuario, String contrasena, TipoUsuario tipoUsuario)
+	public Usuario ingresar(String nombreUsuario, String contrasena, TipoUsuario tipoUsuario)
 	{
-		boolean ingreso = false;
+		Usuario usuario = null;
 		Estudiante estudiante = null;
 		Instructor instructor = null;
 
 		switch (tipoUsuario) {
 		case ESTUDIANTE:
-			estudiante = lstEstudiantes.stream().filter(x -> x.getUsuario().equals(usuario) && x.getContrasena().equals(contrasena)).findAny().orElse(null);
+			estudiante = lstEstudiantes.stream().filter(x -> x.getUsuario().equals(nombreUsuario) && x.getContrasena().equals(contrasena)).findAny().orElse(null);
 
 			if(estudiante != null)
-				ingreso = true;
+				usuario = estudiante;
 
 			break;
 		case INSTRUCTOR:
-			instructor = lstInstructores.stream().filter(x -> x.getUsuario().equals(usuario) && x.getContrasena().equals(contrasena)).findAny().orElse(null);
+			instructor = lstInstructores.stream().filter(x -> x.getUsuario().equals(nombreUsuario) && x.getContrasena().equals(contrasena)).findAny().orElse(null);
 
 			if(instructor != null)
-				ingreso = true;
+				usuario = instructor;
 			break;
 		case ADMINISTRADOR:
-			if(usuario.trim().equals("admin") && contrasena.trim().equals("1234"))
-				ingreso = true;
+			if(administrador.getUsuario().equals(nombreUsuario) && administrador.getContrasena().equals(contrasena))
+				usuario = administrador;
 			break;
 		default:
 			break;
 		}
 
-		return ingreso;
+		return usuario;
 	}
 
 	/**

@@ -1,7 +1,11 @@
 package co.uniquindio.proyectoFinalGrupo1.controller;
 
 import co.uniquindio.proyectoFinalGrupo1.Aplicacion;
+import co.uniquindio.proyectoFinalGrupo1.model.Administrador;
+import co.uniquindio.proyectoFinalGrupo1.model.Estudiante;
+import co.uniquindio.proyectoFinalGrupo1.model.Instructor;
 import co.uniquindio.proyectoFinalGrupo1.model.TipoUsuario;
+import co.uniquindio.proyectoFinalGrupo1.model.Usuario;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -49,10 +53,31 @@ public class LoginController
 		String usuario = txtUsuario.getText();
 		String contrasena = txtContrasena.getText();
 		TipoUsuario tipoUsuario = comboBoxTipoUsuario.getValue();
+		Usuario usuarioObtenido = null;
 
-		if(aplicacion.ingresar(usuario, contrasena, tipoUsuario))
+		usuarioObtenido = aplicacion.ingresar(usuario, contrasena, tipoUsuario);
+
+
+		if(usuario != null)
 		{
-			aplicacion.mostrarVentanaPrincipal();
+			String nombreUsuario = "";
+			if(usuarioObtenido instanceof Estudiante)
+			{
+				Estudiante estudiante = (Estudiante)usuarioObtenido;
+				nombreUsuario = estudiante.getNombre();
+			}
+			else if(usuarioObtenido instanceof Instructor)
+			{
+				Instructor instructor = (Instructor)usuarioObtenido;
+				nombreUsuario = instructor.getNombre();
+			}
+			else
+			{
+				Administrador admin = (Administrador)usuarioObtenido;
+				nombreUsuario = admin.getNombre();
+			}
+
+			aplicacion.mostrarVentanaPrincipal(tipoUsuario, nombreUsuario);
 		}
 		else
 		{
