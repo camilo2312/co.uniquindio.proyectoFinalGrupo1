@@ -27,6 +27,7 @@ public class DashBoardController implements Initializable
 
 	private Aplicacion aplicacion;
 	private GestionEstudiantesController gestionEstudiantesController;
+	private InicioController inicioController;
 
 	@FXML
     private Button btnCreditos;
@@ -55,10 +56,11 @@ public class DashBoardController implements Initializable
     @FXML
     void inicioAction(ActionEvent event)
     {
-
+    	abrirInicio();
     }
 
-    @FXML
+
+	@FXML
     void gestionEstudiantesAction(ActionEvent event)
     {
     	abrirGestionEstudiantes();
@@ -101,6 +103,7 @@ public class DashBoardController implements Initializable
 	{
 		this.aplicacion = aplicacion;
 		insertarImagenTipoUsuario(tipoUsuario, nombreUsuario);
+		abrirInicio();
 	}
 
 	/**
@@ -157,4 +160,27 @@ public class DashBoardController implements Initializable
 		this.gestionEstudiantesController = loader.getController();
 		this.gestionEstudiantesController.setAplicacion(this.aplicacion);
 	}
+
+	/**
+	 * Método que permite abrir la vista de inicio
+	 */
+    private void abrirInicio()
+    {
+    	FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("../view/InicioView.fxml"));
+		AnchorPane vistaCargada = null;
+		try
+		{
+			vistaCargada = loader.load();
+			anchorPanePrincipal.getChildren().setAll(vistaCargada);
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+
+		this.inicioController = loader.getController();
+		this.inicioController.setAplicacion(this.aplicacion);
+	}
+
 }

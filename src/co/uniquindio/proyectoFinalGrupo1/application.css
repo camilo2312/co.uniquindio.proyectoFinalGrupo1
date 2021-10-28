@@ -11,3 +11,7 @@
 .btns-gestion-estudiantes-delete:hover{
 	-fx-background-color: #B60707 !important;
 }
+
+.cajas-inicio:hover{
+	-fx-scale-y: 1.1;
+}

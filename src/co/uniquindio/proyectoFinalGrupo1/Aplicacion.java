@@ -160,4 +160,14 @@ public class Aplicacion extends Application {
 	{
 		return bienestarEstudiantil.eliminarEstudiante(documento);
 	}
+
+	/**
+	 * Método que permite obtener las cantidades actuales
+	 * de los datos de la aplicación
+	 * @return cantidades
+	 */
+	public int[] obtenerCantidadesActuales()
+	{
+		return bienestarEstudiantil.obtenerCantidadesActuales();
+	}
 }

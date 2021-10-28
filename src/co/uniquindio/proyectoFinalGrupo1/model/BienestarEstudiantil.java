@@ -337,5 +337,22 @@ public class BienestarEstudiantil
 		return null;
 	}
 
+	/**
+	 * Método que permite obtener las cantidades actuales
+	 * de los datos de la aplicación
+	 * @return cantidades
+	 */
+	public int[] obtenerCantidadesActuales()
+	{
+		int[] cantidades = new int[4];
+
+		cantidades[0] = lstEstudiantes.size();
+		cantidades[1] = lstInstructores.size();
+		cantidades[2] = lstCreditos.size();
+		cantidades[3] = lstLugares.size();
+
+		return cantidades;
+	}
+
 
 }

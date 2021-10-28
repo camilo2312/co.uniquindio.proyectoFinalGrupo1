@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="570.0" prefWidth="749.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.proyectoFinalGrupo1.controller.InicioController">
+   <children>
+      <Separator layoutX="37.0" layoutY="54.0" prefHeight="0.0" prefWidth="674.0" style="-fx-background-color: #2980B9;" AnchorPane.rightAnchor="38.0" />
+      <Label layoutX="37.0" layoutY="21.0" text="Inicio">
+         <font>
+            <Font name="Century Gothic" size="20.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="37.0" layoutY="80.0" prefHeight="147.0" prefWidth="156.0" style="-fx-background-color: linear-gradient( #FFFF, #C3F5F6); -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0); -fx-background-radius: 2px; -fx-scale-x: 1;" styleClass="cajas-inicio">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="14.0" text="Cantidad Estudiantes">
+               <font>
+                  <Font name="Century Gothic" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblCantidadEstudiantes" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="43.0" prefHeight="97.0" prefWidth="136.0" text="1" textAlignment="CENTER" textFill="#00ff6a">
+               <font>
+                  <Font name="Century Gothic" size="65.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="212.0" layoutY="80.0" prefHeight="147.0" prefWidth="156.0" style="-fx-background-color: linear-gradient( #FFFF, #C3F5F6); -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0); -fx-background-radius: 2px;" styleClass="cajas-inicio">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="14.0" text="Cantidad Instructores">
+               <font>
+                  <Font name="Century Gothic" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblCantidadInstructores" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="44.0" prefHeight="97.0" prefWidth="136.0" text="24" textAlignment="CENTER" textFill="#00ff6a">
+               <font>
+                  <Font name="Century Gothic" size="65.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="385.0" layoutY="80.0" prefHeight="147.0" prefWidth="156.0" style="-fx-background-color: linear-gradient( #FFFF, #C3F5F6); -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0); -fx-background-radius: 2px;" styleClass="cajas-inicio">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="19.0" layoutY="14.0" text="Cantidad Creditos">
+               <font>
+                  <Font name="Century Gothic" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblCantidadCreditos" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="42.0" prefHeight="97.0" prefWidth="136.0" text="3" textAlignment="CENTER" textFill="#00ff6a">
+               <font>
+                  <Font name="Century Gothic" size="65.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="555.0" layoutY="80.0" prefHeight="147.0" prefWidth="156.0" style="-fx-background-color: linear-gradient( #FFFF, #C3F5F6); -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0); -fx-background-radius: 2px;" styleClass="cajas-inicio">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="21.0" layoutY="14.0" text="Cantidad Lugares">
+               <font>
+                  <Font name="Century Gothic" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblCantidadLugares" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="42.0" prefHeight="97.0" prefWidth="136.0" text="10" textAlignment="CENTER" textFill="#00ff6a">
+               <font>
+                  <Font name="Century Gothic" size="65.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
