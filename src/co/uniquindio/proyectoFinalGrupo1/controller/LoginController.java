@@ -58,7 +58,7 @@ public class LoginController
 		usuarioObtenido = aplicacion.ingresar(usuario, contrasena, tipoUsuario);
 
 
-		if(usuario != null)
+		if(usuarioObtenido != null)
 		{
 			String nombreUsuario = "";
 			if(usuarioObtenido instanceof Estudiante)

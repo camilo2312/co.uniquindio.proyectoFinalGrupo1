@@ -2,13 +2,15 @@ package co.uniquindio.proyectoFinalGrupo1.controller;
 
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import co.uniquindio.proyectoFinalGrupo1.Aplicacion;
 import co.uniquindio.proyectoFinalGrupo1.model.TipoUsuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -20,16 +22,20 @@ import javafx.scene.layout.AnchorPane;
  * @author Juan Camilo Ramos R.
  *
  */
-public class DashBoardController
+public class DashBoardController implements Initializable
 {
 
 	private Aplicacion aplicacion;
+	private GestionEstudiantesController gestionEstudiantesController;
 
 	@FXML
     private Button btnCreditos;
 
 	@FXML
     private Label lblNombreUsuario;
+
+	@FXML
+    private Button btnInicio;
 
     @FXML
     private Button btnEstudiantes;
@@ -47,25 +53,44 @@ public class DashBoardController
     private AnchorPane anchorPanePrincipal;
 
     @FXML
+    void inicioAction(ActionEvent event)
+    {
+
+    }
+
+    @FXML
     void gestionEstudiantesAction(ActionEvent event)
     {
     	abrirGestionEstudiantes();
     }
 
 	@FXML
-    void gestionInstructoresAction(ActionEvent event) {
+    void gestionInstructoresAction(ActionEvent event)
+	{
 
     }
 
     @FXML
-    void gestionCreditosAction(ActionEvent event) {
+    void gestionCreditosAction(ActionEvent event)
+    {
 
     }
 
     @FXML
-    void gestionLugaresAction(ActionEvent event) {
+    void gestionLugaresAction(ActionEvent event)
+    {
 
     }
+
+
+    /**
+     * Método que permite inicializar los componentes de la vista
+     */
+	@Override
+	public void initialize(URL location, ResourceBundle resources)
+	{
+
+	}
 
     /**
      * Método que permite inicializar la clase aplicación
@@ -78,6 +103,12 @@ public class DashBoardController
 		insertarImagenTipoUsuario(tipoUsuario, nombreUsuario);
 	}
 
+	/**
+	 * Método que permite mostrar la imagen asociada al tipo
+	 * de usuario
+	 * @param tipoUsuario
+	 * @param nombreUsuario
+	 */
 	private void insertarImagenTipoUsuario(TipoUsuario tipoUsuario, String nombreUsuario)
 	{
 		Image image = null;
@@ -86,10 +117,10 @@ public class DashBoardController
 			image = new Image(getClass().getResourceAsStream("../images/business.png"));
 			break;
 		case ESTUDIANTE:
-			image = new Image(getClass().getResourceAsStream("images/graduates.png"));
+			image = new Image(getClass().getResourceAsStream("../images/graduates.png"));
 			break;
 		case INSTRUCTOR:
-			image = new Image(getClass().getResourceAsStream("images/teacher.png"));
+			image = new Image(getClass().getResourceAsStream("../images/teacher.png"));
 			break;
 		default:
 			break;
@@ -105,19 +136,25 @@ public class DashBoardController
 		lblNombreUsuario.setText(nombreUsuario);
 	}
 
+	/**
+	 * Método que permite mostrar el componente de gestión de estudiantes
+	 * @throws IOException
+	 */
 	private void abrirGestionEstudiantes()
     {
-		try {
-			anchorPanePrincipal = new AnchorPane((Node)FXMLLoader.load(getClass().getResource("../view/LoginView.fxml")));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("../view/GestionEstudiantesView.fxml"));
+		AnchorPane vistaCargada = null;
+		try
+		{
+			vistaCargada = loader.load();
+			anchorPanePrincipal.getChildren().setAll(vistaCargada);
+		}
+		catch (IOException e)
+		{
 			e.printStackTrace();
 		}
-//		try {
-//			anchorPanePrincipal.getChildren().setAll(();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		this.gestionEstudiantesController = loader.getController();
+		this.gestionEstudiantesController.setAplicacion(this.aplicacion);
 	}
 }

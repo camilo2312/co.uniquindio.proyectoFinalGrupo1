@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="570.0" prefWidth="990.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.proyectoFinalGrupo1.controller.DashBoardController">
+<AnchorPane prefHeight="570.0" prefWidth="990.0" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.proyectoFinalGrupo1.controller.DashBoardController">
    <children>
-      <VBox layoutY="-15.0" prefHeight="585.0" prefWidth="241.0" style="-fx-background-color: #000077;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox layoutY="-15.0" prefHeight="585.0" prefWidth="241.0" style="-fx-background-color: linear-gradient(to top, #032D49, #2980B9);" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane prefHeight="161.0" prefWidth="210.0" style="-fx-background-color: transparent; -fx-border-color: #FFFF; -fx-border-width: 0px 0px 2px 0px;">
                <children>
@@ -24,7 +24,28 @@
                   </Label>
                </children>
             </AnchorPane>
-            <Button fx:id="btnEstudiantes" alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#gestionEstudiantesAction" prefHeight="55.0" prefWidth="280.0" style="-fx-background-color: transparent;" text="  Gestión Estudiantes" textFill="WHITE">
+            <Button fx:id="btnInicio" alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#inicioAction" prefHeight="54.0" prefWidth="305.0" style="-fx-background-color: transparent;" styleClass="btns-principales" text="  Inicio" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Century Gothic" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </Button>
+            <Button fx:id="btnEstudiantes" alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#gestionEstudiantesAction" prefHeight="55.0" prefWidth="280.0" style="-fx-background-color: transparent;" styleClass="btns-principales" text="  Gestión Estudiantes" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="14.0" />
                </font>
@@ -45,7 +66,7 @@
                   <Insets left="20.0" />
                </padding>
             </Button>
-            <Button fx:id="btnInstructores" alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#gestionInstructoresAction" prefHeight="54.0" prefWidth="297.0" style="-fx-background-color: transparent;" text="  Gestión Instructores" textFill="WHITE">
+            <Button fx:id="btnInstructores" alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#gestionInstructoresAction" prefHeight="54.0" prefWidth="297.0" style="-fx-background-color: transparent;" styleClass="btns-principales" text="  Gestión Instructores" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="14.0" />
                </font>
@@ -66,7 +87,7 @@
                   <Insets left="20.0" />
                </padding>
             </Button>
-            <Button fx:id="btnCreditos" alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#gestionCreditosAction" prefHeight="54.0" prefWidth="286.0" style="-fx-background-color: transparent;" text="  Gestión Creditos" textFill="WHITE">
+            <Button fx:id="btnCreditos" alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#gestionCreditosAction" prefHeight="54.0" prefWidth="286.0" style="-fx-background-color: transparent;" styleClass="btns-principales" text="  Gestión Creditos" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="14.0" />
                </font>
@@ -87,7 +108,7 @@
                   <Insets left="20.0" />
                </padding>
             </Button>
-            <Button fx:id="btnLugares" alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#gestionLugaresAction" prefHeight="54.0" prefWidth="305.0" style="-fx-background-color: transparent;" text="  Gestión Lugares" textFill="WHITE">
+            <Button fx:id="btnLugares" alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#gestionLugaresAction" prefHeight="54.0" prefWidth="305.0" style="-fx-background-color: transparent;" styleClass="btns-principales" text="  Gestión Lugares" textFill="WHITE">
                <font>
                   <Font name="Century Gothic" size="14.0" />
                </font>
@@ -110,9 +131,6 @@
             </Button>
          </children>
       </VBox>
-      <AnchorPane fx:id="anchorPanePrincipal" layoutX="241.0" layoutY="-1.0" prefHeight="576.0" prefWidth="749.0" style="-fx-background-color: gray;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="241.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <AnchorPane layoutX="102.0" layoutY="42.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: red;" />
-         </children></AnchorPane>
+      <AnchorPane fx:id="anchorPanePrincipal" layoutX="241.0" layoutY="-1.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="749.0" style="-fx-background-color: #FFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="241.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

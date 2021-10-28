@@ -149,11 +149,41 @@ public class BienestarEstudiantil
 	{
 		administrador = new Administrador();
 		administrador.setNombre("Orlando Narvaez Baracaldo");
-		administrador.setDocumento("1005308685");
+		administrador.setDocumento("1007890675");
 		administrador.setTipoDocumento("CC");
 		administrador.setEdad(21);
 		administrador.setUsuario("admin");
 		administrador.setContrasena("1234");
+
+		Estudiante estudiante = new Estudiante();
+		estudiante.setNombre("Juan Camilo Ramos R.");
+		estudiante.setDocumento("1005308685");
+		estudiante.setEdad(21);
+		estudiante.setTipoDocumento("CC");
+		estudiante.setUsuario("juanramos");
+		estudiante.setContrasena("1234");
+
+		lstEstudiantes.add(estudiante);
+
+		estudiante = new Estudiante();
+		estudiante.setNombre("Alejandra Toro C.");
+		estudiante.setDocumento("1007609899");
+		estudiante.setEdad(21);
+		estudiante.setTipoDocumento("CC");
+		estudiante.setUsuario("aletoro");
+		estudiante.setContrasena("1234");
+
+		lstEstudiantes.add(estudiante);
+
+		Instructor instructor = new Instructor();
+		instructor.setNombre("Omar Yair Agudelo Amado");
+		instructor.setDocumento("123456789");
+		instructor.setTipoDocumento("CC");
+		instructor.setAsignatura("Programación");
+		instructor.setUsuario("omagudelo");
+		instructor.setContrasena("1234");
+
+		lstInstructores.add(instructor);
 	}
 
 	/**
@@ -182,6 +212,7 @@ public class BienestarEstudiantil
 
 			if(instructor != null)
 				usuario = instructor;
+
 			break;
 		case ADMINISTRADOR:
 			if(administrador.getUsuario().equals(nombreUsuario) && administrador.getContrasena().equals(contrasena))
@@ -205,6 +236,105 @@ public class BienestarEstudiantil
 		lstTipoUsuarios.add(TipoUsuario.ADMINISTRADOR);
 		lstTipoUsuarios.add(TipoUsuario.INSTRUCTOR);
 		return lstTipoUsuarios;
+	}
+
+	/**
+	 * Método que permite agregar a un estudiante
+	 * @param nombre
+	 * @param documento
+	 * @param tipoDocumento
+	 * @param edad
+	 * @param usuario
+	 * @param contrasena
+	 * @return estudiante
+	 */
+	public Estudiante agregarEstudiante(String nombre, String documento, String tipoDocumento, int edad, String usuario,
+			String contrasena)
+	{
+		Estudiante estudiante = obtenerEstudiante(documento);
+		if(estudiante == null)
+		{
+			estudiante = new Estudiante();
+			estudiante.setNombre(nombre);
+			estudiante.setDocumento(documento);
+			estudiante.setTipoDocumento(tipoDocumento);
+			estudiante.setEdad(edad);
+			estudiante.setUsuario(usuario);
+			estudiante.setContrasena(contrasena);
+
+			lstEstudiantes.add(estudiante);
+
+			return estudiante;
+		}
+		return null;
+	}
+
+	/**
+	 * Método que permite actualizar la información de un estudiante
+	 * @param documentoActual
+	 * @param documento
+	 * @param nombre
+	 * @param tipoDocumento
+	 * @param edad
+	 * @param usuario
+	 * @param contrasena
+	 * @return
+	 */
+	public boolean actualizarEstudiante(String documentoActual, String documento, String nombre, String tipoDocumento,
+			int edad, String usuario, String contrasena)
+	{
+		boolean actualizado = false;
+		Estudiante  estudiante = obtenerEstudiante(documentoActual);
+		if(estudiante != null)
+		{
+			estudiante.setNombre(nombre);
+			estudiante.setDocumento(documento);
+			estudiante.setTipoDocumento(tipoDocumento);
+			estudiante.setEdad(edad);
+			estudiante.setUsuario(usuario);
+			estudiante.setContrasena(contrasena);
+
+			actualizado = true;
+		}
+
+		return actualizado;
+	}
+
+	/**
+	 * Método que permite eliminar un estudiante
+	 * @param documento
+	 * @return eliminado
+	 */
+	public boolean eliminarEstudiante(String documento)
+	{
+		boolean eliminado = false;
+		Estudiante estudiante = obtenerEstudiante(documento);
+
+		if(estudiante != null)
+		{
+			lstEstudiantes.remove(estudiante);
+			eliminado = true;
+		}
+
+		return eliminado;
+	}
+
+	/**
+	 * Método que permite obtener un estudiante por su documento
+	 * @param documento
+	 * @return estudiante
+	 */
+	private Estudiante obtenerEstudiante(String documento)
+	{
+		for (Estudiante estudiante : lstEstudiantes)
+		{
+			if(estudiante.getDocumento().equals(documento))
+			{
+				return estudiante;
+			}
+		}
+
+		return null;
 	}
 
 

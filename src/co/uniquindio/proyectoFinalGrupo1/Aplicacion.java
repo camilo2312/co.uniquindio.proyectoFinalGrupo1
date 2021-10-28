@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import co.uniquindio.proyectoFinalGrupo1.controller.DashBoardController;
 import co.uniquindio.proyectoFinalGrupo1.controller.LoginController;
 import co.uniquindio.proyectoFinalGrupo1.model.BienestarEstudiantil;
+import co.uniquindio.proyectoFinalGrupo1.model.Estudiante;
 import co.uniquindio.proyectoFinalGrupo1.model.TipoUsuario;
 import co.uniquindio.proyectoFinalGrupo1.model.Usuario;
 import javafx.application.Application;
@@ -25,6 +26,7 @@ public class Aplicacion extends Application {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Bienestar universitario");
 		mostrarVentanaLogin();
+//		mostrarVentanaPrincipal(TipoUsuario.ADMINISTRADOR, "Juan Camilo Ramos R.");
 	}
 
 	public static void main(String[] args)
@@ -73,7 +75,9 @@ public class Aplicacion extends Application {
 			ventanaPrincipalController.setAplicacion(this, tipoUsuario, nombreUsuario);
 
 			Scene scene = new Scene(rootLayout);
+			scene.getStylesheets().add(Aplicacion.class.getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
+			primaryStage.centerOnScreen();
 			primaryStage.show();
 
 		}
@@ -103,5 +107,57 @@ public class Aplicacion extends Application {
 	public ArrayList<TipoUsuario> obtenerListaTiposUsuarios()
 	{
 		return bienestarEstudiantil.obtenerListaTiposUsuario();
+	}
+
+	/**
+	 * Método que permite obtener la lista de estudiantes predeterminados
+	 * @return lstEstudiantes
+	 */
+	public ArrayList<Estudiante> obtenerListaEstudiantesData()
+	{
+		return bienestarEstudiantil.getLstEstudiantes();
+	}
+
+	/**
+	 * Método que permite agregar a un estudiante
+	 * @param nombre
+	 * @param documento
+	 * @param tipoDocumento
+	 * @param edad
+	 * @param usuario
+	 * @param contrasena
+	 * @return estudiante
+	 */
+	public Estudiante agregarEstudiante(String nombre, String documento, String tipoDocumento, int edad, String usuario,
+			String contrasena)
+	{
+		return bienestarEstudiantil.agregarEstudiante(nombre, documento, tipoDocumento, edad, usuario, contrasena);
+	}
+
+	/**
+	 * Método que permite actualizar la información de un estudiante
+	 * @param documentoActual
+	 * @param documento
+	 * @param nombre
+	 * @param tipoDocumento
+	 * @param edad
+	 * @param usuario
+	 * @param contrasena
+	 * @return actualizado
+	 */
+	public boolean actualizarEstudiante(String documentoActual, String documento, String nombre, String tipoDocumento,
+			int edad, String usuario, String contrasena)
+	{
+		return bienestarEstudiantil.actualizarEstudiante(documentoActual, documento, nombre, tipoDocumento, edad, usuario, contrasena);
+	}
+
+	/**
+	 * Método que permite eliminar un estudiante
+	 * @param documento
+	 * @return eliminado
+	 */
+	public boolean eliminarEstudiante(String documento)
+	{
+		return bienestarEstudiantil.eliminarEstudiante(documento);
 	}
 }
