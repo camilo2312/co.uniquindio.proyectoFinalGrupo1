@@ -2,6 +2,12 @@ package co.uniquindio.proyectoFinalGrupo1.model;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
+import co.uniquindio.proyectoFinalGrupo1.exceptions.CoincidirException;
+import co.uniquindio.proyectoFinalGrupo1.exceptions.DatoIncorrectoException;
+import co.uniquindio.proyectoFinalGrupo1.exceptions.UsuarioExisteException;
+
 /**
  * Clase bienestar estudiantil
  * @author Juan Camilo Ramos R.
@@ -249,10 +255,15 @@ public class BienestarEstudiantil
 	 * @return estudiante
 	 */
 	public Estudiante agregarEstudiante(String nombre, String documento, String tipoDocumento, int edad, String usuario,
-			String contrasena)
+			String contrasena) throws UsuarioExisteException
 	{
+		
 		Estudiante estudiante = obtenerEstudiante(documento);
-		if(estudiante == null)
+		if(estudiante != null)
+		{
+			throw new UsuarioExisteException("El usuario de código " + documento + " de la clase Estudiante ya existe");
+		}
+		else
 		{
 			estudiante = new Estudiante();
 			estudiante.setNombre(nombre);
@@ -266,7 +277,7 @@ public class BienestarEstudiantil
 
 			return estudiante;
 		}
-		return null;
+		
 	}
 
 	/**
