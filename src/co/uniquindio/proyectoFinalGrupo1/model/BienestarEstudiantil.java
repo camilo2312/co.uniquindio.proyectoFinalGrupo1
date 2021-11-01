@@ -266,6 +266,7 @@ public class BienestarEstudiantil
 
 			return estudiante;
 		}
+
 		return null;
 	}
 

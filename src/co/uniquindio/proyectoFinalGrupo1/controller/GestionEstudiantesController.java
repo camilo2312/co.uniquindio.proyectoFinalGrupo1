@@ -5,7 +5,6 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import co.uniquindio.proyectoFinalGrupo1.Aplicacion;
-import co.uniquindio.proyectoFinalGrupo1.exceptions.UsuarioExisteException;
 import co.uniquindio.proyectoFinalGrupo1.model.Estudiante;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -177,7 +176,6 @@ public class GestionEstudiantesController implements Initializable
 
 	/**
 	 * Método que permite agregar un estudiante
-	 * @throws UsuarioExisteException
 	 */
     private void agregarEstudiante()
     {
@@ -202,7 +200,6 @@ public class GestionEstudiantesController implements Initializable
     		else
         	{
         		mostrarMensaje("Almacenar registro", "Datos NO guardados", "El estudiante ingresado ya existe", AlertType.ERROR);
-//    			throw new UsuarioExisteException("El usuario de código " + documento + " de la clase Estudiante ya existe");
         	}
     	}
 	}
