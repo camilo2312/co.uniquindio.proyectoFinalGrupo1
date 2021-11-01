@@ -97,7 +97,7 @@ public class GestionEstudiantesController implements Initializable
     }
 
     @FXML
-    void agregarAction(ActionEvent event) throws UsuarioExisteException
+    void agregarAction(ActionEvent event)
     {
     	agregarEstudiante();
     }
@@ -178,9 +178,8 @@ public class GestionEstudiantesController implements Initializable
 
 	/**
 	 * Método que permite agregar un estudiante
-	 * @throws UsuarioExisteException
 	 */
-    private void agregarEstudiante() throws UsuarioExisteException
+    private void agregarEstudiante()
     {
     	Estudiante estudiante = null;
     	if(camposValidos())
@@ -201,7 +200,7 @@ public class GestionEstudiantesController implements Initializable
         			limpiarFormulario();
             		mostrarMensaje("Almacenar registro", "Datos guardados", "El registro ha sido almacenado correctamente", AlertType.INFORMATION);
         		}
-			} catch (UsuarioExisteException e) 
+			} catch (UsuarioExisteException e)
     		{
 				mostrarMensaje("Agregar datos", "Datos no agregados", e.getMessage(), AlertType.INFORMATION);
 				e.printStackTrace();
@@ -217,11 +216,15 @@ public class GestionEstudiantesController implements Initializable
     		}
     		else
         	{
+<<<<<<< HEAD
+        		mostrarMensaje("Almacenar registro", "Datos NO guardados", "El estudiante ingresado ya existe", AlertType.ERROR);
+=======
         		//mostrarMensaje("Almacenar registro", "Datos NO guardados", "El estudiante ingresado ya existe", AlertType.ERROR);
         		throw new UsuarioExisteException("El usuario de código " + documento + " de la clase Estudiante ya existe");
+>>>>>>> 32e32c9e784381b5bb2dba6ec248afa3f354e086
         	}
         	*/
-        	
+
     	}
 	}
 

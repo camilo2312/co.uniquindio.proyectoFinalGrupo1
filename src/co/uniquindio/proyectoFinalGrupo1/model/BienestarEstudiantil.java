@@ -1,11 +1,6 @@
 package co.uniquindio.proyectoFinalGrupo1.model;
 
 import java.util.ArrayList;
-
-import javax.swing.JOptionPane;
-
-import co.uniquindio.proyectoFinalGrupo1.exceptions.CoincidirException;
-import co.uniquindio.proyectoFinalGrupo1.exceptions.DatoIncorrectoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.UsuarioExisteException;
 
 /**
@@ -257,6 +252,10 @@ public class BienestarEstudiantil
 	public Estudiante agregarEstudiante(String nombre, String documento, String tipoDocumento, int edad, String usuario,
 			String contrasena) throws UsuarioExisteException
 	{
+<<<<<<< HEAD
+=======
+
+>>>>>>> d6bdf27f6a6f2ad36077e4904834ecf81dc65e6c
 		Estudiante estudiante = obtenerEstudiante(documento);
 		if(estudiante != null)
 		{
