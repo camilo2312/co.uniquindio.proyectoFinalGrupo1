@@ -194,7 +194,7 @@ public class GestionEstudiantesController implements Initializable
 
     		try {
     			estudiante = aplicacion.agregarEstudiante(nombre, documento, tipoDocumento, edad, usuario, contrasena);
-    			
+
     			if(estudiante != null)
         		{
         			lstEstudiantesData.add(estudiante);
@@ -206,7 +206,7 @@ public class GestionEstudiantesController implements Initializable
 				mostrarMensaje("Agregar datos", "Datos no agregados", e.getMessage(), AlertType.INFORMATION);
 				e.printStackTrace();
 			}
-			
+
 
     		/*
     		if(estudiante != null)

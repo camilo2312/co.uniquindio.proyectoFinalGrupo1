@@ -128,9 +128,10 @@ public class Aplicacion extends Application {
 	 * @param usuario
 	 * @param contrasena
 	 * @return estudiante
+	 * @throws UsuarioExisteException 
 	 */
 	public Estudiante agregarEstudiante(String nombre, String documento, String tipoDocumento, int edad, String usuario,
-			String contrasena) throws UsuarioExisteException
+			String contrasena) throws UsuarioExisteException 
 	{
 		return bienestarEstudiantil.agregarEstudiante(nombre, documento, tipoDocumento, edad, usuario, contrasena);
 	}

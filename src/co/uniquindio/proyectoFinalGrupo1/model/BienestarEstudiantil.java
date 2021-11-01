@@ -257,7 +257,6 @@ public class BienestarEstudiantil
 	public Estudiante agregarEstudiante(String nombre, String documento, String tipoDocumento, int edad, String usuario,
 			String contrasena) throws UsuarioExisteException
 	{
-		
 		Estudiante estudiante = obtenerEstudiante(documento);
 		if(estudiante != null)
 		{
@@ -277,7 +276,6 @@ public class BienestarEstudiantil
 
 			return estudiante;
 		}
-		
 	}
 
 	/**
