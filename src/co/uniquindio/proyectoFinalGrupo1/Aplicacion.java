@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import co.uniquindio.proyectoFinalGrupo1.controller.DashBoardController;
 import co.uniquindio.proyectoFinalGrupo1.controller.LoginController;
+import co.uniquindio.proyectoFinalGrupo1.exceptions.UsuarioExisteException;
 import co.uniquindio.proyectoFinalGrupo1.model.BienestarEstudiantil;
 import co.uniquindio.proyectoFinalGrupo1.model.Estudiante;
 import co.uniquindio.proyectoFinalGrupo1.model.TipoUsuario;
@@ -129,7 +130,7 @@ public class Aplicacion extends Application {
 	 * @return estudiante
 	 */
 	public Estudiante agregarEstudiante(String nombre, String documento, String tipoDocumento, int edad, String usuario,
-			String contrasena)
+			String contrasena) throws UsuarioExisteException
 	{
 		return bienestarEstudiantil.agregarEstudiante(nombre, documento, tipoDocumento, edad, usuario, contrasena);
 	}

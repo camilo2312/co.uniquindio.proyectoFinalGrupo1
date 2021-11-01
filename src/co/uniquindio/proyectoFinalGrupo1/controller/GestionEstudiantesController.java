@@ -4,7 +4,9 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+
 import co.uniquindio.proyectoFinalGrupo1.Aplicacion;
+import co.uniquindio.proyectoFinalGrupo1.exceptions.UsuarioExisteException;
 import co.uniquindio.proyectoFinalGrupo1.model.Estudiante;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -189,8 +191,23 @@ public class GestionEstudiantesController implements Initializable
     		String usuario = txtUsuario.getText();
     		String contrasena = txtContrasena.getText();
 
-    		estudiante = aplicacion.agregarEstudiante(nombre, documento, tipoDocumento, edad, usuario, contrasena);
+    		try {
+    			estudiante = aplicacion.agregarEstudiante(nombre, documento, tipoDocumento, edad, usuario, contrasena);
 
+    			if(estudiante != null)
+        		{
+        			lstEstudiantesData.add(estudiante);
+        			limpiarFormulario();
+            		mostrarMensaje("Almacenar registro", "Datos guardados", "El registro ha sido almacenado correctamente", AlertType.INFORMATION);
+        		}
+			} catch (UsuarioExisteException e)
+    		{
+				mostrarMensaje("Agregar datos", "Datos no agregados", e.getMessage(), AlertType.INFORMATION);
+				e.printStackTrace();
+			}
+
+
+    		/*
     		if(estudiante != null)
     		{
     			lstEstudiantesData.add(estudiante);
@@ -199,8 +216,15 @@ public class GestionEstudiantesController implements Initializable
     		}
     		else
         	{
+<<<<<<< HEAD
         		mostrarMensaje("Almacenar registro", "Datos NO guardados", "El estudiante ingresado ya existe", AlertType.ERROR);
+=======
+        		//mostrarMensaje("Almacenar registro", "Datos NO guardados", "El estudiante ingresado ya existe", AlertType.ERROR);
+        		throw new UsuarioExisteException("El usuario de código " + documento + " de la clase Estudiante ya existe");
+>>>>>>> 32e32c9e784381b5bb2dba6ec248afa3f354e086
         	}
+        	*/
+
     	}
 	}
 
