@@ -1,6 +1,6 @@
 package co.uniquindio.proyectoFinalGrupo1.model;
 
-public class creditoCultural extends Credito
+public class CreditoCultural extends Credito
 {
 
 	double costo;
@@ -8,14 +8,14 @@ public class creditoCultural extends Credito
 	/**
 	 * Constructor de la clase
 	 */
-	public creditoCultural()
+	public CreditoCultural()
 	{
 
 	}
 
 	/**
 	 * Método que permite obtener el costo del credito cultural
-	 * @return codigo
+	 * @return costo
 	 */
 	public double getCosto()
 	{
@@ -24,22 +24,21 @@ public class creditoCultural extends Credito
 
 	/**
 	 * Método que permite asignar y/o actualizar el costo del credito cultural
-	 * @param codigo
+	 * @param costo
 	 */
 	public void setCosto(double costo)
 	{
 		this.costo = costo;
 	}
 
-	
-	
 
 
 	/**
 	 * Método que permite imprimir las propiedades del credito Cultural
 	 */
 	@Override
-	public String toString() {
-		return "credito academico [costo=" + costo + "]";
+	public String toString()
+	{
+		return "Credito Cultural [costo=" + costo + "]";
 	}
 }

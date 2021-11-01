@@ -1,11 +1,6 @@
 package co.uniquindio.proyectoFinalGrupo1.model;
 
 import java.util.ArrayList;
-
-import javax.swing.JOptionPane;
-
-import co.uniquindio.proyectoFinalGrupo1.exceptions.CoincidirException;
-import co.uniquindio.proyectoFinalGrupo1.exceptions.DatoIncorrectoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.UsuarioExisteException;
 
 /**

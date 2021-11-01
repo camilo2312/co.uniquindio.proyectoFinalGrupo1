@@ -1,12 +1,12 @@
 package co.uniquindio.proyectoFinalGrupo1.model;
 
-public class creditoDeportivo extends Credito
+public class CreditoDeportivo extends Credito
 {
 	double asistenciaMinima;
-	
-	public creditoDeportivo()
+
+	public CreditoDeportivo()
 	{
-		
+
 	}
 
 	/**
@@ -32,9 +32,6 @@ public class creditoDeportivo extends Credito
 	{
 		this.asistenciaMinima = asistenciaMinima;
 	}
-
-	
-	
 
 
 	/**
