@@ -38,7 +38,7 @@ public class Aplicacion extends Application {
 	/**
 	 * Método que permite mostrar la ventana login del sistema
 	 */
-	private void mostrarVentanaLogin()
+	public void mostrarVentanaLogin()
 	{
 		try
 		{

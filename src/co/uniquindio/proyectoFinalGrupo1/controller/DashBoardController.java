@@ -47,12 +47,17 @@ public class DashBoardController implements Initializable
 
     @FXML
     private Button btnLugares;
+    
+    @FXML
+    private Button btnCerrarSesion;
 
     @FXML
     private ImageView imgUser;
 
     @FXML
     private AnchorPane anchorPanePrincipal;
+    
+    
 
     @FXML
     void inicioAction(ActionEvent event)
@@ -83,6 +88,12 @@ public class DashBoardController implements Initializable
     void gestionLugaresAction(ActionEvent event)
     {
 
+    }
+    
+    @FXML
+    void cerrarSesionAction(ActionEvent event) 
+    {
+    	cerrarSesion();
     }
 
 
@@ -179,5 +190,12 @@ public class DashBoardController implements Initializable
 		}
 
 	}
-
+    
+    /**
+	 * Método que permite cerrar sesion y lo devuelve al login
+	 */
+    private void cerrarSesion()
+    {
+    	aplicacion.mostrarVentanaLogin();
+    }
 }
