@@ -8,7 +8,10 @@ import java.util.ArrayList;
  */
 public class Credito
 {
+	private String codigo;
 	private String nombre;
+	private int duracion;
+	private int cupoMaximo;
 	private ArrayList<Estudiante> lstEstudiantes;
 	private ArrayList<Horario> horarios;
 	private Lugar lugar;
@@ -20,6 +23,83 @@ public class Credito
 	public Credito()
 	{
 
+	}
+
+	/**
+	 * Método que permite obtener el código del credito
+	 * @return codigo
+	 */
+	public String getCodigo()
+	{
+		return codigo;
+	}
+
+	/**
+	 * Método que permite asignar y/o actualizar el
+	 * codigo del credito
+	 * @param codigo
+	 */
+	public void setCodigo(String codigo)
+	{
+		this.codigo = codigo;
+	}
+
+	/**
+	 * Método que permite obtener la duración del credito en horas
+	 * @return duracion
+	 */
+	public int getDuracion()
+	{
+		return duracion;
+	}
+
+	/**
+	 * Método que permite asignar y/o actualizar la duración
+	 * del credito
+	 * @param duracion
+	 */
+	public void setDuracion(int duracion)
+	{
+		this.duracion = duracion;
+	}
+
+	/**
+	 * Método que permite obtener el cupo maximo
+	 * @return cupoMaximo
+	 */
+	public int getCupoMaximo()
+	{
+		return cupoMaximo;
+	}
+
+	/**
+	 * Método que permite asignar y/o actualizar
+	 * el cupo maximo del credito
+	 * @param cupoMaximo
+	 */
+	public void setCupoMaximo(int cupoMaximo)
+	{
+		this.cupoMaximo = cupoMaximo;
+	}
+
+	/**
+	 * Método que permite obtener los horarios
+	 * del credito
+	 * @return horarios
+	 */
+	public ArrayList<Horario> getHorarios()
+	{
+		return horarios;
+	}
+
+	/**
+	 * Método que permite asignar y/o actualizar
+	 * los horarios del credito
+	 * @param horarios
+	 */
+	public void setHorarios(ArrayList<Horario> horarios)
+	{
+		this.horarios = horarios;
 	}
 
 	/**
