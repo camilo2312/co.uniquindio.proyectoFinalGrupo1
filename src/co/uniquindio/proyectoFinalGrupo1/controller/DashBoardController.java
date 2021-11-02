@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import co.uniquindio.proyectoFinalGrupo1.Aplicacion;
+import co.uniquindio.proyectoFinalGrupo1.model.NombreVentana;
 import co.uniquindio.proyectoFinalGrupo1.model.TipoUsuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -56,14 +57,14 @@ public class DashBoardController implements Initializable
     @FXML
     void inicioAction(ActionEvent event)
     {
-    	abrirInicio();
+    	abrirVentana(NombreVentana.INICIO);
     }
 
 
 	@FXML
     void gestionEstudiantesAction(ActionEvent event)
     {
-    	abrirGestionEstudiantes();
+    	abrirVentana(NombreVentana.GESTION_ESTUDIANTES);
     }
 
 	@FXML
@@ -103,7 +104,7 @@ public class DashBoardController implements Initializable
 	{
 		this.aplicacion = aplicacion;
 		insertarImagenTipoUsuario(tipoUsuario, nombreUsuario);
-		abrirInicio();
+		abrirVentana(NombreVentana.INICIO);
 	}
 
 	/**
@@ -130,8 +131,6 @@ public class DashBoardController implements Initializable
 		}
 
 		if(image != null)
-
-
 		{
 			imgUser.setImage(image);
 		}
@@ -140,47 +139,45 @@ public class DashBoardController implements Initializable
 	}
 
 	/**
-	 * Método que permite mostrar el componente de gestión de estudiantes
-	 * @throws IOException
+	 * Método que permite abrir las vistas de los menus
 	 */
-	private void abrirGestionEstudiantes()
-    {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("../view/GestionEstudiantesView.fxml"));
-		AnchorPane vistaCargada = null;
-		try
-		{
-			vistaCargada = loader.load();
-			anchorPanePrincipal.getChildren().setAll(vistaCargada);
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-		this.gestionEstudiantesController = loader.getController();
-		this.gestionEstudiantesController.setAplicacion(this.aplicacion);
-	}
-
-	/**
-	 * Método que permite abrir la vista de inicio
-	 */
-    private void abrirInicio()
+    private void abrirVentana(NombreVentana nombreVentana)
     {
     	FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("../view/InicioView.fxml"));
 		AnchorPane vistaCargada = null;
+
 		try
 		{
-			vistaCargada = loader.load();
-			anchorPanePrincipal.getChildren().setAll(vistaCargada);
+	    	switch (nombreVentana) {
+			case INICIO:
+				loader.setLocation(getClass().getResource("../view/InicioView.fxml"));
+				vistaCargada = loader.load();
+				anchorPanePrincipal.getChildren().setAll(vistaCargada);
+				this.inicioController = loader.getController();
+				this.inicioController.setAplicacion(this.aplicacion);
+				break;
+			case GESTION_ESTUDIANTES:
+				loader.setLocation(getClass().getResource("../view/GestionEstudiantesView.fxml"));
+				vistaCargada = loader.load();
+				anchorPanePrincipal.getChildren().setAll(vistaCargada);
+				this.gestionEstudiantesController = loader.getController();
+				this.gestionEstudiantesController.setAplicacion(this.aplicacion);
+				break;
+			case GESTION_INSTRUCTOR:
+				break;
+			case GESTION_CREDITOS:
+				break;
+			case GESTION_LUGARES:
+				break;
+			default:
+				break;
+	    	}
 		}
 		catch (IOException e)
 		{
 			e.printStackTrace();
 		}
 
-		this.inicioController = loader.getController();
-		this.inicioController.setAplicacion(this.aplicacion);
 	}
 
 }

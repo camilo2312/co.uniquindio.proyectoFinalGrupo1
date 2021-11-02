@@ -206,25 +206,6 @@ public class GestionEstudiantesController implements Initializable
 				e.printStackTrace();
 			}
 
-
-    		/*
-    		if(estudiante != null)
-    		{
-    			lstEstudiantesData.add(estudiante);
-    			limpiarFormulario();
-        		mostrarMensaje("Almacenar registro", "Datos guardados", "El registro ha sido almacenado correctamente", AlertType.INFORMATION);
-    		}
-    		else
-        	{
-<<<<<<< HEAD
-        		mostrarMensaje("Almacenar registro", "Datos NO guardados", "El estudiante ingresado ya existe", AlertType.ERROR);
-=======
-        		//mostrarMensaje("Almacenar registro", "Datos NO guardados", "El estudiante ingresado ya existe", AlertType.ERROR);
-        		throw new UsuarioExisteException("El usuario de código " + documento + " de la clase Estudiante ya existe");
->>>>>>> 32e32c9e784381b5bb2dba6ec248afa3f354e086
-        	}
-        	*/
-
     	}
 	}
 
