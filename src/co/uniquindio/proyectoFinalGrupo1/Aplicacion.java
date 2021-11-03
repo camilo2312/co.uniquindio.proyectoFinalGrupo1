@@ -32,6 +32,12 @@ public class Aplicacion extends Application {
 
 	public static void main(String[] args)
 	{
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		launch(args);
 	}
 
@@ -51,6 +57,7 @@ public class Aplicacion extends Application {
 
 			Scene scene = new Scene(rootLayout);
 			primaryStage.setScene(scene);
+			primaryStage.centerOnScreen();
 			primaryStage.show();
 
 		} catch (IOException e)
@@ -128,10 +135,10 @@ public class Aplicacion extends Application {
 	 * @param usuario
 	 * @param contrasena
 	 * @return estudiante
-	 * @throws UsuarioExisteException 
+	 * @throws UsuarioExisteException
 	 */
 	public Estudiante agregarEstudiante(String nombre, String documento, String tipoDocumento, int edad, String usuario,
-			String contrasena) throws UsuarioExisteException 
+			String contrasena) throws UsuarioExisteException
 	{
 		return bienestarEstudiantil.agregarEstudiante(nombre, documento, tipoDocumento, edad, usuario, contrasena);
 	}
