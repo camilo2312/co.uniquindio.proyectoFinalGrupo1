@@ -5,6 +5,9 @@ import java.util.ArrayList;
 
 import co.uniquindio.proyectoFinalGrupo1.controller.DashBoardController;
 import co.uniquindio.proyectoFinalGrupo1.controller.LoginController;
+import co.uniquindio.proyectoFinalGrupo1.exceptions.NoActualizadoException;
+import co.uniquindio.proyectoFinalGrupo1.exceptions.NoCreadoException;
+import co.uniquindio.proyectoFinalGrupo1.exceptions.NoEliminadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.UsuarioExisteException;
 import co.uniquindio.proyectoFinalGrupo1.model.BienestarEstudiantil;
 import co.uniquindio.proyectoFinalGrupo1.model.Estudiante;
@@ -153,9 +156,10 @@ public class Aplicacion extends Application {
 	 * @param usuario
 	 * @param contrasena
 	 * @return actualizado
+	 * @throws NoActualizadoException 
 	 */
 	public boolean actualizarEstudiante(String documentoActual, String documento, String nombre, String tipoDocumento,
-			int edad, String usuario, String contrasena)
+			int edad, String usuario, String contrasena) throws NoActualizadoException 
 	{
 		return bienestarEstudiantil.actualizarEstudiante(documentoActual, documento, nombre, tipoDocumento, edad, usuario, contrasena);
 	}
@@ -164,8 +168,9 @@ public class Aplicacion extends Application {
 	 * Método que permite eliminar un estudiante
 	 * @param documento
 	 * @return eliminado
+	 * @throws NoEliminadoException 
 	 */
-	public boolean eliminarEstudiante(String documento)
+	public boolean eliminarEstudiante(String documento) throws NoEliminadoException 
 	{
 		return bienestarEstudiantil.eliminarEstudiante(documento);
 	}

@@ -6,6 +6,9 @@ import java.util.ResourceBundle;
 
 
 import co.uniquindio.proyectoFinalGrupo1.Aplicacion;
+import co.uniquindio.proyectoFinalGrupo1.exceptions.NoActualizadoException;
+import co.uniquindio.proyectoFinalGrupo1.exceptions.NoCreadoException;
+import co.uniquindio.proyectoFinalGrupo1.exceptions.NoEliminadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.UsuarioExisteException;
 import co.uniquindio.proyectoFinalGrupo1.model.Estudiante;
 import javafx.collections.FXCollections;
@@ -179,7 +182,7 @@ public class GestionEstudiantesController implements Initializable
 	/**
 	 * Método que permite agregar un estudiante
 	 */
-    private void agregarEstudiante()
+    private void agregarEstudiante() 
     {
     	Estudiante estudiante = null;
     	if(camposValidos())
@@ -202,7 +205,8 @@ public class GestionEstudiantesController implements Initializable
         		}
 			} catch (UsuarioExisteException e)
     		{
-				mostrarMensaje("Agregar datos", "Datos no agregados", e.getMessage(), AlertType.INFORMATION);
+				mostrarMensaje("Agregar datos", "Datos no agregados", "El usuario de código " + documento + " de la clase Estudiante ya existe", 
+						AlertType.INFORMATION);
 				e.printStackTrace();
 			}
 
@@ -214,40 +218,43 @@ public class GestionEstudiantesController implements Initializable
      */
 	private void actualizarEstudiante()
 	{
-		if(estudianteSeleccionado != null)
+		try 
 		{
-			if(camposValidos())
+			if(estudianteSeleccionado != null)
 			{
-				boolean actualizado = false;
+				if(camposValidos())
+				{
+					boolean actualizado = false;
 
-				String nombre = txtNombre.getText();
-	    		String documento = txtDocumento.getText();
-	    		String documentoActual = estudianteSeleccionado.getDocumento();
-	    		String tipoDocumento = comboBoxTipoDocumento.getValue();
-	    		int edad = Integer.parseInt(txtEdad.getText());
-	    		String usuario = txtUsuario.getText();
-	    		String contrasena = txtContrasena.getText();
+					String nombre = txtNombre.getText();
+		    		String documento = txtDocumento.getText();
+		    		String documentoActual = estudianteSeleccionado.getDocumento();
+		    		String tipoDocumento = comboBoxTipoDocumento.getValue();
+		    		int edad = Integer.parseInt(txtEdad.getText());
+		    		String usuario = txtUsuario.getText();
+		    		String contrasena = txtContrasena.getText();
 
-	    		actualizado = aplicacion.actualizarEstudiante(documentoActual, documento, nombre, tipoDocumento, edad, usuario, contrasena);
+		    		actualizado = aplicacion.actualizarEstudiante(documentoActual, documento, nombre, tipoDocumento, edad, usuario, contrasena);
 
-	    		if(actualizado)
-	    		{
-	    			tableEstudiantes.refresh();
-	    			limpiarFormulario();
-	    			mostrarMensaje("Actualizar registro", "Datos guardados",
-							"El registro ha sido actualizado correctamente", AlertType.INFORMATION);
-	    		}
-	    		else
-	    		{
-	    			mostrarMensaje("Actualizar registro", "Datos NO guardados",
-							"No se pudo actualizar el registro", AlertType.ERROR);
-	    		}
+			    		if(actualizado)
+			    		{
+			    			tableEstudiantes.refresh();
+			    			limpiarFormulario();
+			    			mostrarMensaje("Actualizar registro", "Datos guardados",
+									"El registro ha sido actualizado correctamente", AlertType.INFORMATION);
+			    		}		    			
+				}
+				else
+				{
+					mostrarMensaje("Actualizar registro", "Actualizar Estudiante", "Debe seleccionar un estudiante",
+							AlertType.WARNING);
+				}
 			}
-		}
-		else
+		} catch (NoActualizadoException e) 
 		{
-			mostrarMensaje("Actualizar registro", "Actualizar Estudiante", "Debe seleccionar un estudiante",
+			mostrarMensaje("Actualizar registro", "Actualizar Estudiante", "No se pudo actualizar el estudiante",
 					AlertType.WARNING);
+			e.printStackTrace();
 		}
 	}
 
@@ -257,28 +264,36 @@ public class GestionEstudiantesController implements Initializable
     private void eliminarEstudiante()
     {
 		boolean eliminado = false;
-		if(estudianteSeleccionado != null)
+		try 
 		{
-			boolean confirmado = mostrarMensajeConfirmacion("¿Esta seguro de eliminar el registro?");
-			if(confirmado)
+			if(estudianteSeleccionado != null)
 			{
-				eliminado = aplicacion.eliminarEstudiante(estudianteSeleccionado.getDocumento());
-				if(eliminado)
+				boolean confirmado = mostrarMensajeConfirmacion("¿Esta seguro de eliminar el registro?");
+				if(confirmado)
 				{
-					lstEstudiantesData.remove(estudianteSeleccionado);
-					tableEstudiantes.getSelectionModel().clearSelection();
-					estudianteSeleccionado = null;
-					limpiarFormulario();
-					mostrarMensaje("Eliminar registro", "Eliminar estudiante", "Registro eliminado correctamente",
-							AlertType.INFORMATION);
+					eliminado = aplicacion.eliminarEstudiante(estudianteSeleccionado.getDocumento());
+					if(eliminado)
+					{
+						lstEstudiantesData.remove(estudianteSeleccionado);
+						tableEstudiantes.getSelectionModel().clearSelection();
+						estudianteSeleccionado = null;
+						limpiarFormulario();
+						mostrarMensaje("Eliminar registro", "Eliminar estudiante", "Registro eliminado correctamente",
+								AlertType.INFORMATION);
+					}
 				}
 			}
-		}
-		else
+			else
+			{
+				mostrarMensaje("Eliminar registro", "", "Debe seleccionar un estudiante", AlertType.WARNING);
+			}
+			
+		} catch (NoEliminadoException e) 
 		{
-			mostrarMensaje("Eliminar registro", "", "Debe seleccionar un estudiante",
-					AlertType.WARNING);
+			mostrarMensaje("Eliminar registro", "", "El estudiante no existe", AlertType.WARNING);
+			e.printStackTrace();
 		}
+		
 	}
 
     /**

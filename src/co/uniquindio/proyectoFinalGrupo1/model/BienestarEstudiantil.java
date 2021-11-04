@@ -1,6 +1,10 @@
 package co.uniquindio.proyectoFinalGrupo1.model;
 
 import java.util.ArrayList;
+
+import co.uniquindio.proyectoFinalGrupo1.exceptions.NoActualizadoException;
+import co.uniquindio.proyectoFinalGrupo1.exceptions.NoCreadoException;
+import co.uniquindio.proyectoFinalGrupo1.exceptions.NoEliminadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.UsuarioExisteException;
 
 /**
@@ -255,21 +259,21 @@ public class BienestarEstudiantil
 		Estudiante estudiante = obtenerEstudiante(documento);
 		if(estudiante != null)
 		{
-			throw new UsuarioExisteException("El usuario de código " + documento + " de la clase Estudiante ya existe");
+			throw new UsuarioExisteException("Error, el usuario" + documento + " ya existe");
 		}
 		else
 		{
-			estudiante = new Estudiante();
-			estudiante.setNombre(nombre);
-			estudiante.setDocumento(documento);
-			estudiante.setTipoDocumento(tipoDocumento);
-			estudiante.setEdad(edad);
-			estudiante.setUsuario(usuario);
-			estudiante.setContrasena(contrasena);
+				estudiante = new Estudiante();
+				estudiante.setNombre(nombre);
+				estudiante.setDocumento(documento);
+				estudiante.setTipoDocumento(tipoDocumento);
+				estudiante.setEdad(edad);
+				estudiante.setUsuario(usuario);
+				estudiante.setContrasena(contrasena);
 
-			lstEstudiantes.add(estudiante);
+				lstEstudiantes.add(estudiante);
 
-			return estudiante;
+				return estudiante;
 		}
 	}
 
@@ -282,14 +286,19 @@ public class BienestarEstudiantil
 	 * @param edad
 	 * @param usuario
 	 * @param contrasena
-	 * @return
+	 * @return actualizado
 	 */
 	public boolean actualizarEstudiante(String documentoActual, String documento, String nombre, String tipoDocumento,
-			int edad, String usuario, String contrasena)
+			int edad, String usuario, String contrasena) throws NoActualizadoException
 	{
 		boolean actualizado = false;
 		Estudiante  estudiante = obtenerEstudiante(documentoActual);
-		if(estudiante != null)
+		
+		if(estudiante == null)
+		{
+			throw new NoActualizadoException("error al actualizar los datos del estudiante");
+		}
+		else
 		{
 			estudiante.setNombre(nombre);
 			estudiante.setDocumento(documento);
@@ -309,12 +318,17 @@ public class BienestarEstudiantil
 	 * @param documento
 	 * @return eliminado
 	 */
-	public boolean eliminarEstudiante(String documento)
+	public boolean eliminarEstudiante(String documento) throws NoEliminadoException
 	{
 		boolean eliminado = false;
 		Estudiante estudiante = obtenerEstudiante(documento);
 
-		if(estudiante != null)
+		if(estudiante == null)
+		{
+			throw new NoEliminadoException("error al eliminar los datos del estudiante");
+			
+		}
+		else
 		{
 			lstEstudiantes.remove(estudiante);
 			eliminado = true;
