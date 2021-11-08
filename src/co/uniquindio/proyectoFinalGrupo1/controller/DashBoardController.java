@@ -28,6 +28,7 @@ public class DashBoardController implements Initializable
 
 	private Aplicacion aplicacion;
 	private GestionEstudiantesController gestionEstudiantesController;
+	private GestionInstructoresController gestionInstructoresController;
 	private InicioController inicioController;
 
 	@FXML
@@ -47,7 +48,7 @@ public class DashBoardController implements Initializable
 
     @FXML
     private Button btnLugares;
-    
+
     @FXML
     private Button btnCerrarSesion;
 
@@ -56,8 +57,8 @@ public class DashBoardController implements Initializable
 
     @FXML
     private AnchorPane anchorPanePrincipal;
-    
-    
+
+
 
     @FXML
     void inicioAction(ActionEvent event)
@@ -75,7 +76,7 @@ public class DashBoardController implements Initializable
 	@FXML
     void gestionInstructoresAction(ActionEvent event)
 	{
-
+		abrirVentana(NombreVentana.GESTION_INSTRUCTOR);
     }
 
     @FXML
@@ -89,9 +90,9 @@ public class DashBoardController implements Initializable
     {
 
     }
-    
+
     @FXML
-    void cerrarSesionAction(ActionEvent event) 
+    void cerrarSesionAction(ActionEvent event)
     {
     	cerrarSesion();
     }
@@ -175,6 +176,11 @@ public class DashBoardController implements Initializable
 				this.gestionEstudiantesController.setAplicacion(this.aplicacion);
 				break;
 			case GESTION_INSTRUCTOR:
+				loader.setLocation(getClass().getResource("../view/GestionInstructoresView.fxml"));
+				vistaCargada = loader.load();
+				anchorPanePrincipal.getChildren().setAll(vistaCargada);
+				this.gestionInstructoresController = loader.getController();
+				this.gestionInstructoresController.setAplicacion(this.aplicacion);
 				break;
 			case GESTION_CREDITOS:
 				break;
@@ -190,7 +196,7 @@ public class DashBoardController implements Initializable
 		}
 
 	}
-    
+
     /**
 	 * Método que permite cerrar sesion y lo devuelve al login
 	 */

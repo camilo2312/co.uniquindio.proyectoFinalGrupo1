@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import co.uniquindio.proyectoFinalGrupo1.controller.DashBoardController;
 import co.uniquindio.proyectoFinalGrupo1.controller.LoginController;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoActualizadoException;
-import co.uniquindio.proyectoFinalGrupo1.exceptions.NoCreadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoEliminadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.UsuarioExisteException;
 import co.uniquindio.proyectoFinalGrupo1.model.BienestarEstudiantil;
 import co.uniquindio.proyectoFinalGrupo1.model.Estudiante;
+import co.uniquindio.proyectoFinalGrupo1.model.Instructor;
 import co.uniquindio.proyectoFinalGrupo1.model.TipoUsuario;
 import co.uniquindio.proyectoFinalGrupo1.model.Usuario;
 import javafx.application.Application;
@@ -29,8 +29,8 @@ public class Aplicacion extends Application {
 	{
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Bienestar universitario");
-		mostrarVentanaLogin();
-//		mostrarVentanaPrincipal(TipoUsuario.ADMINISTRADOR, "Juan Camilo Ramos R.");
+//		mostrarVentanaLogin();
+		mostrarVentanaPrincipal(TipoUsuario.ADMINISTRADOR, "Juan Camilo Ramos R.");
 	}
 
 	public static void main(String[] args)
@@ -156,10 +156,10 @@ public class Aplicacion extends Application {
 	 * @param usuario
 	 * @param contrasena
 	 * @return actualizado
-	 * @throws NoActualizadoException 
+	 * @throws NoActualizadoException
 	 */
 	public boolean actualizarEstudiante(String documentoActual, String documento, String nombre, String tipoDocumento,
-			int edad, String usuario, String contrasena) throws NoActualizadoException 
+			int edad, String usuario, String contrasena) throws NoActualizadoException
 	{
 		return bienestarEstudiantil.actualizarEstudiante(documentoActual, documento, nombre, tipoDocumento, edad, usuario, contrasena);
 	}
@@ -168,9 +168,9 @@ public class Aplicacion extends Application {
 	 * Método que permite eliminar un estudiante
 	 * @param documento
 	 * @return eliminado
-	 * @throws NoEliminadoException 
+	 * @throws NoEliminadoException
 	 */
-	public boolean eliminarEstudiante(String documento) throws NoEliminadoException 
+	public boolean eliminarEstudiante(String documento) throws NoEliminadoException
 	{
 		return bienestarEstudiantil.eliminarEstudiante(documento);
 	}
@@ -183,5 +183,61 @@ public class Aplicacion extends Application {
 	public int[] obtenerCantidadesActuales()
 	{
 		return bienestarEstudiantil.obtenerCantidadesActuales();
+	}
+
+	/**
+	 * Método que permite agregar un instructor a la lista
+	 * @param nombre
+	 * @param documento
+	 * @param tipoDocumento
+	 * @param asignatura
+	 * @param usuario
+	 * @param contrasena
+	 * @return instructor
+	 * @throws UsuarioExisteException
+	 */
+	public Instructor agregarInstructor(String nombre, String documento, String tipoDocumento, String asignatura,
+			String usuario, String contrasena) throws UsuarioExisteException
+	{
+		return bienestarEstudiantil.agregarInstructor(nombre, documento, tipoDocumento, asignatura, usuario, contrasena);
+	}
+
+	/**
+	 * Método que permite actualizar in instructor
+	 * @param documentoActual
+	 * @param documento
+	 * @param nombre
+	 * @param tipoDocumento
+	 * @param asignatura
+	 * @param usuario
+	 * @param contrasena
+	 * @return actualizado
+	 * @throws NoActualizadoException
+	 */
+	public boolean actualizarInstructor(String documentoActual, String documento, String nombre, String tipoDocumento,
+			String asignatura, String usuario, String contrasena) throws NoActualizadoException
+	{
+		return bienestarEstudiantil.actualizarInstructor(documentoActual, documento, nombre, tipoDocumento, asignatura,
+				usuario, contrasena);
+	}
+
+	/**
+	 * Método que permite eliminar un instructor
+	 * @param documento
+	 * @return eliminado
+	 * @throws NoEliminadoException
+	 */
+	public boolean eliminarInstructor(String documento) throws NoEliminadoException
+	{
+		return bienestarEstudiantil.eliminarInstructor(documento);
+	}
+
+	/**
+	 * Método que permite obtener la lista de instructores
+	 * @return lstInstructores
+	 */
+	public ArrayList<Instructor> obtenerListaInstructoresData()
+	{
+		return bienestarEstudiantil.getLstInstructores();
 	}
 }

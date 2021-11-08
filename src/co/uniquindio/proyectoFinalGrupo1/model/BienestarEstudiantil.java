@@ -3,7 +3,6 @@ package co.uniquindio.proyectoFinalGrupo1.model;
 import java.util.ArrayList;
 
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoActualizadoException;
-import co.uniquindio.proyectoFinalGrupo1.exceptions.NoCreadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoEliminadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.UsuarioExisteException;
 
@@ -293,7 +292,7 @@ public class BienestarEstudiantil
 	{
 		boolean actualizado = false;
 		Estudiante  estudiante = obtenerEstudiante(documentoActual);
-		
+
 		if(estudiante == null)
 		{
 			throw new NoActualizadoException("error al actualizar los datos del estudiante");
@@ -326,7 +325,7 @@ public class BienestarEstudiantil
 		if(estudiante == null)
 		{
 			throw new NoEliminadoException("error al eliminar los datos del estudiante");
-			
+
 		}
 		else
 		{
@@ -370,6 +369,122 @@ public class BienestarEstudiantil
 		cantidades[3] = lstLugares.size();
 
 		return cantidades;
+	}
+
+	/**
+	 * Método que permite agregar un instructor a la lista
+	 * @param nombre
+	 * @param documento
+	 * @param tipoDocumento
+	 * @param asignatura
+	 * @param usuario
+	 * @param contrasena
+	 * @return instructor
+	 * @throws UsuarioExisteException
+	 */
+	public Instructor agregarInstructor(String nombre, String documento, String tipoDocumento, String asignatura,
+			String usuario, String contrasena) throws UsuarioExisteException
+	{
+		Instructor instructor = obtenerInstructor(documento);
+		if(instructor != null)
+		{
+			throw new UsuarioExisteException("Error, El usuario" + documento + " ya existe");
+		}
+		else
+		{
+			instructor = new Instructor();
+			instructor.setNombre(nombre);
+			instructor.setDocumento(documento);
+			instructor.setTipoDocumento(tipoDocumento);
+			instructor.setAsignatura(asignatura);
+			instructor.setUsuario(usuario);
+			instructor.setContrasena(contrasena);
+
+			lstInstructores.add(instructor);
+
+			return instructor;
+		}
+	}
+
+	/**
+	 * Método que permite obtener un instructor por su
+	 * documento
+	 * @param documento
+	 * @return instructor
+	 */
+	private Instructor obtenerInstructor(String documento)
+	{
+		for (Instructor instructor : lstInstructores)
+		{
+			if(instructor.getDocumento().equals(documento))
+			{
+				return instructor;
+			}
+		}
+
+		return null;
+	}
+
+	/**
+	 * Método que permite actualizar un instructor
+	 * @param documentoActual
+	 * @param documento
+	 * @param nombre
+	 * @param tipoDocumento
+	 * @param asignatura
+	 * @param usuario
+	 * @param contrasena
+	 * @return actualizado
+	 * @throws NoActualizadoException
+	 */
+	public boolean actualizarInstructor(String documentoActual, String documento, String nombre, String tipoDocumento,
+			String asignatura, String usuario, String contrasena)  throws NoActualizadoException
+	{
+		boolean actualizado = false;
+		Instructor instructor = obtenerInstructor(documentoActual);
+
+		if(instructor == null)
+		{
+			throw new NoActualizadoException("error al actualizar los datos del instructor");
+		}
+		else
+		{
+			instructor.setNombre(nombre);
+			instructor.setDocumento(documento);
+			instructor.setTipoDocumento(tipoDocumento);
+			instructor.setAsignatura(asignatura);
+			instructor.setUsuario(usuario);
+			instructor.setContrasena(contrasena);
+
+			actualizado = true;
+		}
+
+		return actualizado;
+	}
+
+	/**
+	 * Método que permite eliminar un instructor
+	 * @param documento
+	 * @return eliminado
+	 * @throws NoEliminadoException
+	 */
+	public boolean eliminarInstructor(String documento) throws NoEliminadoException
+	{
+		boolean eliminado = false;
+		Instructor instructor = obtenerInstructor(documento);
+
+		if(instructor == null)
+		{
+			throw new NoEliminadoException("error al eliminar los datos del Instructor");
+
+		}
+		else
+		{
+			lstInstructores.remove(instructor);
+			eliminado = true;
+		}
+
+		return eliminado;
 	}
 
 

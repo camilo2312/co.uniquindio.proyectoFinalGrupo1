@@ -4,12 +4,11 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-
 import co.uniquindio.proyectoFinalGrupo1.Aplicacion;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoActualizadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoEliminadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.UsuarioExisteException;
-import co.uniquindio.proyectoFinalGrupo1.model.Estudiante;
+import co.uniquindio.proyectoFinalGrupo1.model.Instructor;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -18,7 +17,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
@@ -26,20 +24,22 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
- * Controlador de la vista de gestión estudiantes
+ * Controlador que maneja la vista de gestión instructores
  * @author Juan Camilo Ramos R.
  *
  */
-public class GestionEstudiantesController implements Initializable
+public class GestionInstructoresController implements Initializable
 {
-	private Aplicacion aplicacion;
-	ObservableList<Estudiante> lstEstudiantesData = FXCollections.observableArrayList();
-	FilteredList<Estudiante> filterDataEstudiantes;
 
-	Estudiante estudianteSeleccionado;
+	private Aplicacion aplicacion;
+	ObservableList<Instructor> lstInstructoresData = FXCollections.observableArrayList();
+	FilteredList<Instructor> filterDataInstructores;
+
+	Instructor instructorSeleccionado;
 
     @FXML
     private TextField txtNombre;
@@ -51,13 +51,16 @@ public class GestionEstudiantesController implements Initializable
     private ComboBox<String> comboBoxTipoDocumento;
 
     @FXML
-    private TextField txtEdad;
+    private TextField txtAsignatura;
 
     @FXML
     private TextField txtUsuario;
 
     @FXML
     private PasswordField txtContrasena;
+
+    @FXML
+    private TextField txtBuscar;
 
     @FXML
     private Button btnNuevo;
@@ -72,27 +75,24 @@ public class GestionEstudiantesController implements Initializable
     private Button btnEliminar;
 
     @FXML
-    private TextField txtBuscar;
+    private TableView<Instructor> tableInstructores;
 
     @FXML
-    private TableView<Estudiante> tableEstudiantes;
+    private TableColumn<Instructor, String> columnNombre;
 
     @FXML
-    private TableColumn<Estudiante, String> columnNombre;
+    private TableColumn<Instructor, String> columnUsuario;
 
     @FXML
-    private TableColumn<Estudiante, String> columnUsuario;
+    private TableColumn<Instructor, String> columnDocumento;
 
     @FXML
-    private TableColumn<Estudiante, String> columnDocumento;
+    private TableColumn<Instructor, String> columnTipoDocumento;
 
     @FXML
-    private TableColumn<Estudiante, String> columnTipoDocumento;
+    private TableColumn<Instructor, String> columnAsignatura;
 
     @FXML
-    private TableColumn<Estudiante, Integer> columnEdad;
-
-	@FXML
     void nuevoAction(ActionEvent event)
     {
     	limpiarFormulario();
@@ -101,46 +101,48 @@ public class GestionEstudiantesController implements Initializable
     @FXML
     void agregarAction(ActionEvent event)
     {
-    	agregarEstudiante();
-    }
-
-    @FXML
-    void actualizarAction(ActionEvent event)
-    {
-    	actualizarEstudiante();
+    	agregarInstructor();
     }
 
 	@FXML
-    void eliminarAction(ActionEvent event)
+    void actualizarAction(ActionEvent event)
     {
-		eliminarEstudiante();
+		actualizarInstructor();
     }
 
-	/**
+    @FXML
+    void eliminarAction(ActionEvent event)
+    {
+    	eliminarInstructor();
+    }
+
+    /**
      * Método que permite inicializar los controles de la vista
+     * @param location
+     * @param resources
      */
-	@Override
+    @Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
-		comboBoxTipoDocumento.getItems().clear();
-		comboBoxTipoDocumento.getItems().addAll("CC", "TI");
+    	comboBoxTipoDocumento.getItems().clear();
+		comboBoxTipoDocumento.getItems().addAll("CC");
 
 		this.columnNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
 		this.columnTipoDocumento.setCellValueFactory(new PropertyValueFactory<>("tipoDocumento"));
 		this.columnDocumento.setCellValueFactory(new PropertyValueFactory<>("documento"));
-		this.columnEdad.setCellValueFactory(new PropertyValueFactory<>("edad"));
+		this.columnAsignatura.setCellValueFactory(new PropertyValueFactory<>("asignatura"));
 		this.columnUsuario.setCellValueFactory(new PropertyValueFactory<>("usuario"));
 
-		tableEstudiantes.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-			estudianteSeleccionado = newSelection;
-			mostrarEstudiante(estudianteSeleccionado);
+		tableInstructores.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+			instructorSeleccionado = newSelection;
+			mostrarInstructor(instructorSeleccionado);
 		});
 
-    	filterDataEstudiantes = new FilteredList<>(lstEstudiantesData, p -> true);
+    	filterDataInstructores = new FilteredList<>(lstInstructoresData, p -> true);
 
     	txtBuscar.textProperty().addListener((observable, oldValue, newValue) -> {
 			limpiarFormulario();
-			filterDataEstudiantes.setPredicate(estudiante -> {
+			filterDataInstructores.setPredicate(instructor -> {
 				if (newValue == null || newValue.isEmpty())
 				{
 					return true;
@@ -148,11 +150,11 @@ public class GestionEstudiantesController implements Initializable
 
 				String lowerCaseFilter = newValue.toLowerCase();
 
-				if (estudiante.getNombre().toLowerCase().contains(lowerCaseFilter))
+				if (instructor.getNombre().toLowerCase().contains(lowerCaseFilter))
 				{
 					return true;
 				}
-				else if (estudiante.getDocumento().toLowerCase().contains(lowerCaseFilter))
+				else if (instructor.getDocumento().toLowerCase().contains(lowerCaseFilter))
 				{
 					return true;
 				}
@@ -161,67 +163,67 @@ public class GestionEstudiantesController implements Initializable
 		});
 	}
 
-	/**
-	 * Método que permite mostrar los datos de un estudiante
-	 * @param estudianteSeleccionado
-	 */
-	private void mostrarEstudiante(Estudiante estudianteSeleccionado)
-	{
-		if(estudianteSeleccionado != null)
+    /**
+     * Método que permite mostrar los datos del
+     * instructor
+     * @param instructorSeleccionado
+     */
+    private void mostrarInstructor(Instructor instructorSeleccionado)
+    {
+		if(instructorSeleccionado != null)
 		{
-			txtNombre.setText(estudianteSeleccionado.getNombre());
-			txtDocumento.setText(estudianteSeleccionado.getDocumento());
-			comboBoxTipoDocumento.setValue(estudianteSeleccionado.getTipoDocumento());
-			txtEdad.setText(estudianteSeleccionado.getEdad() + "");
-			txtContrasena.setText(estudianteSeleccionado.getContrasena());
-			txtUsuario.setText(estudianteSeleccionado.getUsuario());
+			txtNombre.setText(instructorSeleccionado.getNombre());
+			txtDocumento.setText(instructorSeleccionado.getDocumento());
+			comboBoxTipoDocumento.setValue(instructorSeleccionado.getTipoDocumento());
+			txtAsignatura.setText(instructorSeleccionado.getAsignatura());
+			txtUsuario.setText(instructorSeleccionado.getUsuario());
+			txtContrasena.setText(instructorSeleccionado.getContrasena());
 		}
 	}
 
-	/**
-	 * Método que permite agregar un estudiante
-	 */
-    private void agregarEstudiante()
+    /**
+     * Método que permite agregar un instructor a la lista
+     */
+    private void agregarInstructor()
     {
-    	Estudiante estudiante = null;
-    	if(camposValidos())
-    	{
-    		String nombre = txtNombre.getText();
+		Instructor instructor = null;
+		if(camposValidos())
+		{
+			String nombre = txtNombre.getText();
     		String documento = txtDocumento.getText();
     		String tipoDocumento = comboBoxTipoDocumento.getValue();
-    		int edad = Integer.parseInt(txtEdad.getText());
+    		String asignatura = txtAsignatura.getText();
     		String usuario = txtUsuario.getText();
     		String contrasena = txtContrasena.getText();
 
     		try
     		{
-    			estudiante = aplicacion.agregarEstudiante(nombre, documento, tipoDocumento, edad, usuario, contrasena);
+    			instructor = aplicacion.agregarInstructor(nombre, documento, tipoDocumento, asignatura, usuario, contrasena);
 
-    			if(estudiante != null)
+    			if(instructor != null)
         		{
-        			lstEstudiantesData.add(estudiante);
+        			lstInstructoresData.add(instructor);
         			limpiarFormulario();
             		mostrarMensaje("Almacenar registro", "Datos guardados", "El registro ha sido almacenado correctamente", AlertType.INFORMATION);
         		}
 			}
     		catch (UsuarioExisteException e)
     		{
-				mostrarMensaje("Agregar datos", "Datos no agregados", "El usuario de código " + documento + " de la clase Estudiante ya existe",
+				mostrarMensaje("Agregar datos", "Datos no agregados", "El usuario de código " + documento + " de la clase Instructor ya existe",
 						AlertType.INFORMATION);
 				e.printStackTrace();
 			}
-
-    	}
+		}
 	}
 
     /**
-     * Método que permite actualizar un estudiante
+     * Método que permite actualizar un instructor
      */
-	private void actualizarEstudiante()
+	private void actualizarInstructor()
 	{
 		try
 		{
-			if(estudianteSeleccionado != null)
+			if(instructorSeleccionado != null)
 			{
 				if(camposValidos())
 				{
@@ -229,17 +231,17 @@ public class GestionEstudiantesController implements Initializable
 
 					String nombre = txtNombre.getText();
 		    		String documento = txtDocumento.getText();
-		    		String documentoActual = estudianteSeleccionado.getDocumento();
+		    		String documentoActual = instructorSeleccionado.getDocumento();
 		    		String tipoDocumento = comboBoxTipoDocumento.getValue();
-		    		int edad = Integer.parseInt(txtEdad.getText());
+		    		String asignatura = txtAsignatura.getText();
 		    		String usuario = txtUsuario.getText();
 		    		String contrasena = txtContrasena.getText();
 
-		    		actualizado = aplicacion.actualizarEstudiante(documentoActual, documento, nombre, tipoDocumento, edad, usuario, contrasena);
+		    		actualizado = aplicacion.actualizarInstructor(documentoActual, documento, nombre, tipoDocumento, asignatura, usuario, contrasena);
 
 			    		if(actualizado)
 			    		{
-			    			tableEstudiantes.refresh();
+			    			tableInstructores.refresh();
 			    			limpiarFormulario();
 			    			mostrarMensaje("Actualizar registro", "Datos guardados",
 									"El registro ha sido actualizado correctamente", AlertType.INFORMATION);
@@ -247,51 +249,51 @@ public class GestionEstudiantesController implements Initializable
 				}
 				else
 				{
-					mostrarMensaje("Actualizar registro", "Actualizar Estudiante", "Debe seleccionar un estudiante",
+					mostrarMensaje("Actualizar registro", "Actualizar Instructor", "Debe seleccionar un instructor",
 							AlertType.WARNING);
 				}
 			}
 		} catch (NoActualizadoException e)
 		{
-			mostrarMensaje("Actualizar registro", "Actualizar Estudiante", "No se pudo actualizar el estudiante",
+			mostrarMensaje("Actualizar registro", "Actualizar Instructor", "No se pudo actualizar el instructor",
 					AlertType.WARNING);
 			e.printStackTrace();
 		}
 	}
 
 	/**
-	 * Método que permite eliminar un estudiante
+	 * Método que permite eliminar un instructor
 	 */
-    private void eliminarEstudiante()
+    private void eliminarInstructor()
     {
 		boolean eliminado = false;
 		try
 		{
-			if(estudianteSeleccionado != null)
+			if(instructorSeleccionado != null)
 			{
 				boolean confirmado = mostrarMensajeConfirmacion("¿Esta seguro de eliminar el registro?");
 				if(confirmado)
 				{
-					eliminado = aplicacion.eliminarEstudiante(estudianteSeleccionado.getDocumento());
+					eliminado = aplicacion.eliminarInstructor(instructorSeleccionado.getDocumento());
 					if(eliminado)
 					{
-						lstEstudiantesData.remove(estudianteSeleccionado);
-						tableEstudiantes.getSelectionModel().clearSelection();
-						estudianteSeleccionado = null;
+						lstInstructoresData.remove(instructorSeleccionado);
+						tableInstructores.getSelectionModel().clearSelection();
+						instructorSeleccionado = null;
 						limpiarFormulario();
-						mostrarMensaje("Eliminar registro", "Eliminar estudiante", "Registro eliminado correctamente",
+						mostrarMensaje("Eliminar registro", "Eliminar instructor", "Registro eliminado correctamente",
 								AlertType.INFORMATION);
 					}
 				}
 			}
 			else
 			{
-				mostrarMensaje("Eliminar registro", "", "Debe seleccionar un estudiante", AlertType.WARNING);
+				mostrarMensaje("Eliminar registro", "", "Debe seleccionar un instructor", AlertType.WARNING);
 			}
 
 		} catch (NoEliminadoException e)
 		{
-			mostrarMensaje("Eliminar registro", "", "El estudiante no existe", AlertType.WARNING);
+			mostrarMensaje("Eliminar registro", "", "El instructor no existe", AlertType.WARNING);
 			e.printStackTrace();
 		}
 
@@ -316,8 +318,8 @@ public class GestionEstudiantesController implements Initializable
 		if(txtDocumento == null || txtDocumento.getText().trim().equals(""))
 			mensaje += "El campo documento es inválido \n";
 
-		if(txtEdad == null || txtEdad.getText().trim().equals(""))
-			mensaje += "El campo edad es inválido \n";
+		if(txtAsignatura == null || txtAsignatura.getText().trim().equals(""))
+			mensaje += "El campo asignatura es inválido \n";
 
 		if(txtUsuario == null || txtUsuario.getText().trim().equals(""))
 			mensaje += "El campo usuario es inválido \n";
@@ -342,17 +344,17 @@ public class GestionEstudiantesController implements Initializable
 	 */
     private void limpiarFormulario()
     {
-    	tableEstudiantes.getSelectionModel().clearSelection();
+    	tableInstructores.getSelectionModel().clearSelection();
 		txtDocumento.clear();
-		txtEdad.clear();
+		txtAsignatura.clear();
 		txtNombre.clear();
 		comboBoxTipoDocumento.getSelectionModel().clearSelection();
 		txtUsuario.clear();
 		txtContrasena.clear();
 	}
 
-    /**
-     * Método que permite asignar la clase aplicacion(principal)
+	/**
+     * Método que permite asignar la clase principal
      * al controlador
      * @param aplicacion
      */
@@ -360,27 +362,26 @@ public class GestionEstudiantesController implements Initializable
 	{
 		this.aplicacion = aplicacion;
 
-		tableEstudiantes.getItems().clear();
-		tableEstudiantes.setItems(obtenerListaEstudiantesData());
+		tableInstructores.getItems().clear();
+		tableInstructores.setItems(obtenerListaInstructoresData());
 
-		SortedList<Estudiante> sortedDataEstudiantes = new SortedList<>(filterDataEstudiantes);
-		sortedDataEstudiantes.comparatorProperty().bind(tableEstudiantes.comparatorProperty());
+		SortedList<Instructor> sortedDataInstructores = new SortedList<>(filterDataInstructores);
+		sortedDataInstructores.comparatorProperty().bind(tableInstructores.comparatorProperty());
 
-		tableEstudiantes.setItems(sortedDataEstudiantes);
+		tableInstructores.setItems(sortedDataInstructores);
 	}
 
 	/**
-	 * Método que permite obtener la lista de estudiantes predeterminados
-	 * @return lstEstudiantes
+	 * Método que permite obtener la lista de instructores
+	 * @return lstInstructoresData
 	 */
-	private ObservableList<Estudiante> obtenerListaEstudiantesData()
+	private ObservableList<Instructor> obtenerListaInstructoresData()
 	{
-		lstEstudiantesData.addAll(aplicacion.obtenerListaEstudiantesData());
-		return lstEstudiantesData;
+		lstInstructoresData.addAll(aplicacion.obtenerListaInstructoresData());
+		return lstInstructoresData;
 	}
 
-
-    /**
+	/**
 	 * Método que permite mostrar un mensaje en pantalla
 	 *
 	 * @param titulo
@@ -419,4 +420,5 @@ public class GestionEstudiantesController implements Initializable
 
 		return acepto;
 	}
+
 }
