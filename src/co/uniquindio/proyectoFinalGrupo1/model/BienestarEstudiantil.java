@@ -6,6 +6,7 @@ import co.uniquindio.proyectoFinalGrupo1.exceptions.NoActualizadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoCreadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoEliminadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.UsuarioExisteException;
+import co.uniquindio.proyectoFinalGrupo1.persistencia.*;
 
 /**
  * Clase bienestar estudiantil
@@ -21,6 +22,7 @@ public class BienestarEstudiantil
 	private ArrayList<Horario> lstHorarios;
 	private ArrayList<Lugar> lstLugares;
 	private Administrador administrador;
+	private Persistencia persistencia;
 
 	/**
 	 * Constructor de la clase
@@ -167,8 +169,10 @@ public class BienestarEstudiantil
 		estudiante.setTipoDocumento("CC");
 		estudiante.setUsuario("juanramos");
 		estudiante.setContrasena("1234");
-
+		
+		
 		lstEstudiantes.add(estudiante);
+		
 
 		estudiante = new Estudiante();
 		estudiante.setNombre("Alejandra Toro C.");
@@ -187,6 +191,7 @@ public class BienestarEstudiantil
 		instructor.setAsignatura("Programación");
 		instructor.setUsuario("omagudelo");
 		instructor.setContrasena("1234");
+		
 
 		lstInstructores.add(instructor);
 	}
