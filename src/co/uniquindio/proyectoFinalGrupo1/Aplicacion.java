@@ -29,8 +29,8 @@ public class Aplicacion extends Application {
 	{
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Bienestar universitario");
-//		mostrarVentanaLogin();
-		mostrarVentanaPrincipal(TipoUsuario.ADMINISTRADOR, "Juan Camilo Ramos R.");
+		mostrarVentanaLogin();
+		//mostrarVentanaPrincipal(TipoUsuario.ADMINISTRADOR, "Juan Camilo Ramos R.");
 	}
 
 	public static void main(String[] args)
@@ -139,9 +139,10 @@ public class Aplicacion extends Application {
 	 * @param contrasena
 	 * @return estudiante
 	 * @throws UsuarioExisteException
+	 * @throws IOException 
 	 */
 	public Estudiante agregarEstudiante(String nombre, String documento, String tipoDocumento, int edad, String usuario,
-			String contrasena) throws UsuarioExisteException
+			String contrasena) throws UsuarioExisteException, IOException
 	{
 		return bienestarEstudiantil.agregarEstudiante(nombre, documento, tipoDocumento, edad, usuario, contrasena);
 	}
@@ -195,9 +196,10 @@ public class Aplicacion extends Application {
 	 * @param contrasena
 	 * @return instructor
 	 * @throws UsuarioExisteException
+	 * @throws IOException 
 	 */
 	public Instructor agregarInstructor(String nombre, String documento, String tipoDocumento, String asignatura,
-			String usuario, String contrasena) throws UsuarioExisteException
+			String usuario, String contrasena) throws UsuarioExisteException, IOException
 	{
 		return bienestarEstudiantil.agregarInstructor(nombre, documento, tipoDocumento, asignatura, usuario, contrasena);
 	}

@@ -1,5 +1,6 @@
 package co.uniquindio.proyectoFinalGrupo1.model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoActualizadoException;
@@ -21,7 +22,6 @@ public class BienestarEstudiantil
 	private ArrayList<Horario> lstHorarios;
 	private ArrayList<Lugar> lstLugares;
 	private Administrador administrador;
-	private Persistencia persistencia;
 
 	/**
 	 * Constructor de la clase
@@ -182,6 +182,7 @@ public class BienestarEstudiantil
 		estudiante.setContrasena("1234");
 
 		lstEstudiantes.add(estudiante);
+		//persistencia.guardarDatosEstudiantesXML(lstEstudiantes);
 
 		Instructor instructor = new Instructor();
 		instructor.setNombre("Omar Yair Agudelo Amado");
@@ -256,9 +257,10 @@ public class BienestarEstudiantil
 	 * @param usuario
 	 * @param contrasena
 	 * @return estudiante
+	 * @throws IOException 
 	 */
 	public Estudiante agregarEstudiante(String nombre, String documento, String tipoDocumento, int edad, String usuario,
-			String contrasena) throws UsuarioExisteException
+			String contrasena) throws UsuarioExisteException, IOException
 	{
 		Estudiante estudiante = obtenerEstudiante(documento);
 		if(estudiante != null)
@@ -274,8 +276,10 @@ public class BienestarEstudiantil
 				estudiante.setEdad(edad);
 				estudiante.setUsuario(usuario);
 				estudiante.setContrasena(contrasena);
-
+				
 				lstEstudiantes.add(estudiante);
+				Persistencia.guardarEstudiantes(lstEstudiantes);
+				Persistencia.guardarDatosEstudiantesXML(estudiante);
 
 				return estudiante;
 		}
@@ -301,6 +305,7 @@ public class BienestarEstudiantil
 		if(estudiante == null)
 		{
 			throw new NoActualizadoException("error al actualizar los datos del estudiante");
+
 		}
 		else
 		{
@@ -386,9 +391,10 @@ public class BienestarEstudiantil
 	 * @param contrasena
 	 * @return instructor
 	 * @throws UsuarioExisteException
+	 * @throws IOException 
 	 */
 	public Instructor agregarInstructor(String nombre, String documento, String tipoDocumento, String asignatura,
-			String usuario, String contrasena) throws UsuarioExisteException
+			String usuario, String contrasena) throws UsuarioExisteException, IOException
 	{
 		Instructor instructor = obtenerInstructor(documento);
 		if(instructor != null)
@@ -406,6 +412,7 @@ public class BienestarEstudiantil
 			instructor.setContrasena(contrasena);
 
 			lstInstructores.add(instructor);
+			Persistencia.guardarInstructor(lstInstructores);
 
 			return instructor;
 		}
