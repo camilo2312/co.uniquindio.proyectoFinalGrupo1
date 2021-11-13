@@ -1,5 +1,11 @@
 package co.uniquindio.proyectoFinalGrupo1.persistencia;
 
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.logging.FileHandler;
@@ -11,6 +17,13 @@ public class ArchivoUtil
 {
 	static String fechaSistema = "";
 	
+	/**
+	 * Este metodo encargado de registrar los archivos logs
+	 * @param mensajeLog
+	 * @param nivel
+	 * @param accion
+	 * @param rutaArchivo
+	 */
 	public static void guardarRegistroLog(String mensajeLog, int nivel, String accion, String rutaArchivo)
 	{
 		String log = "";
@@ -55,6 +68,9 @@ public class ArchivoUtil
 		
 	}
 	
+	/**
+	 * Este metodo encargado cargar la fecha y hora
+	 */
 	private static void cargarFechaSistema() 
 	{
 		String diaN = "";
@@ -88,5 +104,41 @@ public class ArchivoUtil
 		}
 
 		fechaSistema = año + "-" + mesN + "-" + diaN + "-" + hora + "-" + minuto;
+	}
+	
+	/**
+	 * Este metodo recibe una cadena con el contenido que se quiere guardar en el archivo
+	 * @param ruta es la ruta o path donde esta ubicado el archivo
+	 * @throws IOException 
+	 */
+	public static void guardarArchivo(String ruta,String contenido, Boolean flagAnexarContenido) throws IOException 
+	{
+		FileWriter fw = new FileWriter(ruta,flagAnexarContenido);
+		BufferedWriter bfw = new BufferedWriter(fw); 
+		bfw.write(contenido);
+		bfw.close();
+		fw.close();
+	}
+	
+	public static Object cargarRecursoSerializadoXML(String rutaArchivo) throws IOException {
+
+		XMLDecoder decodificadorXML;
+		Object objetoXML;
+		
+		decodificadorXML = new XMLDecoder(new FileInputStream(rutaArchivo));
+		objetoXML = decodificadorXML.readObject();
+		decodificadorXML.close();
+		return objetoXML;
+		
+	}
+
+	public static void salvarRecursoSerializadoXML(String rutaArchivo, Object objeto) throws IOException {
+		
+		XMLEncoder codificadorXML;
+		
+		codificadorXML = new XMLEncoder(new FileOutputStream(rutaArchivo));
+		codificadorXML.writeObject(objeto);
+		codificadorXML.close();
+		
 	}
 }

@@ -1,5 +1,6 @@
 package co.uniquindio.proyectoFinalGrupo1.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -37,7 +38,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 public class GestionEstudiantesController implements Initializable
 {
 	private Aplicacion aplicacion;
-	private Persistencia persistencia;
 	ObservableList<Estudiante> lstEstudiantesData = FXCollections.observableArrayList();
 	FilteredList<Estudiante> filterDataEstudiantes;
 
@@ -201,10 +201,10 @@ public class GestionEstudiantesController implements Initializable
 
     			if(estudiante != null)
         		{
-        			lstEstudiantesData.add(estudiante);
-        			persistencia.guardaRegistroLogEstudiante("Nombre:"+nombre+" identificación "+documento,1,"Se agrega un estudiante");
+        			lstEstudiantesData.add(estudiante);			
         			limpiarFormulario();
             		mostrarMensaje("Almacenar registro", "Datos guardados", "El registro ha sido almacenado correctamente", AlertType.INFORMATION);
+
         		}
 			}
     		catch (UsuarioExisteException e)
@@ -212,10 +212,14 @@ public class GestionEstudiantesController implements Initializable
 				mostrarMensaje("Agregar datos", "Datos no agregados", "El usuario de código " + documento + " de la clase Estudiante ya existe",
 						AlertType.INFORMATION);
 				e.printStackTrace();
-    			persistencia.guardaRegistroLogEstudiante("Nombre:"+nombre+" identificación "+documento,2,"UsuarioExisteException");
+    			Persistencia.guardaRegistroLogEstudiante("Nombre:"+nombre+" identificación "+documento,2,"UsuarioExisteException");
 
+			} catch (IOException e) 
+    		{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				Persistencia.guardaRegistroLogEstudiante("Se genero un IOExeption en agregarEstudiante",2,"IOException");
 			}
-
     	}
 	}
 
@@ -224,12 +228,22 @@ public class GestionEstudiantesController implements Initializable
      */
 	private void actualizarEstudiante()
 	{
-		try
+		if(estudianteSeleccionado != null)
 		{
-			if(estudianteSeleccionado != null)
+			if(camposValidos())
 			{
-				if(camposValidos())
+				boolean actualizado = false;
+
+				String nombre = txtNombre.getText();
+	    		String documento = txtDocumento.getText();
+	    		String documentoActual = estudianteSeleccionado.getDocumento();
+	    		String tipoDocumento = comboBoxTipoDocumento.getValue();
+	    		int edad = Integer.parseInt(txtEdad.getText());
+	    		String usuario = txtUsuario.getText();
+	    		String contrasena = txtContrasena.getText();
+				try 
 				{
+<<<<<<< HEAD
 					boolean actualizado = false;
 
 					String nombre = txtNombre.getText();
@@ -254,17 +268,33 @@ public class GestionEstudiantesController implements Initializable
 
 				}
 				else
+=======
+					actualizado = aplicacion.actualizarEstudiante(documentoActual, documento, nombre, tipoDocumento, edad, usuario, contrasena);
+
+		    		if(actualizado)
+		    		{
+		    			tableEstudiantes.refresh();
+		    			limpiarFormulario();
+		    			mostrarMensaje("Actualizar registro", "Datos guardados",
+								"El registro ha sido actualizado correctamente", AlertType.INFORMATION);
+		    			Persistencia.guardaRegistroLogEstudiante("Nombre:"+nombre+" identificación "+documento,1,"Se actualiza un estudiante");
+		    		}
+				} catch (NoActualizadoException e)
+>>>>>>> f680510b7855fbac8052a586cf35bfc8d95d19aa
 				{
-					mostrarMensaje("Actualizar registro", "Actualizar Estudiante", "Debe seleccionar un estudiante",
+					mostrarMensaje("Actualizar registro", "Actualizar Estudiante", "No se pudo actualizar el estudiante",
 							AlertType.WARNING);
+					e.printStackTrace();
+					Persistencia.guardaRegistroLogEstudiante("Nombre:"+nombre+" identificación "+documento, 2, "NoActualizadoException");
 				}
+			
 			}
-		} catch (NoActualizadoException e)
-		{
-			mostrarMensaje("Actualizar registro", "Actualizar Estudiante", "No se pudo actualizar el estudiante",
-					AlertType.WARNING);
-			e.printStackTrace();
 		}
+		else
+		{
+			mostrarMensaje("Actualizar registro", "Actualizar Estudiante", "Debe seleccionar un estudiante",
+					AlertType.WARNING);
+		}	
 	}
 
 	/**
@@ -291,7 +321,7 @@ public class GestionEstudiantesController implements Initializable
 						limpiarFormulario();
 						mostrarMensaje("Eliminar registro", "Eliminar estudiante", "Registro eliminado correctamente",
 								AlertType.INFORMATION);
-						persistencia.guardaRegistroLogEstudiante("Nombre:"+nombre+" identificación "+documento,3,"Se elimina un estudiante");
+						Persistencia.guardaRegistroLogEstudiante("Nombre:"+nombre+" identificación "+documento,3,"Se elimina un estudiante");
 					}
 				}
 			}

@@ -129,6 +129,27 @@
                   <Insets left="20.0" />
                </padding>
             </Button>
+            <Button fx:id="btnHorarios" alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#gestionHorariosAction" prefHeight="54.0" prefWidth="305.0" style="-fx-background-color: transparent;" styleClass="btns-principales" text="  Gestión Horarios" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Century Gothic" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/horario.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </Button>
             <Button fx:id="btnCerrarSesion" alignment="BASELINE_LEFT" graphicTextGap="15.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#cerrarSesionAction" prefHeight="54.0" prefWidth="305.0" style="-fx-background-color: transparent;" styleClass="btns-principales" text="  Cerrar Sesión" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
