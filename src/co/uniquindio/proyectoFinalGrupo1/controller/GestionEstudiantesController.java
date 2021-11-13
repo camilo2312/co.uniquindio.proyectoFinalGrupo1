@@ -248,12 +248,10 @@ public class GestionEstudiantesController implements Initializable
 			    			limpiarFormulario();
 			    			mostrarMensaje("Actualizar registro", "Datos guardados",
 									"El registro ha sido actualizado correctamente", AlertType.INFORMATION);
-<<<<<<< HEAD
-			    		}
-=======
+
 			    			persistencia.guardaRegistroLogEstudiante("Nombre:"+nombre+" identificación "+documento,1,"Se actualiza un estudiante");
 			    		}		    			
->>>>>>> ba21d2ecbd26032ce0cdf069b2776d7537902f6d
+
 				}
 				else
 				{
