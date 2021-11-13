@@ -6,11 +6,13 @@ import java.util.ArrayList;
 import co.uniquindio.proyectoFinalGrupo1.controller.DashBoardController;
 import co.uniquindio.proyectoFinalGrupo1.controller.LoginController;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoActualizadoException;
+import co.uniquindio.proyectoFinalGrupo1.exceptions.NoCreadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoEliminadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.UsuarioExisteException;
 import co.uniquindio.proyectoFinalGrupo1.model.BienestarEstudiantil;
 import co.uniquindio.proyectoFinalGrupo1.model.Estudiante;
 import co.uniquindio.proyectoFinalGrupo1.model.Instructor;
+import co.uniquindio.proyectoFinalGrupo1.model.Lugar;
 import co.uniquindio.proyectoFinalGrupo1.model.TipoUsuario;
 import co.uniquindio.proyectoFinalGrupo1.model.Usuario;
 import javafx.application.Application;
@@ -241,5 +243,51 @@ public class Aplicacion extends Application {
 	public ArrayList<Instructor> obtenerListaInstructoresData()
 	{
 		return bienestarEstudiantil.getLstInstructores();
+	}
+	
+	/**
+	 * Método que permite agregar un lugar a la lista
+	 * @param nombre
+	 * @param codigo
+	 * @throws UsuarioExisteException
+	 * @throws IOException 
+	 */
+	
+	public Lugar agregarLugar(String nombre, String codigo) throws IOException, NoCreadoException 
+	{
+		return bienestarEstudiantil.agregarLugar(nombre, codigo);
+	}
+	
+	/**
+	 * Método que permite actualizar in lugar
+	 * @param documentoActual
+	 * @param codigo
+	 * @param codigoActual
+	 * @return actualizado
+	 * @throws NoActualizadoException
+	 */
+	public boolean actualizarLugar(String nombre, String codigo, String codigoActual) throws NoActualizadoException 
+	{
+		return bienestarEstudiantil.actualizarLugar(nombre, codigo, codigoActual);                                                                   
+	}
+	
+	/**
+	 * Método que permite eliminar un lugar
+	 * @param codigo
+	 * @return eliminado
+	 * @throws NoEliminadoException
+	 */
+	public boolean eliminarLugar(String codigo) throws NoEliminadoException 
+	{
+		return bienestarEstudiantil.eliminarLugar(codigo);
+	}
+	
+	/**
+	 * Método que permite obtener la lista de lugares
+	 * @return lstLugares
+	 */
+	public ArrayList<Lugar> obtenerListaLugaresData()
+	{
+		return bienestarEstudiantil.getLstLugares();
 	}
 }

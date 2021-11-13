@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoActualizadoException;
+import co.uniquindio.proyectoFinalGrupo1.exceptions.NoCreadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoEliminadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.UsuarioExisteException;
 import co.uniquindio.proyectoFinalGrupo1.persistencia.*;
@@ -191,9 +192,26 @@ public class BienestarEstudiantil
 		instructor.setAsignatura("Programación");
 		instructor.setUsuario("omagudelo");
 		instructor.setContrasena("1234");
-		
 
 		lstInstructores.add(instructor);
+		
+		Lugar lugar = new Lugar();
+		lugar.setNombre("Bloque Ingeniería");
+		lugar.setCodigo("01");
+		
+		lstLugares.add(lugar);
+		
+		lugar = new Lugar();
+		lugar.setNombre("Bloque Ciencias Básicas");
+		lugar.setCodigo("02");
+		
+		lstLugares.add(lugar);
+		
+		lugar = new Lugar();
+		lugar.setNombre("Bloque Ciencias Económicas");
+		lugar.setCodigo("03");
+		
+		lstLugares.add(lugar);
 	}
 
 	/**
@@ -257,7 +275,6 @@ public class BienestarEstudiantil
 	 * @param usuario
 	 * @param contrasena
 	 * @return estudiante
-	 * @throws IOException 
 	 */
 	public Estudiante agregarEstudiante(String nombre, String documento, String tipoDocumento, int edad, String usuario,
 			String contrasena) throws UsuarioExisteException, IOException
@@ -497,6 +514,103 @@ public class BienestarEstudiantil
 		}
 
 		return eliminado;
+	}
+	
+	/**
+	 * Método que permite agregar a un lugar
+	 * @param nombre
+	 * @param codigo
+	 * @return lugar
+	 */
+	public Lugar agregarLugar(String nombre, String codigo) throws IOException, NoCreadoException
+	{
+		Lugar lugar = obtenerLugar(codigo);
+		if(lugar != null)
+		{
+			throw new NoCreadoException("error al agregar el lugar");
+		}
+		else
+		{
+			lugar = new Lugar();
+			lugar.setNombre(nombre);
+			lugar.setCodigo(codigo);
+
+			lstLugares.add(lugar);
+			Persistencia.guardarLugares(lstLugares);
+
+			return lugar;
+		}
+	}
+	
+	/**
+	 * Método que permite actualizar un lugar
+	 * @param documentoActual
+	 * @param codigo
+	 * @param codigoActual
+	 * @return actualizado
+	 * @throws NoActualizadoException
+	 */
+	public boolean actualizarLugar(String nombre, String codigo, String codigoActual) throws NoActualizadoException  
+	{
+		boolean actualizado = false;
+		Lugar lugar = obtenerLugar(codigoActual);
+
+		if(lugar == null)
+		{
+			throw new NoActualizadoException("error al actualizar el lugar");
+		}
+		else
+		{
+			lugar.setNombre(nombre);
+			lugar.setCodigo(codigo);
+
+			actualizado = true;
+		}
+
+		return actualizado;
+	}
+	
+	/**
+	 * Método que permite eliminar un lugar
+	 * @param codigo
+	 * @return eliminado
+	 * @throws NoEliminadoException
+	 */
+	public boolean eliminarLugar(String codigo) throws NoEliminadoException 
+	{
+		boolean eliminado = false;
+		Lugar lugar = obtenerLugar(codigo);
+
+		if(lugar == null)
+		{
+			throw new NoEliminadoException("error al eliminar los datos del Instructor");
+
+		}
+		else
+		{
+			lstLugares.remove(lugar);
+			eliminado = true;
+		}
+
+		return eliminado;
+	}
+	
+	/**
+	 * Método que permite obtener un lugar por su
+	 * codigo
+	 * @param codigo
+	 * @return instructor
+	 */
+	private Lugar obtenerLugar(String codigo)
+	{
+		for (Lugar lugar : lstLugares)
+		{
+			if(lugar.getCodigo().equals(codigo))
+			{
+				return lugar;
+			}
+		}
+		return null;
 	}
 
 
