@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.proyectoFinalGrupo1.controller.GestionHorarioController">
+   <children>
+      <AnchorPane layoutX="4.0" layoutY="21.0" prefHeight="570.0" prefWidth="749.0">
+         <children>
+            <Separator layoutX="39.0" layoutY="56.0" prefHeight="0.0" prefWidth="674.0" style="-fx-background-color: #2980B9;" />
+            <Label layoutX="38.0" layoutY="24.0" text="Gestión Horarios">
+               <font>
+                  <Font name="Century Gothic" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="26.0" layoutY="77.0" text="Código ">
+               <font>
+                  <Font name="Century Gothic" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtCodigoH" layoutX="26.0" layoutY="97.0" prefHeight="25.0" prefWidth="321.0" promptText="Documento" style="-fx-background-color: transparent; -fx-border-color: #032D49; -fx-border-width: 0px 0px 2px 0px;">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txtHoraIni" layoutX="383.0" layoutY="97.0" prefHeight="25.0" prefWidth="321.0" promptText="Hora de inicio" style="-fx-background-color: transparent; -fx-border-color: #032D49; -fx-border-width: 0px 0px 2px 0px;">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="txtBuscar" layoutX="41.0" layoutY="317.0" prefHeight="25.0" prefWidth="321.0" promptText="Buscar" style="-fx-background-color: transparent; -fx-border-color: #032D49; -fx-border-width: 0px 0px 2px 0px;">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </TextField>
+            <Label layoutX="40.0" layoutY="292.0" text="Buscar">
+               <font>
+                  <Font name="Century Gothic" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnNuevo" alignment="CENTER" layoutX="392.0" layoutY="317.0" mnemonicParsing="false" onAction="#nuevoAction" prefHeight="18.0" prefWidth="93.0" style="-fx-background-color: linear-gradient(to left, #2980B9, #032D49);" styleClass="btns-gestion-estudiantes" stylesheets="@../application.css" text="Nuevo" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Century Gothic" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="33.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/add-user.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnAgregar" alignment="CENTER" layoutX="493.0" layoutY="317.0" mnemonicParsing="false" onAction="#agregarAction" prefHeight="34.0" prefWidth="101.0" style="-fx-background-color: linear-gradient(to left, #2980B9, #032D49);" styleClass="btns-gestion-estudiantes" stylesheets="@../application.css" text="Agregar" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Century Gothic" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/diskette.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnActualizar" alignment="CENTER" layoutX="604.0" layoutY="317.0" mnemonicParsing="false" onAction="#actualizarAction" prefHeight="34.0" prefWidth="112.0" style="-fx-background-color: linear-gradient(to left, #2980B9, #032D49);" styleClass="btns-gestion-estudiantes" stylesheets="@../application.css" text="Actualizar" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Century Gothic" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/pencil.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="btnEliminar" alignment="CENTER" layoutX="609.0" layoutY="530.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#eliminarAction" prefHeight="30.0" prefWidth="106.0" style="-fx-background-color: linear-gradient(to left, #FD3F3F, #AE0606);" styleClass="btns-gestion-estudiantes-delete" stylesheets="@../application.css" text="Eliminar" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Century Gothic" size="14.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="20.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/trash.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <TableView fx:id="tableHorarios" layoutX="41.0" layoutY="368.0" prefHeight="152.0" prefWidth="674.0" style="-fx-background-color: #D5EDFD;">
+               <columns>
+                  <TableColumn fx:id="columnCodigoH" prefWidth="182.0" text="Codigo" />
+                  <TableColumn fx:id="columnDia" prefWidth="191.0" text="Dia " />
+                  <TableColumn fx:id="columnIni" minWidth="0.0" prefWidth="153.0" text="Inicio de clase" />
+                  <TableColumn fx:id="columnFin" prefWidth="147.0" text="Fin de clase" />
+               </columns>
+            </TableView>
+            <TextField fx:id="txtHoraFin" layoutX="383.0" layoutY="174.0" prefHeight="25.0" prefWidth="321.0" promptText="Hora de salida" style="-fx-background-color: transparent; -fx-border-color: #032D49; -fx-border-width: 0px 0px 2px 0px;">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </TextField>
+            <Label layoutX="383.0" layoutY="77.0" text="Inicio de la clase">
+               <font>
+                  <Font name="Century Gothic" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="383.0" layoutY="154.0" text="Fin de la clase">
+               <font>
+                  <Font name="Century Gothic" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="29.0" layoutY="155.0" text="Dia">
+               <font>
+                  <Font name="Century Gothic" size="14.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="comboBoxDia" layoutX="26.0" layoutY="176.0" prefHeight="25.0" prefWidth="321.0" promptText="seleccione" style="-fx-background-color: transparent; -fx-border-color: #032D49; -fx-border-width: 0px 0px 2px 0px;" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

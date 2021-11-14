@@ -212,6 +212,15 @@ public class BienestarEstudiantil
 		lugar.setCodigo("03");
 		
 		lstLugares.add(lugar);
+		
+		Horario horario = new Horario();
+		horario.setCode("10394");
+		horario.setHoraInicio("8pm");
+		horario.setHoraFinal("10pm");
+		horario.setDia("jueves");
+		
+		lstHorarios.add(horario);
+	
 	}
 
 	/**
@@ -543,6 +552,35 @@ public class BienestarEstudiantil
 	}
 	
 	/**
+	 * Método que permite agregar a un Horario
+	 * @param horaIni,horaFin,dia
+	 * @param code
+	 * @return Horario
+	 */
+	public Horario agregarHorario( String code,String horaIni,String horaFin, String dia) throws IOException, NoCreadoException
+	{
+		Horario horario = obtenerHorario(code);
+		if(horario != null)
+		{
+			throw new NoCreadoException("error al agregar el horario");
+		}
+		else
+		{
+			horario = new Horario();
+			horario.setCode(code);
+			horario.setHoraInicio(horaIni);
+			horario.setHoraFinal(horaFin);
+			horario.setDia(dia);
+			
+
+			lstHorarios.add(horario);
+			Persistencia.guardarHorarios(lstHorarios);
+
+			return horario;
+		}
+	}
+	
+	/**
 	 * Método que permite actualizar un lugar
 	 * @param documentoActual
 	 * @param codigo
@@ -563,6 +601,37 @@ public class BienestarEstudiantil
 		{
 			lugar.setNombre(nombre);
 			lugar.setCodigo(codigo);
+
+			actualizado = true;
+		}
+
+		return actualizado;
+	}
+	
+	/**
+	 * Método que permite actualizar un Horario
+	 * @param documentoActual
+	 * @param code,horaIni,horaFin,dia
+	 * @param codigoActual
+	 * @return actualizado
+	 * @throws NoActualizadoException
+	 */
+	
+	public boolean actualizarHorario(String code,String CodigoActual,String horaIni,String horaFin, Dia dia) throws NoActualizadoException  
+	{
+		boolean actualizado = false;
+		Horario horario = obtenerHorario(CodigoActual);
+
+		if(horario == null)
+		{
+			throw new NoActualizadoException("error al actualizar el horario");
+		}
+		else
+		{
+			horario.setCode(code);
+			horario.setHoraInicio(horaIni);
+			horario.setHoraFinal(horaFin);
+			horario.setDia(dia);
 
 			actualizado = true;
 		}
@@ -595,6 +664,29 @@ public class BienestarEstudiantil
 		return eliminado;
 	}
 	
+	 public boolean eliminarHorario(String code) throws NoEliminadoException 
+	{
+	
+		boolean eliminado = false;
+		Horario horario = obtenerHorario(code);
+
+		if(horario == null)
+		{
+			throw new NoEliminadoException("error al eliminar los datos del horario");
+
+		}
+		else
+		{
+			lstLugares.remove(horario);
+			eliminado = true;
+		}
+
+		return eliminado;	
+		
+		
+		
+	}
+	
 	/**
 	 * Método que permite obtener un lugar por su
 	 * codigo
@@ -612,6 +704,26 @@ public class BienestarEstudiantil
 		}
 		return null;
 	}
+
+	/**
+	 * Método que permite obtener un horario por su
+	 * codigo
+	 * @param codigo
+	 * @return instructor
+	 */
+	
+	private Horario obtenerHorario(String codigo)
+	{
+		for (Horario horario : lstHorarios)
+		{
+			if(horario.getCode().equals(codigo))
+			{
+				return horario;
+			}
+		}
+		return null;
+	}
+
 
 
 }

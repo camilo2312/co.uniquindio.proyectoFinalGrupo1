@@ -7,7 +7,7 @@ package co.uniquindio.proyectoFinalGrupo1.model;
  */
 public class Horario
 {
-	private int code;
+	private String code;
 	private String horaInicio;
 	private String horaFinal;
 	private Dias dia;
@@ -24,7 +24,7 @@ public class Horario
 	 * Método que permite obtener el código del horario
 	 * @return code
 	 */
-	public int getCode()
+	public String getCode()
 	{
 		return code;
 	}
@@ -33,7 +33,7 @@ public class Horario
 	 * Método que permite asignar y/o actualizar el código del horario
 	 * @param code
 	 */
-	public void setCode(int code)
+	public void setCode(String code)
 	{
 		this.code = code;
 	}

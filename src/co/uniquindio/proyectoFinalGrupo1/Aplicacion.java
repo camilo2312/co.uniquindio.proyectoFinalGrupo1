@@ -11,6 +11,7 @@ import co.uniquindio.proyectoFinalGrupo1.exceptions.NoEliminadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.UsuarioExisteException;
 import co.uniquindio.proyectoFinalGrupo1.model.BienestarEstudiantil;
 import co.uniquindio.proyectoFinalGrupo1.model.Estudiante;
+import co.uniquindio.proyectoFinalGrupo1.model.Horario;
 import co.uniquindio.proyectoFinalGrupo1.model.Instructor;
 import co.uniquindio.proyectoFinalGrupo1.model.Lugar;
 import co.uniquindio.proyectoFinalGrupo1.model.TipoUsuario;
@@ -31,8 +32,8 @@ public class Aplicacion extends Application {
 	{
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Bienestar universitario");
-		mostrarVentanaLogin();
-		//mostrarVentanaPrincipal(TipoUsuario.ADMINISTRADOR, "Juan Camilo Ramos R.");
+		//mostrarVentanaLogin();
+		mostrarVentanaPrincipal(TipoUsuario.ADMINISTRADOR, "Juan Camilo Ramos R.");
 	}
 
 	public static void main(String[] args)
@@ -259,6 +260,19 @@ public class Aplicacion extends Application {
 	}
 	
 	/**
+	 * Método que permite agregar un horario a la lista
+	 * @param horaIni,horaFin,dia
+	 * @param code
+	 * @throws UsuarioExisteException
+	 * @throws IOException 
+	 */
+	
+	public Horario agregarHorario(String code, String horaIni, String horaFin, Dia dia) throws IOException, NoCreadoException 
+	{
+		return bienestarEstudiantil.agregarHorario(code, horaIni, horaFin, dia);
+	}
+	
+	/**
 	 * Método que permite actualizar in lugar
 	 * @param documentoActual
 	 * @param codigo
@@ -272,14 +286,41 @@ public class Aplicacion extends Application {
 	}
 	
 	/**
+	 * Método que permite actualizar in lugar
+	 * @param documentoActual
+	 * @param code,horaIni,horaFin,dia
+	 * @param codigoActual
+	 * @return actualizado
+	 * @throws NoActualizadoException
+	 */
+	public boolean actualizarHorario( String code, String codigoActual, String horaIni,String horaFin,Dia dia) throws NoActualizadoException 
+	{
+		return bienestarEstudiantil.actualizarHorario(code, codigoActual, horaIni,horaFin,dia);                                                                   
+	}
+	
+	/**
 	 * Método que permite eliminar un lugar
 	 * @param codigo
 	 * @return eliminado
 	 * @throws NoEliminadoException
+	 * 
 	 */
 	public boolean eliminarLugar(String codigo) throws NoEliminadoException 
 	{
 		return bienestarEstudiantil.eliminarLugar(codigo);
+	}
+	
+	/**
+	 * Método que permite eliminar un Horario
+	 * @param codigo
+	 * @return eliminado
+	 * @throws NoEliminadoException
+	 */
+	
+	public boolean eliminarHorario(String code) throws NoEliminadoException
+	{
+		
+		return bienestarEstudiantil.eliminarHorario(code);
 	}
 	
 	/**
@@ -290,4 +331,16 @@ public class Aplicacion extends Application {
 	{
 		return bienestarEstudiantil.getLstLugares();
 	}
+	
+	/**
+	 * Método que permite obtener la lista de Horarios
+	 * @return lstHorario
+	 */
+	
+	public ArrayList<Horario> obtenerListaHorarioData()
+	{
+		return bienestarEstudiantil.getLstHorarios();
+	}
+
+	
 }
