@@ -7,6 +7,7 @@ import co.uniquindio.proyectoFinalGrupo1.exceptions.NoActualizadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoCreadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoEliminadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.UsuarioExisteException;
+import co.uniquindio.proyectoFinalGrupo1.persistencia.Persistencia;
 
 /**
  * Clase bienestar estudiantil
@@ -191,10 +192,6 @@ public class BienestarEstudiantil
 		instructor.setAsignatura("Programación");
 		instructor.setUsuario("omagudelo");
 		instructor.setContrasena("1234");
-<<<<<<< HEAD
-
-=======
->>>>>>> ae7f5567b7b3cb99b2dc46cd8248a5d38fc52482
 
 		lstInstructores.add(instructor);
 		
