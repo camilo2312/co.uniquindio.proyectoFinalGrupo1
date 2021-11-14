@@ -16,21 +16,8 @@ import java.util.logging.SimpleFormatter;
 public class ArchivoUtil
 {
 	static String fechaSistema = "";
-<<<<<<< HEAD
-
-=======
-	
-	/**
-	 * Este metodo encargado de registrar los archivos logs
-	 * @param mensajeLog
-	 * @param nivel
-	 * @param accion
-	 * @param rutaArchivo
-	 */
->>>>>>> ae7f5567b7b3cb99b2dc46cd8248a5d38fc52482
 	public static void guardarRegistroLog(String mensajeLog, int nivel, String accion, String rutaArchivo)
 	{
-		String log = "";
 		Logger LOGGER = Logger.getLogger(accion);
 		FileHandler archivo ;
 
@@ -71,20 +58,14 @@ public class ArchivoUtil
 		}
 
 	}
-<<<<<<< HEAD
 
-	private static void cargarFechaSistema()
-=======
-	
 	/**
 	 * Este metodo encargado cargar la fecha y hora
 	 */
-	private static void cargarFechaSistema() 
->>>>>>> ae7f5567b7b3cb99b2dc46cd8248a5d38fc52482
+	private static void cargarFechaSistema()
 	{
 		String diaN = "";
 		String mesN = "";
-		String anioN = "";
 
 		Calendar cal1 = Calendar.getInstance();
 
@@ -114,40 +95,40 @@ public class ArchivoUtil
 
 		fechaSistema = anio + "-" + mesN + "-" + diaN + "-" + hora + "-" + minuto;
 	}
-	
+
 	/**
 	 * Este metodo recibe una cadena con el contenido que se quiere guardar en el archivo
 	 * @param ruta es la ruta o path donde esta ubicado el archivo
-	 * @throws IOException 
+	 * @throws IOException
 	 */
-	public static void guardarArchivo(String ruta,String contenido, Boolean flagAnexarContenido) throws IOException 
+	public static void guardarArchivo(String ruta,String contenido, Boolean flagAnexarContenido) throws IOException
 	{
 		FileWriter fw = new FileWriter(ruta,flagAnexarContenido);
-		BufferedWriter bfw = new BufferedWriter(fw); 
+		BufferedWriter bfw = new BufferedWriter(fw);
 		bfw.write(contenido);
 		bfw.close();
 		fw.close();
 	}
-	
+
 	public static Object cargarRecursoSerializadoXML(String rutaArchivo) throws IOException {
 
 		XMLDecoder decodificadorXML;
 		Object objetoXML;
-		
+
 		decodificadorXML = new XMLDecoder(new FileInputStream(rutaArchivo));
 		objetoXML = decodificadorXML.readObject();
 		decodificadorXML.close();
 		return objetoXML;
-		
+
 	}
 
 	public static void salvarRecursoSerializadoXML(String rutaArchivo, Object objeto) throws IOException {
-		
+
 		XMLEncoder codificadorXML;
-		
+
 		codificadorXML = new XMLEncoder(new FileOutputStream(rutaArchivo));
 		codificadorXML.writeObject(objeto);
 		codificadorXML.close();
-		
+
 	}
 }

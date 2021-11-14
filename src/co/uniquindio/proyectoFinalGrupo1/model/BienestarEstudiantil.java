@@ -7,6 +7,7 @@ import co.uniquindio.proyectoFinalGrupo1.exceptions.NoActualizadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoCreadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoEliminadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.UsuarioExisteException;
+import co.uniquindio.proyectoFinalGrupo1.persistencia.Persistencia;
 
 /**
  * Clase bienestar estudiantil
@@ -191,29 +192,25 @@ public class BienestarEstudiantil
 		instructor.setAsignatura("Programación");
 		instructor.setUsuario("omagudelo");
 		instructor.setContrasena("1234");
-<<<<<<< HEAD
-
-=======
->>>>>>> ae7f5567b7b3cb99b2dc46cd8248a5d38fc52482
 
 		lstInstructores.add(instructor);
-		
+
 		Lugar lugar = new Lugar();
 		lugar.setNombre("Bloque Ingeniería");
 		lugar.setCodigo("01");
-		
+
 		lstLugares.add(lugar);
-		
+
 		lugar = new Lugar();
 		lugar.setNombre("Bloque Ciencias Básicas");
 		lugar.setCodigo("02");
-		
+
 		lstLugares.add(lugar);
-		
+
 		lugar = new Lugar();
 		lugar.setNombre("Bloque Ciencias Económicas");
 		lugar.setCodigo("03");
-		
+
 		lstLugares.add(lugar);
 	}
 
@@ -296,7 +293,7 @@ public class BienestarEstudiantil
 				estudiante.setEdad(edad);
 				estudiante.setUsuario(usuario);
 				estudiante.setContrasena(contrasena);
-				
+
 				lstEstudiantes.add(estudiante);
 				Persistencia.guardarEstudiantes(lstEstudiantes);
 				Persistencia.guardarDatosEstudiantesXML(estudiante);
@@ -411,7 +408,7 @@ public class BienestarEstudiantil
 	 * @param contrasena
 	 * @return instructor
 	 * @throws UsuarioExisteException
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public Instructor agregarInstructor(String nombre, String documento, String tipoDocumento, String asignatura,
 			String usuario, String contrasena) throws UsuarioExisteException, IOException
@@ -518,7 +515,7 @@ public class BienestarEstudiantil
 
 		return eliminado;
 	}
-	
+
 	/**
 	 * Método que permite agregar a un lugar
 	 * @param nombre
@@ -544,7 +541,7 @@ public class BienestarEstudiantil
 			return lugar;
 		}
 	}
-	
+
 	/**
 	 * Método que permite actualizar un lugar
 	 * @param documentoActual
@@ -553,7 +550,7 @@ public class BienestarEstudiantil
 	 * @return actualizado
 	 * @throws NoActualizadoException
 	 */
-	public boolean actualizarLugar(String nombre, String codigo, String codigoActual) throws NoActualizadoException  
+	public boolean actualizarLugar(String nombre, String codigo, String codigoActual) throws NoActualizadoException
 	{
 		boolean actualizado = false;
 		Lugar lugar = obtenerLugar(codigoActual);
@@ -572,14 +569,14 @@ public class BienestarEstudiantil
 
 		return actualizado;
 	}
-	
+
 	/**
 	 * Método que permite eliminar un lugar
 	 * @param codigo
 	 * @return eliminado
 	 * @throws NoEliminadoException
 	 */
-	public boolean eliminarLugar(String codigo) throws NoEliminadoException 
+	public boolean eliminarLugar(String codigo) throws NoEliminadoException
 	{
 		boolean eliminado = false;
 		Lugar lugar = obtenerLugar(codigo);
@@ -597,7 +594,7 @@ public class BienestarEstudiantil
 
 		return eliminado;
 	}
-	
+
 	/**
 	 * Método que permite obtener un lugar por su
 	 * codigo
