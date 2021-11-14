@@ -7,10 +7,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
-public class ArchivoUtil 
+public class ArchivoUtil
 {
 	static String fechaSistema = "";
-	
+
 	public static void guardarRegistroLog(String mensajeLog, int nivel, String accion, String rutaArchivo)
 	{
 		String log = "";
@@ -24,7 +24,7 @@ public class ArchivoUtil
 			archivo.setFormatter(new SimpleFormatter());
 			LOGGER.addHandler(archivo);
 
-			switch (nivel) 
+			switch (nivel)
 			{
 			case 1:
 				LOGGER.log(Level.INFO,accion+","+mensajeLog+","+fechaSistema);
@@ -42,30 +42,30 @@ public class ArchivoUtil
 				break;
 			}
 
-		} catch (SecurityException e) 
+		} catch (SecurityException e)
 		{
 			LOGGER.log(Level.SEVERE,e.getMessage());
 			e.printStackTrace();
-		} catch (IOException e) 
+		} catch (IOException e)
 		{
 			// TODO Auto-generated catch block
 			LOGGER.log(Level.SEVERE,e.getMessage());
 			e.printStackTrace();
 		}
-		
+
 	}
-	
-	private static void cargarFechaSistema() 
+
+	private static void cargarFechaSistema()
 	{
 		String diaN = "";
 		String mesN = "";
-		String añoN = "";
+		String anioN = "";
 
 		Calendar cal1 = Calendar.getInstance();
 
 		int  dia = cal1.get(Calendar.DATE);
 		int mes = cal1.get(Calendar.MONTH)+1;
-		int año = cal1.get(Calendar.YEAR);
+		int anio = cal1.get(Calendar.YEAR);
 		int hora = cal1.get(Calendar.HOUR);
 		int minuto = cal1.get(Calendar.MINUTE);
 
@@ -77,7 +77,7 @@ public class ArchivoUtil
 		{
 			diaN+=""+dia;
 		}
-		
+
 		if(mes < 10)
 		{
 			mesN+="0"+mes;
@@ -87,6 +87,6 @@ public class ArchivoUtil
 			mesN+=""+mes;
 		}
 
-		fechaSistema = año + "-" + mesN + "-" + diaN + "-" + hora + "-" + minuto;
+		fechaSistema = anio + "-" + mesN + "-" + diaN + "-" + hora + "-" + minuto;
 	}
 }

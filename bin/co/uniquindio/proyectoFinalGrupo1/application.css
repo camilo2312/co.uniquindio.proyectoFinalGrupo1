@@ -1,7 +1,7 @@
 .btns-principales:hover{
 	-fx-background-color: #062E46 !important;
 	-fx-border-color: #FFF;
-	-fx-border-width: 0px 0px 1px 0px
+	-fx-border-width: 0px 0px 1px 0px;
 }
 
 .btns-gestion-estudiantes:hover{
