@@ -1,5 +1,6 @@
 package co.uniquindio.proyectoFinalGrupo1.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -9,6 +10,7 @@ import co.uniquindio.proyectoFinalGrupo1.exceptions.NoActualizadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoEliminadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.UsuarioExisteException;
 import co.uniquindio.proyectoFinalGrupo1.model.Instructor;
+import co.uniquindio.proyectoFinalGrupo1.persistencia.Persistencia;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -198,7 +200,12 @@ public class GestionInstructoresController implements Initializable
 
     		try
     		{
-    			instructor = aplicacion.agregarInstructor(nombre, documento, tipoDocumento, asignatura, usuario, contrasena);
+    			try {
+					instructor = aplicacion.agregarInstructor(nombre, documento, tipoDocumento, asignatura, usuario, contrasena);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
     			if(instructor != null)
         		{
@@ -212,6 +219,7 @@ public class GestionInstructoresController implements Initializable
 				mostrarMensaje("Agregar datos", "Datos no agregados", "El usuario de código " + documento + " de la clase Instructor ya existe",
 						AlertType.INFORMATION);
 				e.printStackTrace();
+				Persistencia.guardaRegistroLogInstructor("Se genero un IOExeption en agregarInstructor",2,"IOException");
 			}
 		}
 	}
@@ -221,45 +229,49 @@ public class GestionInstructoresController implements Initializable
      */
 	private void actualizarInstructor()
 	{
-		try
+		if(instructorSeleccionado != null)
 		{
-			if(instructorSeleccionado != null)
+			if(camposValidos())
 			{
-				if(camposValidos())
+				boolean actualizado = false;
+
+				String nombre = txtNombre.getText();
+	    		String documento = txtDocumento.getText();
+	    		String documentoActual = instructorSeleccionado.getDocumento();
+	    		String tipoDocumento = comboBoxTipoDocumento.getValue();
+	    		String asignatura = txtAsignatura.getText();
+	    		String usuario = txtUsuario.getText();
+	    		String contrasena = txtContrasena.getText();
+				try 
 				{
-					boolean actualizado = false;
+					actualizado = aplicacion.actualizarInstructor(documentoActual, documento, nombre, tipoDocumento, asignatura, usuario, contrasena);
 
-					String nombre = txtNombre.getText();
-		    		String documento = txtDocumento.getText();
-		    		String documentoActual = instructorSeleccionado.getDocumento();
-		    		String tipoDocumento = comboBoxTipoDocumento.getValue();
-		    		String asignatura = txtAsignatura.getText();
-		    		String usuario = txtUsuario.getText();
-		    		String contrasena = txtContrasena.getText();
-
-		    		actualizado = aplicacion.actualizarInstructor(documentoActual, documento, nombre, tipoDocumento, asignatura, usuario, contrasena);
-
-			    		if(actualizado)
-			    		{
-			    			tableInstructores.refresh();
-			    			limpiarFormulario();
-			    			mostrarMensaje("Actualizar registro", "Datos guardados",
-									"El registro ha sido actualizado correctamente", AlertType.INFORMATION);
-			    		}
-				}
-				else
+		    		if(actualizado)
+		    		{
+		    			tableInstructores.refresh();
+		    			limpiarFormulario();
+		    			mostrarMensaje("Actualizar registro", "Datos guardados",
+								"El registro ha sido actualizado correctamente", AlertType.INFORMATION);
+		    		}
+				} catch (NoActualizadoException e)
 				{
-					mostrarMensaje("Actualizar registro", "Actualizar Instructor", "Debe seleccionar un instructor",
+					mostrarMensaje("Actualizar registro", "Actualizar Instructor", "No se pudo actualizar el instructor",
 							AlertType.WARNING);
+					e.printStackTrace();
+					Persistencia.guardaRegistroLogInstructor("Nombre:"+nombre+" identificación "+documento, 2, "NoActualizadoException");
 				}
+			
 			}
-		} catch (NoActualizadoException e)
-		{
-			mostrarMensaje("Actualizar registro", "Actualizar Instructor", "No se pudo actualizar el instructor",
-					AlertType.WARNING);
-			e.printStackTrace();
 		}
+		else
+		{
+			mostrarMensaje("Actualizar registro", "Actualizar Instructor", "Debe seleccionar un instructor",
+					AlertType.WARNING);
+		}	
 	}
+		
+		
+		
 
 	/**
 	 * Método que permite eliminar un instructor
@@ -269,6 +281,8 @@ public class GestionInstructoresController implements Initializable
 		boolean eliminado = false;
 		try
 		{
+			String nombre = txtNombre.getText();
+    		String documento = txtDocumento.getText();
 			if(instructorSeleccionado != null)
 			{
 				boolean confirmado = mostrarMensajeConfirmacion("¿Esta seguro de eliminar el registro?");
@@ -283,6 +297,7 @@ public class GestionInstructoresController implements Initializable
 						limpiarFormulario();
 						mostrarMensaje("Eliminar registro", "Eliminar instructor", "Registro eliminado correctamente",
 								AlertType.INFORMATION);
+						Persistencia.guardaRegistroLogInstructor("Nombre:"+nombre+" identificación "+documento,3,"Se elimina un instructor");
 					}
 				}
 			}
@@ -295,8 +310,9 @@ public class GestionInstructoresController implements Initializable
 		{
 			mostrarMensaje("Eliminar registro", "", "El instructor no existe", AlertType.WARNING);
 			e.printStackTrace();
+			Persistencia.guardaRegistroLogInstructor("Se intento eliminar un instructor que no existe", 1, "NoEliminadoException");
+			
 		}
-
 	}
 
     /**
