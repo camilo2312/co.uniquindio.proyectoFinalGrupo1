@@ -49,7 +49,7 @@ public class DashBoardController implements Initializable
 
     @FXML
     private Button btnLugares;
-    
+
     @FXML
     private Button btnHorarios;
 
@@ -94,7 +94,7 @@ public class DashBoardController implements Initializable
     {
     	abrirVentana(NombreVentana.GESTION_LUGARES);
     }
-    
+
     @FXML
     void gestionHorariosAction(ActionEvent event) {
 
@@ -194,7 +194,7 @@ public class DashBoardController implements Initializable
 			case GESTION_CREDITOS:
 				break;
 			case GESTION_LUGARES:
-				loader.setLocation(getClass().getResource("../view/GestionLugaresView.fxml"));                                                             
+				loader.setLocation(getClass().getResource("../view/GestionLugaresView.fxml"));
 				vistaCargada = loader.load();
 				anchorPanePrincipal.getChildren().setAll(vistaCargada);
 				this.gestionLugaresController = loader.getController();
@@ -216,6 +216,9 @@ public class DashBoardController implements Initializable
 	 */
     private void cerrarSesion()
     {
+    	aplicacion.guardarDatosRespaldo();
     	aplicacion.mostrarVentanaLogin();
     }
+    
+    
 }

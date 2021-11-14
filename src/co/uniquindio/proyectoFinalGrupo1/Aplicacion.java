@@ -142,7 +142,7 @@ public class Aplicacion extends Application {
 	 * @param contrasena
 	 * @return estudiante
 	 * @throws UsuarioExisteException
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public Estudiante agregarEstudiante(String nombre, String documento, String tipoDocumento, int edad, String usuario,
 			String contrasena) throws UsuarioExisteException, IOException
@@ -199,7 +199,7 @@ public class Aplicacion extends Application {
 	 * @param contrasena
 	 * @return instructor
 	 * @throws UsuarioExisteException
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public Instructor agregarInstructor(String nombre, String documento, String tipoDocumento, String asignatura,
 			String usuario, String contrasena) throws UsuarioExisteException, IOException
@@ -245,20 +245,20 @@ public class Aplicacion extends Application {
 	{
 		return bienestarEstudiantil.getLstInstructores();
 	}
-	
+
 	/**
 	 * Método que permite agregar un lugar a la lista
 	 * @param nombre
 	 * @param codigo
 	 * @throws UsuarioExisteException
-	 * @throws IOException 
+	 * @throws IOException
 	 */
-	
-	public Lugar agregarLugar(String nombre, String codigo) throws IOException, NoCreadoException 
+
+	public Lugar agregarLugar(String nombre, String codigo) throws IOException, NoCreadoException
 	{
 		return bienestarEstudiantil.agregarLugar(nombre, codigo);
 	}
-	
+
 	/**
 	 * Método que permite agregar un horario a la lista
 	 * @param horaIni,horaFin,dia
@@ -280,11 +280,11 @@ public class Aplicacion extends Application {
 	 * @return actualizado
 	 * @throws NoActualizadoException
 	 */
-	public boolean actualizarLugar(String nombre, String codigo, String codigoActual) throws NoActualizadoException 
+	public boolean actualizarLugar(String nombre, String codigo, String codigoActual) throws NoActualizadoException
 	{
-		return bienestarEstudiantil.actualizarLugar(nombre, codigo, codigoActual);                                                                   
+		return bienestarEstudiantil.actualizarLugar(nombre, codigo, codigoActual);
 	}
-	
+
 	/**
 	 * Método que permite actualizar in lugar
 	 * @param documentoActual
@@ -305,11 +305,11 @@ public class Aplicacion extends Application {
 	 * @throws NoEliminadoException
 	 * 
 	 */
-	public boolean eliminarLugar(String codigo) throws NoEliminadoException 
+	public boolean eliminarLugar(String codigo) throws NoEliminadoException
 	{
 		return bienestarEstudiantil.eliminarLugar(codigo);
 	}
-	
+
 	/**
 	 * Método que permite eliminar un Horario
 	 * @param codigo
@@ -331,6 +331,7 @@ public class Aplicacion extends Application {
 	{
 		return bienestarEstudiantil.getLstLugares();
 	}
+<<<<<<< HEAD
 	
 	/**
 	 * Método que permite obtener la lista de Horarios
@@ -343,4 +344,11 @@ public class Aplicacion extends Application {
 	}
 
 	
+=======
+
+	public void guardarDatosRespaldo() 
+	{
+		BienestarEstudiantil.guardarDatosRespaldo();
+	}
+>>>>>>> 17f21099f42244814ac1e1dd24c62288a7900b0f
 }

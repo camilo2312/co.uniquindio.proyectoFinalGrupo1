@@ -1,2 +1,0 @@
-nov 13, 2021 1:11:54 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
-ADVERTENCIA: NoCreadoException,Se genero un NoCreadoException en agregarLugar,2021-11-13-1-11

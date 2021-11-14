@@ -1,5 +1,6 @@
 package co.uniquindio.proyectoFinalGrupo1.model;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -7,7 +8,7 @@ import co.uniquindio.proyectoFinalGrupo1.exceptions.NoActualizadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoCreadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoEliminadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.UsuarioExisteException;
-import co.uniquindio.proyectoFinalGrupo1.persistencia.*;
+import co.uniquindio.proyectoFinalGrupo1.persistencia.Persistencia;
 
 /**
  * Clase bienestar estudiantil
@@ -154,63 +155,17 @@ public class BienestarEstudiantil
 	 */
 	private void inicializarDatos()
 	{
-		administrador = new Administrador();
-		administrador.setNombre("Orlando Narvaez Baracaldo");
-		administrador.setDocumento("1007890675");
-		administrador.setTipoDocumento("CC");
-		administrador.setEdad(21);
-		administrador.setUsuario("admin");
-		administrador.setContrasena("1234");
-
-		Estudiante estudiante = new Estudiante();
-		estudiante.setNombre("Juan Camilo Ramos R.");
-		estudiante.setDocumento("1005308685");
-		estudiante.setEdad(21);
-		estudiante.setTipoDocumento("CC");
-		estudiante.setUsuario("juanramos");
-		estudiante.setContrasena("1234");
+		administrador = (Administrador) Persistencia.cargarDatosXML(Persistencia.RUTA_ARCHIVO_MODELO_ADMINISTRADOR_XML);
 		
+		lstEstudiantes.add((Estudiante) Persistencia.cargarDatosXML(Persistencia.RUTA_ARCHIVO_MODELO_ESTUDIANTE_XML));
 		
-		lstEstudiantes.add(estudiante);
+		lstInstructores.add((Instructor) Persistencia.cargarDatosXML(Persistencia.RUTA_ARCHIVO_MODELO_INSTRUCTOR_XML));
 		
-
-		estudiante = new Estudiante();
-		estudiante.setNombre("Alejandra Toro C.");
-		estudiante.setDocumento("1007609899");
-		estudiante.setEdad(21);
-		estudiante.setTipoDocumento("CC");
-		estudiante.setUsuario("aletoro");
-		estudiante.setContrasena("1234");
-
-		lstEstudiantes.add(estudiante);
-		//persistencia.guardarDatosEstudiantesXML(lstEstudiantes);
-
-		Instructor instructor = new Instructor();
-		instructor.setNombre("Omar Yair Agudelo Amado");
-		instructor.setDocumento("123456789");
-		instructor.setTipoDocumento("CC");
-		instructor.setAsignatura("Programación");
-		instructor.setUsuario("omagudelo");
-		instructor.setContrasena("1234");
-
-		lstInstructores.add(instructor);
+		lstLugares.add((Lugar) Persistencia.cargarDatosXML(Persistencia.RUTA_ARCHIVO_MODELO_LUGARES_XML));
 		
-		Lugar lugar = new Lugar();
-		lugar.setNombre("Bloque Ingeniería");
-		lugar.setCodigo("01");
+		lstHorarios.add((Horario) Persistencia.cargarDatosXML(Persistencia.RUTA_ARCHIVO_MODELO_HORARIOS_XML));
 		
-		lstLugares.add(lugar);
-		
-		lugar = new Lugar();
-		lugar.setNombre("Bloque Ciencias Básicas");
-		lugar.setCodigo("02");
-		
-		lstLugares.add(lugar);
-		
-		lugar = new Lugar();
-		lugar.setNombre("Bloque Ciencias Económicas");
-		lugar.setCodigo("03");
-		
+<<<<<<< HEAD
 		lstLugares.add(lugar);
 		
 		Horario horario = new Horario();
@@ -221,6 +176,8 @@ public class BienestarEstudiantil
 		
 		lstHorarios.add(horario);
 	
+=======
+>>>>>>> 17f21099f42244814ac1e1dd24c62288a7900b0f
 	}
 
 	/**
@@ -302,10 +259,9 @@ public class BienestarEstudiantil
 				estudiante.setEdad(edad);
 				estudiante.setUsuario(usuario);
 				estudiante.setContrasena(contrasena);
-				
+
 				lstEstudiantes.add(estudiante);
 				Persistencia.guardarEstudiantes(lstEstudiantes);
-				Persistencia.guardarDatosEstudiantesXML(estudiante);
 
 				return estudiante;
 		}
@@ -417,7 +373,7 @@ public class BienestarEstudiantil
 	 * @param contrasena
 	 * @return instructor
 	 * @throws UsuarioExisteException
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public Instructor agregarInstructor(String nombre, String documento, String tipoDocumento, String asignatura,
 			String usuario, String contrasena) throws UsuarioExisteException, IOException
@@ -524,7 +480,7 @@ public class BienestarEstudiantil
 
 		return eliminado;
 	}
-	
+
 	/**
 	 * Método que permite agregar a un lugar
 	 * @param nombre
@@ -550,7 +506,7 @@ public class BienestarEstudiantil
 			return lugar;
 		}
 	}
-	
+
 	/**
 	 * Método que permite agregar a un Horario
 	 * @param horaIni,horaFin,dia
@@ -588,7 +544,7 @@ public class BienestarEstudiantil
 	 * @return actualizado
 	 * @throws NoActualizadoException
 	 */
-	public boolean actualizarLugar(String nombre, String codigo, String codigoActual) throws NoActualizadoException  
+	public boolean actualizarLugar(String nombre, String codigo, String codigoActual) throws NoActualizadoException
 	{
 		boolean actualizado = false;
 		Lugar lugar = obtenerLugar(codigoActual);
@@ -607,7 +563,7 @@ public class BienestarEstudiantil
 
 		return actualizado;
 	}
-	
+
 	/**
 	 * Método que permite actualizar un Horario
 	 * @param documentoActual
@@ -645,7 +601,7 @@ public class BienestarEstudiantil
 	 * @return eliminado
 	 * @throws NoEliminadoException
 	 */
-	public boolean eliminarLugar(String codigo) throws NoEliminadoException 
+	public boolean eliminarLugar(String codigo) throws NoEliminadoException
 	{
 		boolean eliminado = false;
 		Lugar lugar = obtenerLugar(codigo);
@@ -663,6 +619,7 @@ public class BienestarEstudiantil
 
 		return eliminado;
 	}
+<<<<<<< HEAD
 	
 	 public boolean eliminarHorario(String code) throws NoEliminadoException 
 	{
@@ -687,6 +644,9 @@ public class BienestarEstudiantil
 		
 	}
 	
+=======
+
+>>>>>>> 17f21099f42244814ac1e1dd24c62288a7900b0f
 	/**
 	 * Método que permite obtener un lugar por su
 	 * codigo
@@ -705,6 +665,7 @@ public class BienestarEstudiantil
 		return null;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Método que permite obtener un horario por su
 	 * codigo
@@ -725,5 +686,24 @@ public class BienestarEstudiantil
 	}
 
 
+=======
+	public static void guardarDatosRespaldo() 
+	{
+		File carpeta = new File(Persistencia.RUTA_RECURSOS);
+		
+		if(carpeta != null && carpeta.listFiles().length > 0)
+		{
+			for (File file : carpeta.listFiles()) 
+			{
+				if(file.getName().contains(".xml") || (file.getName().contains(".txt") && !file.getName().toLowerCase().contains("log")))
+				{
+					Persistencia.guardarArchivoRespaldo(file);
+				}
+			}
+		}
+		
+	}
+
+>>>>>>> 17f21099f42244814ac1e1dd24c62288a7900b0f
 
 }
