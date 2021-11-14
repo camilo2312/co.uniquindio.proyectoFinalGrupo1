@@ -141,7 +141,7 @@ public class Aplicacion extends Application {
 	 * @param contrasena
 	 * @return estudiante
 	 * @throws UsuarioExisteException
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public Estudiante agregarEstudiante(String nombre, String documento, String tipoDocumento, int edad, String usuario,
 			String contrasena) throws UsuarioExisteException, IOException
@@ -198,7 +198,7 @@ public class Aplicacion extends Application {
 	 * @param contrasena
 	 * @return instructor
 	 * @throws UsuarioExisteException
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public Instructor agregarInstructor(String nombre, String documento, String tipoDocumento, String asignatura,
 			String usuario, String contrasena) throws UsuarioExisteException, IOException
@@ -244,20 +244,20 @@ public class Aplicacion extends Application {
 	{
 		return bienestarEstudiantil.getLstInstructores();
 	}
-	
+
 	/**
 	 * Método que permite agregar un lugar a la lista
 	 * @param nombre
 	 * @param codigo
 	 * @throws UsuarioExisteException
-	 * @throws IOException 
+	 * @throws IOException
 	 */
-	
-	public Lugar agregarLugar(String nombre, String codigo) throws IOException, NoCreadoException 
+
+	public Lugar agregarLugar(String nombre, String codigo) throws IOException, NoCreadoException
 	{
 		return bienestarEstudiantil.agregarLugar(nombre, codigo);
 	}
-	
+
 	/**
 	 * Método que permite actualizar in lugar
 	 * @param documentoActual
@@ -266,22 +266,22 @@ public class Aplicacion extends Application {
 	 * @return actualizado
 	 * @throws NoActualizadoException
 	 */
-	public boolean actualizarLugar(String nombre, String codigo, String codigoActual) throws NoActualizadoException 
+	public boolean actualizarLugar(String nombre, String codigo, String codigoActual) throws NoActualizadoException
 	{
-		return bienestarEstudiantil.actualizarLugar(nombre, codigo, codigoActual);                                                                   
+		return bienestarEstudiantil.actualizarLugar(nombre, codigo, codigoActual);
 	}
-	
+
 	/**
 	 * Método que permite eliminar un lugar
 	 * @param codigo
 	 * @return eliminado
 	 * @throws NoEliminadoException
 	 */
-	public boolean eliminarLugar(String codigo) throws NoEliminadoException 
+	public boolean eliminarLugar(String codigo) throws NoEliminadoException
 	{
 		return bienestarEstudiantil.eliminarLugar(codigo);
 	}
-	
+
 	/**
 	 * Método que permite obtener la lista de lugares
 	 * @return lstLugares
