@@ -290,4 +290,9 @@ public class Aplicacion extends Application {
 	{
 		return bienestarEstudiantil.getLstLugares();
 	}
+
+	public void guardarDatosRespaldo() 
+	{
+		BienestarEstudiantil.guardarDatosRespaldo();
+	}
 }

@@ -1,5 +1,6 @@
 package co.uniquindio.proyectoFinalGrupo1.model;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -154,64 +155,16 @@ public class BienestarEstudiantil
 	 */
 	private void inicializarDatos()
 	{
-		administrador = new Administrador();
-		administrador.setNombre("Orlando Narvaez Baracaldo");
-		administrador.setDocumento("1007890675");
-		administrador.setTipoDocumento("CC");
-		administrador.setEdad(21);
-		administrador.setUsuario("admin");
-		administrador.setContrasena("1234");
-
-		Estudiante estudiante = new Estudiante();
-		estudiante.setNombre("Juan Camilo Ramos R.");
-		estudiante.setDocumento("1005308685");
-		estudiante.setEdad(21);
-		estudiante.setTipoDocumento("CC");
-		estudiante.setUsuario("juanramos");
-		estudiante.setContrasena("1234");
-
-
-		lstEstudiantes.add(estudiante);
-
-
-		estudiante = new Estudiante();
-		estudiante.setNombre("Alejandra Toro C.");
-		estudiante.setDocumento("1007609899");
-		estudiante.setEdad(21);
-		estudiante.setTipoDocumento("CC");
-		estudiante.setUsuario("aletoro");
-		estudiante.setContrasena("1234");
-
-		lstEstudiantes.add(estudiante);
-		//persistencia.guardarDatosEstudiantesXML(lstEstudiantes);
-
-		Instructor instructor = new Instructor();
-		instructor.setNombre("Omar Yair Agudelo Amado");
-		instructor.setDocumento("123456789");
-		instructor.setTipoDocumento("CC");
-		instructor.setAsignatura("Programación");
-		instructor.setUsuario("omagudelo");
-		instructor.setContrasena("1234");
-
-		lstInstructores.add(instructor);
-
-		Lugar lugar = new Lugar();
-		lugar.setNombre("Bloque Ingeniería");
-		lugar.setCodigo("01");
-
-		lstLugares.add(lugar);
-
-		lugar = new Lugar();
-		lugar.setNombre("Bloque Ciencias Básicas");
-		lugar.setCodigo("02");
-
-		lstLugares.add(lugar);
-
-		lugar = new Lugar();
-		lugar.setNombre("Bloque Ciencias Económicas");
-		lugar.setCodigo("03");
-
-		lstLugares.add(lugar);
+		administrador = (Administrador) Persistencia.cargarDatosXML(Persistencia.RUTA_ARCHIVO_MODELO_ADMINISTRADOR_XML);
+		
+		lstEstudiantes.add((Estudiante) Persistencia.cargarDatosXML(Persistencia.RUTA_ARCHIVO_MODELO_ESTUDIANTE_XML));
+		
+		lstInstructores.add((Instructor) Persistencia.cargarDatosXML(Persistencia.RUTA_ARCHIVO_MODELO_INSTRUCTOR_XML));
+		
+		lstLugares.add((Lugar) Persistencia.cargarDatosXML(Persistencia.RUTA_ARCHIVO_MODELO_LUGARES_XML));
+		
+		lstHorarios.add((Horario) Persistencia.cargarDatosXML(Persistencia.RUTA_ARCHIVO_MODELO_HORARIOS_XML));
+		
 	}
 
 	/**
@@ -296,7 +249,6 @@ public class BienestarEstudiantil
 
 				lstEstudiantes.add(estudiante);
 				Persistencia.guardarEstudiantes(lstEstudiantes);
-				Persistencia.guardarDatosEstudiantesXML(estudiante);
 
 				return estudiante;
 		}
@@ -611,6 +563,23 @@ public class BienestarEstudiantil
 			}
 		}
 		return null;
+	}
+
+	public static void guardarDatosRespaldo() 
+	{
+		File carpeta = new File(Persistencia.RUTA_RECURSOS);
+		
+		if(carpeta != null && carpeta.listFiles().length > 0)
+		{
+			for (File file : carpeta.listFiles()) 
+			{
+				if(file.getName().contains(".xml") || (file.getName().contains(".txt") && !file.getName().toLowerCase().contains("log")))
+				{
+					Persistencia.guardarArchivoRespaldo(file);
+				}
+			}
+		}
+		
 	}
 
 

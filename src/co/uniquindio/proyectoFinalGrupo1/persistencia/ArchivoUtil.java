@@ -2,11 +2,15 @@ package co.uniquindio.proyectoFinalGrupo1.persistencia;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.FileHandler;
 import java.util.logging.Level;
@@ -16,6 +20,27 @@ import java.util.logging.SimpleFormatter;
 public class ArchivoUtil
 {
 	static String fechaSistema = "";
+	
+	/**
+	 * ESte metodo retorna el contendio del archivo ubicado en una ruta,con la lista de cadenas.
+	 * @param ruta
+	 * @return
+	 * @throws IOException
+	 */
+	public static ArrayList<String> leerArchivo(String ruta) throws IOException {
+
+		ArrayList<String>  contenido = new ArrayList<String>();
+		FileReader fr=new FileReader(ruta);
+		BufferedReader bfr=new BufferedReader(fr);
+		String linea="";
+		while((linea = bfr.readLine())!=null) 
+		{
+			contenido.add(linea);
+		}
+		bfr.close();
+		fr.close();
+		return contenido;
+	}
 
 	/**
 	 * Este metodo encargado de registrar los archivos logs
@@ -138,5 +163,39 @@ public class ArchivoUtil
 		codificadorXML.writeObject(objeto);
 		codificadorXML.close();
 
+	}
+
+	public static void guardarDatosRespaldo(File file, String rutaRecursos, String rutaRespaldo) throws IOException
+	{
+		String nuevoContenido = " ";
+		String extension = obtenerExtension(file.getName());
+		String nuevoNombre = rutaRespaldo + file.getName().substring(0, file.getName().lastIndexOf('.'));         
+		cargarFechaSistema();
+		nuevoNombre += "_" + fechaSistema + '.' + extension;
+		
+		FileWriter fw=new FileWriter(nuevoNombre, true);
+		FileReader fr=new FileReader(nuevoNombre);
+		ArrayList<String> contenido = leerArchivo(rutaRecursos + file.getName());
+		
+		for (String cadena : contenido) 
+		{
+			nuevoContenido += cadena + "\n";
+			
+		}
+		
+		fw.write(nuevoContenido);
+		fw.flush();
+	
+	}
+	
+	public static String obtenerExtension(String fileName)
+	{
+		String extension = "";
+
+		int i = fileName.lastIndexOf('.');
+		if (i > 0) 
+		    extension = fileName.substring(i+1);
+		    
+		return extension;
 	}
 }

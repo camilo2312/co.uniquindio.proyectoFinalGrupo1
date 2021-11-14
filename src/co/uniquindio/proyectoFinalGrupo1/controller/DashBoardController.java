@@ -216,6 +216,9 @@ public class DashBoardController implements Initializable
 	 */
     private void cerrarSesion()
     {
+    	aplicacion.guardarDatosRespaldo();
     	aplicacion.mostrarVentanaLogin();
     }
+    
+    
 }
