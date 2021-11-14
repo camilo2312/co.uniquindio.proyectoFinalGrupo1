@@ -23,10 +23,6 @@ public class Persistencia
      * Métodos que permite guardar los registros logs de los estudiante
      * por medio de un .txt
      */
-<<<<<<< HEAD
-
-=======
->>>>>>> cb5ae190e5e6da7bcbff28ef1465db44b129be98
 	public static void guardaRegistroLogEstudiante(String mensajeLog, int nivel, String accion)
 	{
 		ArchivoUtil.guardarRegistroLog(mensajeLog, nivel, accion, RUTA_ARCHIVO_LOG_ESTUDIANTE);

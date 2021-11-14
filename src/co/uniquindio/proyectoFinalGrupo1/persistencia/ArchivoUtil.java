@@ -16,9 +16,7 @@ import java.util.logging.SimpleFormatter;
 public class ArchivoUtil
 {
 	static String fechaSistema = "";
-<<<<<<< HEAD
 
-	
 	/**
 	 * Este metodo encargado de registrar los archivos logs
 	 * @param mensajeLog
@@ -26,8 +24,6 @@ public class ArchivoUtil
 	 * @param accion
 	 * @param rutaArchivo
 	 */
-=======
->>>>>>> cb5ae190e5e6da7bcbff28ef1465db44b129be98
 	public static void guardarRegistroLog(String mensajeLog, int nivel, String accion, String rutaArchivo)
 	{
 		Logger LOGGER = Logger.getLogger(accion);
@@ -71,15 +67,10 @@ public class ArchivoUtil
 
 	}
 
-<<<<<<< HEAD
-
-	private static void cargarFechaSistema() 
-=======
 	/**
 	 * Este metodo encargado cargar la fecha y hora
 	 */
 	private static void cargarFechaSistema()
->>>>>>> cb5ae190e5e6da7bcbff28ef1465db44b129be98
 	{
 		String diaN = "";
 		String mesN = "";
