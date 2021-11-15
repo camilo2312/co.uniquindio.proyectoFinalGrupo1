@@ -9,6 +9,7 @@ import co.uniquindio.proyectoFinalGrupo1.Aplicacion;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoActualizadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoCreadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoEliminadoException;
+import co.uniquindio.proyectoFinalGrupo1.model.Dias;
 import co.uniquindio.proyectoFinalGrupo1.model.Horario;
 import co.uniquindio.proyectoFinalGrupo1.persistencia.Persistencia;
 import javafx.fxml.Initializable;
@@ -27,6 +28,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+
 
 
 public class GestionHorarioController implements Initializable 
@@ -57,7 +59,7 @@ public class GestionHorarioController implements Initializable
 	    private TextField txtDia;
 
 	    @FXML
-	    private ComboBox<String> comboBoxDia;
+	    private ComboBox<Dias> comboBoxDia;
 
 	    @FXML
 	    private Button btnEliminar;
@@ -85,22 +87,22 @@ public class GestionHorarioController implements Initializable
 
 	    @FXML
 	    void nuevoAction(ActionEvent event) {
-
+	    	limpiarFormulario();
 	    }
 
 	    @FXML
 	    void agregarAction(ActionEvent event) {
-
+	    	agregarHorario();
 	    }
 
 	    @FXML
 	    void actualizarAction(ActionEvent event) {
-
+	    	actualizarHorario();
 	    }
 
 	    @FXML
 	    void eliminarAction(ActionEvent event) {
-
+	    	eliminarHorario();
 	    }
 	    
 	   
@@ -113,8 +115,8 @@ public class GestionHorarioController implements Initializable
 		public void initialize(URL arg0, ResourceBundle arg1) 
 		{
 			comboBoxDia.getItems().clear();
-			comboBoxDia.getItems().addAll("LUNES", "MARTES","MIERCOLES","JUEVES","VIERNES");
-		
+			comboBoxDia.getItems().addAll();                                                                                                            
+			
 			this.columnCodigoH.setCellValueFactory(new PropertyValueFactory<>("code"));
 			this.columnIni.setCellValueFactory(new PropertyValueFactory<>("horaInicio"));
 			this.columnFin.setCellValueFactory(new PropertyValueFactory<>("horaFinal"));
@@ -151,11 +153,8 @@ public class GestionHorarioController implements Initializable
 					{
 						return true;
 					}
-					else if (horario.getDia().toString().toLowerCase().contains(lowerCaseFilter))
-					{
-						return true;
-					}
 					return false;
+					
 				});
 			});		
 		}
@@ -173,7 +172,7 @@ public class GestionHorarioController implements Initializable
 				txtCodigoH.setText(horarioSeleccionado.getCode());
 				txtHoraIni.setText(horarioSeleccionado.getHoraInicio());
 				txtHoraFin.setText(horarioSeleccionado.getHoraFinal());
-			  comboBoxDia.setValue (horarioSeleccionado.getDia());
+			    comboBoxDia.setValue(horarioSeleccionado.getDia());
 			}
 			
 		}
@@ -190,16 +189,12 @@ public class GestionHorarioController implements Initializable
 	    		String code = txtCodigoH.getText();
 	    		String horaInicio = txtHoraIni.getText();
 	    		String horaFinal = txtHoraFin.getText();
-	    		Dia dia = txtDia.getText();
+	    		Dias dia = comboBoxDia.getValue();
 
 	    		try
 	    		{
-	    			try {
 	    				horario = aplicacion.agregarHorario(code,horaInicio,horaFinal,dia);
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+					
 
 	    			if(horario != null)
 	        		{
@@ -213,7 +208,11 @@ public class GestionHorarioController implements Initializable
 					mostrarMensaje("Agregar datos", "Datos no agregados", "El horario con el código "+ code  + " de la clase horario ya existe",
 							AlertType.INFORMATION);
 					e.printStackTrace();
-					Persistencia.guardaRegistroLogLugar("Se genero un NoCreadoException en agregarHorario",2,"NoCreadoException");;
+					Persistencia.guardaRegistroLogHorario("Se genero un NoCreadoException en agregarHorario",2,"NoCreadoException");;
+				}
+	    		catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
 			}
 		}
@@ -234,7 +233,7 @@ public class GestionHorarioController implements Initializable
 					String codigoActual = horarioSeleccionado.getCode();
 		    		String horaInicio = txtHoraIni.getText();
 		    		String horaFinal = txtHoraFin.getText();
-		    		Dias dia = txtDia.getText();
+		    		Dias dia = comboBoxDia.getValue();
 					try 
 					{
 						actualizado = aplicacion.actualizarHorario( code, codigoActual,horaInicio,horaFinal,dia);
@@ -251,7 +250,7 @@ public class GestionHorarioController implements Initializable
 						mostrarMensaje("Actualizar registro", "Actualizar horario", "No se pudo actualizar el horario",
 								AlertType.WARNING);
 						e.printStackTrace();
-						Persistencia.guardaRegistroLogLugar( "código "+"Hora inicio" + horaInicio + "Hora final" + horaFinal + "Dia" + dia +  code, 2, "NoActualizadoException");;
+						Persistencia.guardaRegistroLogHorario( "código "+"Hora inicio" + horaInicio + "Hora final" + horaFinal + "Dia" + dia +  code, 2, "NoActualizadoException");;
 						
 					}
 				
@@ -273,9 +272,6 @@ public class GestionHorarioController implements Initializable
 				try
 				{
 					String code = txtCodigoH.getText();
-		    		String horaInicio = txtHoraIni.getText();
-		    		String horaFinal = txtHoraFin.getText();
-		    		Dias dia = txtDia.getText();
 		    		
 					if(horarioSeleccionado != null)
 					{
@@ -291,7 +287,7 @@ public class GestionHorarioController implements Initializable
 								limpiarFormulario();
 								mostrarMensaje("Eliminar registro", "Eliminar horario", "Registro eliminado correctamente",
 										AlertType.INFORMATION);
-								Persistencia.guardaRegistroLogLugar(" código "+ code ,3, "Se elimina un horario");
+								Persistencia.guardaRegistroLogHorario(" código "+ code ,3, "Se elimina un horario");
 							}
 						}
 					}
@@ -304,7 +300,7 @@ public class GestionHorarioController implements Initializable
 				{
 					mostrarMensaje("Eliminar registro", "", "El horario no existe", AlertType.WARNING);
 					e.printStackTrace();
-					Persistencia.guardaRegistroLogLugar("Se intento eliminar un horario que no existe", 1, "NoEliminadoException");
+					Persistencia.guardaRegistroLogHorario("Se intento eliminar un horario que no existe", 1, "NoEliminadoException");
 					
 				}
 			}
@@ -318,7 +314,7 @@ public class GestionHorarioController implements Initializable
 			txtCodigoH.clear();
 			txtHoraIni.clear();
 			txtHoraFin.clear();
-			txtDia.clear();
+			comboBoxDia.getSelectionModel().clearSelection();
 			
 		}
 	    
@@ -340,7 +336,7 @@ public class GestionHorarioController implements Initializable
 				mensaje += "El campo código es inválido \n";
 			if(txtHoraFin == null || txtHoraFin.getText().trim().equals(""))
 				mensaje += "El campo código es inválido \n";
-			if(txtDia == null || txtDia.getText().trim().equals(""))
+			if(comboBoxDia.getValue() == null || comboBoxDia.getValue().toString().trim().equals(""))
 				mensaje += "El campo código es inválido \n";
 
 			if(mensaje.equals(""))

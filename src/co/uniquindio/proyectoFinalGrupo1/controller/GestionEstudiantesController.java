@@ -244,9 +244,6 @@ public class GestionEstudiantesController implements Initializable
 	    		String contrasena = txtContrasena.getText();
 				try
 				{
-<<<<<<< HEAD
-
-				
 
 		    		actualizado = aplicacion.actualizarEstudiante(documentoActual, documento, nombre, tipoDocumento, edad, usuario, contrasena);
 
@@ -261,27 +258,7 @@ public class GestionEstudiantesController implements Initializable
 			    		}		    			
 
 				}
-				
-				 catch (NoActualizadoException e)
-
-=======
-
-		    		actualizado = aplicacion.actualizarEstudiante(documentoActual, documento, nombre, tipoDocumento, edad, usuario, contrasena);
-
-		    		if(actualizado)
-		    		{
-		    			tableEstudiantes.refresh();
-		    			limpiarFormulario();
-		    			mostrarMensaje("Actualizar registro", "Datos guardados",
-								"El registro ha sido actualizado correctamente", AlertType.INFORMATION);
-
-
-		    			Persistencia.guardaRegistroLogEstudiante("Nombre:"+nombre+" identificación "+documento,1,"Se actualiza un estudiante");
-		    		}
-				}
-
 				catch (NoActualizadoException e)
->>>>>>> 17f21099f42244814ac1e1dd24c62288a7900b0f
 				{
 					mostrarMensaje("Actualizar registro", "Actualizar Estudiante", "No se pudo actualizar el estudiante",
 							AlertType.WARNING);

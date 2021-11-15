@@ -1,4 +1,0 @@
-nov 12, 2021 11:37:49 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
-ADVERTENCIA: UsuarioExisteException,Nombre:Alejandra Toro C. identificación 1007609899,2021-11-12-11-37
-nov 14, 2021 11:03:42 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
-ADVERTENCIA: UsuarioExisteException,Nombre:Juan Camilo Ramos R. identificación 1005308685,2021-11-14-11-3

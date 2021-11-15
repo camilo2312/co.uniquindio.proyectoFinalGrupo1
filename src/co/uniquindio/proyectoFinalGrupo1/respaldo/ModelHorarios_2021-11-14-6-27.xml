@@ -1,8 +1,8 @@
- <?xml version="1.0" encoding="UTF-8"?>
+  <?xml version="1.0" encoding="UTF-8"?>
 <java version="1.8.0_291" class="java.beans.XMLDecoder">
  <object class="co.uniquindio.proyectoFinalGrupo1.model.Horario">
   <void property="code">
-   <int>1</int>
+   <string>1</string>
   </void>
   <void property="dia">
    <object class="java.lang.Enum" method="valueOf">

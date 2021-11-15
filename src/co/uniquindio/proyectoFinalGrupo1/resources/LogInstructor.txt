@@ -1,4 +1,2 @@
-nov 12, 2021 12:07:41 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
-ADVERTENCIA: IOException,Se genero un IOExeption en agregarInstructor,2021-11-12-0-7
-nov 13, 2021 3:18:33 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
-ADVERTENCIA: IOException,Se genero un IOExeption en agregarInstructor,2021-11-13-3-18
+nov 14, 2021 6:26:23 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: IOException,Se genero un IOExeption en agregarInstructor,2021-11-14-6-26
