@@ -156,15 +156,15 @@ public class BienestarEstudiantil
 	private void inicializarDatos()
 	{
 		administrador = (Administrador) Persistencia.cargarDatosXML(Persistencia.RUTA_ARCHIVO_MODELO_ADMINISTRADOR_XML);
-		
+
 		lstEstudiantes.add((Estudiante) Persistencia.cargarDatosXML(Persistencia.RUTA_ARCHIVO_MODELO_ESTUDIANTE_XML));
-		
+
 		lstInstructores.add((Instructor) Persistencia.cargarDatosXML(Persistencia.RUTA_ARCHIVO_MODELO_INSTRUCTOR_XML));
-		
+
 		lstLugares.add((Lugar) Persistencia.cargarDatosXML(Persistencia.RUTA_ARCHIVO_MODELO_LUGARES_XML));
-		
+
 		lstHorarios.add((Horario) Persistencia.cargarDatosXML(Persistencia.RUTA_ARCHIVO_MODELO_HORARIOS_XML));
-	
+
 	}
 
 	/**
@@ -488,14 +488,14 @@ public class BienestarEstudiantil
 			horario.setHoraInicio(horaIni);
 			horario.setHoraFinal(horaFin);
 			horario.setDia(dia);
-			
+
 			lstHorarios.add(horario);
 			Persistencia.guardarHorario(lstHorarios);
 
 			return horario;
 		}
 	}
-	
+
 	/**
 	 * Método que permite actualizar un Horario
 	 * @param documentoActual
@@ -504,8 +504,8 @@ public class BienestarEstudiantil
 	 * @return actualizado
 	 * @throws NoActualizadoException
 	 */
-	
-	public boolean actualizarHorario(String code,String CodigoActual,String horaIni,String horaFin, Dias dia) throws NoActualizadoException  
+
+	public boolean actualizarHorario(String code,String CodigoActual,String horaIni,String horaFin, Dias dia) throws NoActualizadoException
 	{
 		boolean actualizado = false;
 		Horario horario = obtenerHorario(CodigoActual);
@@ -526,10 +526,10 @@ public class BienestarEstudiantil
 
 		return actualizado;
 	}
-	
-	public boolean eliminarHorario(String code) throws NoEliminadoException 
+
+	public boolean eliminarHorario(String code) throws NoEliminadoException
 	{
-	
+
 		boolean eliminado = false;
 		Horario horario = obtenerHorario(code);
 
@@ -544,9 +544,9 @@ public class BienestarEstudiantil
 			eliminado = true;
 		}
 
-		return eliminado;		
+		return eliminado;
 	}
-	
+
 	/**
 	 * Método que permite agregar a un lugar
 	 * @param nombre
@@ -572,7 +572,7 @@ public class BienestarEstudiantil
 			return lugar;
 		}
 	}
-	
+
 	/**
 	 * Método que permite actualizar un lugar
 	 * @param documentoActual
@@ -601,8 +601,8 @@ public class BienestarEstudiantil
 		return actualizado;
 	}
 
-	
-	
+
+
 	/**
 	 * Método que permite eliminar un lugar
 	 * @param codigo
@@ -627,7 +627,7 @@ public class BienestarEstudiantil
 
 		return eliminado;
 	}
-	
+
 	/**
 	 * Método que permite obtener un lugar por su
 	 * codigo
@@ -652,7 +652,7 @@ public class BienestarEstudiantil
 	 * @param codigo
 	 * @return instructor
 	 */
-	
+
 	private Horario obtenerHorario(String codigo)
 	{
 		for (Horario horario : lstHorarios)
@@ -665,13 +665,17 @@ public class BienestarEstudiantil
 		return null;
 	}
 
-	public static void guardarDatosRespaldo() 
+	/**
+	 * Método que permite guardar
+	 * los datos de respaldo de la aplicación
+	 */
+	public void guardarDatosRespaldo()
 	{
 		File carpeta = new File(Persistencia.RUTA_RECURSOS);
-		
+
 		if(carpeta != null && carpeta.listFiles().length > 0)
 		{
-			for (File file : carpeta.listFiles()) 
+			for (File file : carpeta.listFiles())
 			{
 				if(file.getName().contains(".xml") || (file.getName().contains(".txt") && !file.getName().toLowerCase().contains("log")))
 				{
@@ -679,7 +683,25 @@ public class BienestarEstudiantil
 				}
 			}
 		}
-		
+
+	}
+
+	/**
+	 * Método que permite obtener la lista de días de
+	 * los horarios
+	 * @return
+	 */
+	public ArrayList<Dias> obtenerListaDiasData()
+	{
+		ArrayList<Dias> lstDias = new ArrayList<>();
+
+		lstDias.add(Dias.LUNES);
+		lstDias.add(Dias.MARTES);
+		lstDias.add(Dias.MIERCOLES);
+		lstDias.add(Dias.JUEVES);
+		lstDias.add(Dias.VIERNES);
+
+		return lstDias;
 	}
 
 }

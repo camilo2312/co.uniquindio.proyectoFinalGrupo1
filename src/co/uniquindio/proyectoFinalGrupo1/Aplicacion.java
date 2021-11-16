@@ -259,7 +259,7 @@ public class Aplicacion extends Application {
 	{
 		return bienestarEstudiantil.agregarLugar(nombre, codigo);
 	}
-	
+
 	/**
 	 * Método que permite actualizar in lugar
 	 * @param documentoActual
@@ -272,32 +272,32 @@ public class Aplicacion extends Application {
 	{
 		return bienestarEstudiantil.actualizarLugar(nombre, codigo, codigoActual);
 	}
-	
+
 	/**
 	 * Método que permite eliminar un lugar
 	 * @param codigo
 	 * @return eliminado
 	 * @throws NoEliminadoException
-	 * 
+	 *
 	 */
 	public boolean eliminarLugar(String codigo) throws NoEliminadoException
 	{
 		return bienestarEstudiantil.eliminarLugar(codigo);
 	}
-	
+
 	/**
 	 * Método que permite agregar un horario a la lista
 	 * @param horaIni,horaFin,dia
 	 * @param code
 	 * @throws UsuarioExisteException
-	 * @throws IOException 
+	 * @throws IOException
 	 */
-	
-	public Horario agregarHorario(String code, String horaIni, String horaFin, Dias dia) throws IOException, NoCreadoException 
+
+	public Horario agregarHorario(String code, String horaIni, String horaFin, Dias dia) throws IOException, NoCreadoException
 	{
 		return bienestarEstudiantil.agregarHorario(code, horaIni, horaFin, dia);
 	}
-	
+
 	/**
 	 * Método que permite actualizar in lugar
 	 * @param documentoActual
@@ -306,9 +306,9 @@ public class Aplicacion extends Application {
 	 * @return actualizado
 	 * @throws NoActualizadoException
 	 */
-	public boolean actualizarHorario( String code, String codigoActual, String horaIni,String horaFin, Dias dia) throws NoActualizadoException 
+	public boolean actualizarHorario( String code, String codigoActual, String horaIni,String horaFin, Dias dia) throws NoActualizadoException
 	{
-		return bienestarEstudiantil.actualizarHorario(code, codigoActual, horaIni,horaFin,dia);                                                                   
+		return bienestarEstudiantil.actualizarHorario(code, codigoActual, horaIni,horaFin,dia);
 	}
 
 	/**
@@ -320,10 +320,10 @@ public class Aplicacion extends Application {
 
 	public boolean eliminarHorario(String code) throws NoEliminadoException
 	{
-		
+
 		return bienestarEstudiantil.eliminarHorario(code);
 	}
-	
+
 	/**
 	 * Método que permite obtener la lista de lugares
 	 * @return lstLugares
@@ -332,19 +332,32 @@ public class Aplicacion extends Application {
 	{
 		return bienestarEstudiantil.getLstLugares();
 	}
-	
+
 	/**
 	 * Método que permite obtener la lista de Horarios
 	 * @return lstHorario
 	 */
-	
 	public ArrayList<Horario> obtenerListaHorarioData()
 	{
 		return bienestarEstudiantil.getLstHorarios();
 	}
 
-	public void guardarDatosRespaldo() 
+	/**
+	 * Método que permite guardar los datos
+	 * de respaldo de la aplicación
+	 */
+	public void guardarDatosRespaldo()
 	{
-		BienestarEstudiantil.guardarDatosRespaldo();
+		bienestarEstudiantil.guardarDatosRespaldo();
+	}
+
+	/**
+	 * Método que permite obtener la lista de días de los
+	 * horarios
+	 * @return lstDias
+	 */
+	public ArrayList<Dias> obtenerListaDiasData()
+	{
+		return bienestarEstudiantil.obtenerListaDiasData();
 	}
 }

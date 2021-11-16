@@ -143,7 +143,14 @@ public class ArchivoUtil
 		fw.close();
 	}
 
-	public static Object cargarRecursoSerializadoXML(String rutaArchivo) throws IOException {
+	/**
+	 * Método que permite cargar un recorso serializado XML
+	 * @param rutaArchivo
+	 * @return
+	 * @throws IOException
+	 */
+	public static Object cargarRecursoSerializadoXML(String rutaArchivo) throws IOException
+	{
 
 		XMLDecoder decodificadorXML;
 		Object objetoXML;
@@ -155,7 +162,14 @@ public class ArchivoUtil
 
 	}
 
-	public static void salvarRecursoSerializadoXML(String rutaArchivo, Object objeto) throws IOException {
+	/**
+	 * Métodp que permite salvar el recurso de XML
+	 * @param rutaArchivo
+	 * @param objeto
+	 * @throws IOException
+	 */
+	public static void salvarRecursoSerializadoXML(String rutaArchivo, Object objeto) throws IOException
+	{
 
 		XMLEncoder codificadorXML;
 
@@ -165,6 +179,14 @@ public class ArchivoUtil
 
 	}
 
+	/**
+	 * Método que permite guardar los datos de respaldo en la aplicación
+	 * en la carpeta de respaldo
+	 * @param file
+	 * @param rutaRecursos
+	 * @param rutaRespaldo
+	 * @throws IOException
+	 */
 	public static void guardarDatosRespaldo(File file, String rutaRecursos, String rutaRespaldo) throws IOException
 	{
 		cargarFechaSistema();
@@ -188,6 +210,11 @@ public class ArchivoUtil
 
 	}
 
+	/**
+	 * Método que permite obtener la extensión de un nombre de archivo
+	 * @param fileName
+	 * @return extension;
+	 */
 	public static String obtenerExtension(String fileName)
 	{
 		String extension = "";
