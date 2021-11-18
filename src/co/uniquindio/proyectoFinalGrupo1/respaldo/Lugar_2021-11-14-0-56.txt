@@ -1,4 +1,0 @@
- Bloque Ingeniería,01
-Bloque Ciencias Básicas,02
-Bloque Ciencias Económicas,03
-Bloque Ciencias Económicas,0366

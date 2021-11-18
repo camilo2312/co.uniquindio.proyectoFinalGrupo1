@@ -30,6 +30,7 @@ public class DashBoardController implements Initializable
 	private GestionEstudiantesController gestionEstudiantesController;
 	private GestionInstructoresController gestionInstructoresController;
 	private GestionLugaresController gestionLugaresController;
+	private GestionHorarioController GestionHorarioController;
 	private InicioController inicioController;
 
 	@FXML
@@ -96,8 +97,9 @@ public class DashBoardController implements Initializable
     }
 
     @FXML
-    void gestionHorariosAction(ActionEvent event) {
-
+    void gestionHorariosAction(ActionEvent event) 
+    {
+    	abrirVentana(NombreVentana.GESTION_HORARIOS);
     }
 
     @FXML
@@ -199,6 +201,13 @@ public class DashBoardController implements Initializable
 				anchorPanePrincipal.getChildren().setAll(vistaCargada);
 				this.gestionLugaresController = loader.getController();
 				this.gestionLugaresController.setAplicacion(this.aplicacion);;
+				break;
+			case GESTION_HORARIOS:
+				loader.setLocation(getClass().getResource("../view/GestionHorarioView.fxml"));                                                                   
+				vistaCargada = loader.load();
+				anchorPanePrincipal.getChildren().setAll(vistaCargada);
+				this.GestionHorarioController = loader.getController();
+				this.GestionHorarioController.setAplicacion(this.aplicacion);;
 				break;
 			default:
 				break;
