@@ -173,7 +173,7 @@ public class GestionHorarioController implements Initializable
 				txtCodigoH.setText(horarioSeleccionado.getCode());
 				txtHoraIni.setText(horarioSeleccionado.getHoraInicio());
 				txtHoraFin.setText(horarioSeleccionado.getHoraFinal());
-			  comboBoxDia.setValue (horarioSeleccionado.getDia());
+			  comboBoxDia.setValue (horarioSeleccionado.getDias());
 			}
 			
 		}
@@ -190,7 +190,7 @@ public class GestionHorarioController implements Initializable
 	    		String code = txtCodigoH.getText();
 	    		String horaInicio = txtHoraIni.getText();
 	    		String horaFinal = txtHoraFin.getText();
-	    		Dia dia = txtDia.getText();
+	    		String  dia = txtDia.getText();
 
 	    		try
 	    		{
