@@ -185,42 +185,36 @@ public class GestionHorarioController implements Initializable
 		Horario horario = null;
 		if(camposValidos())
 		{
-<<<<<<< HEAD
 			if(horarioSeleccionado != null)
 			{
-				txtCodigoH.setText(horarioSeleccionado.getCode());
-				txtHoraIni.setText(horarioSeleccionado.getHoraInicio());
-				txtHoraFin.setText(horarioSeleccionado.getHoraFinal());
-			  comboBoxDia.setValue (horarioSeleccionado.getDias());
-=======
-    		String code = txtCodigoH.getText();
-    		String horaInicio = txtHoraIni.getText();
-    		String horaFinal = txtHoraFin.getText();
-    		Dias dia = comboBoxDia.getValue();
+				String code = txtCodigoH.getText();
+				String horaIni = txtHoraIni.getText();
+				String horaFin = txtHoraFin.getText();
+				Dias dia = comboBoxDia.getValue();
 
-    		try
-    		{
-    				horario = aplicacion.agregarHorario(code,horaInicio,horaFinal,dia);
-
-
-    			if(horario != null)
-        		{
-        			lstHorarioData.add(horario);
-        			limpiarFormulario();
-            		mostrarMensaje("Almacenar registro", "Datos guardados", "El registro ha sido almacenado correctamente", AlertType.INFORMATION);
-        		}
-			}
-    		catch (NoCreadoException e)
-    		{
-				mostrarMensaje("Agregar datos", "Datos no agregados", "El horario con el código "+ code  + " de la clase horario ya existe",
+				try
+				{
+					horario = aplicacion.agregarHorario(code, horaIni, horaFin, dia);
+    				
+					if(horario != null)
+					{
+						lstHorarioData.add(horario);
+						limpiarFormulario();
+						mostrarMensaje("Almacenar registro", "Datos guardados", "El registro ha sido almacenado correctamente", AlertType.INFORMATION);
+					}
+				}
+				catch (NoCreadoException e)
+				{
+					mostrarMensaje("Agregar datos", "Datos no agregados", "El horario con el código "+ code  + " de la clase horario ya existe",
 						AlertType.INFORMATION);
-				e.printStackTrace();
-				Persistencia.guardaRegistroLogHorario("Se genero un NoCreadoException en agregarHorario",2,"NoCreadoException");;
-			}
-    		catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
->>>>>>> 5bd50abeb2ff1eb3c24989f6a56fd8ed396ccede
+					e.printStackTrace();
+					Persistencia.guardaRegistroLogHorario("Se genero un NoCreadoException en agregarHorario",2,"NoCreadoException");;
+				}
+				catch (IOException e) 
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 	}
@@ -241,26 +235,8 @@ public class GestionHorarioController implements Initializable
 				String codigoActual = horarioSeleccionado.getCode();
 	    		String horaInicio = txtHoraIni.getText();
 	    		String horaFinal = txtHoraFin.getText();
-<<<<<<< HEAD
-	    		String  dia = txtDia.getText();
-
-	    		try
-	    		{
-	    			try {
-	    				horario = aplicacion.agregarHorario(code,horaInicio,horaFinal,dia);
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-
-	    			if(horario != null)
-	        		{
-	        			lstHorarioData.add(horario);
-	        			limpiarFormulario();
-	            		mostrarMensaje("Almacenar registro", "Datos guardados", "El registro ha sido almacenado correctamente", AlertType.INFORMATION);
-	        		}
-=======
-	    		Dias dia = comboBoxDia.getValue();
+	    		Dias  dia = comboBoxDia.getValue();;
+	    		
 				try
 				{
 					actualizado = aplicacion.actualizarHorario( code, codigoActual,horaInicio,horaFinal,dia);
@@ -272,7 +248,6 @@ public class GestionHorarioController implements Initializable
 		    			mostrarMensaje("Actualizar registro", "Datos guardados",
 								"El registro ha sido actualizado correctamente", AlertType.INFORMATION);
 		    		}
->>>>>>> 5bd50abeb2ff1eb3c24989f6a56fd8ed396ccede
 				}
 				catch (NoActualizadoException e)
 				{
@@ -282,6 +257,7 @@ public class GestionHorarioController implements Initializable
 					Persistencia.guardaRegistroLogHorario( "código "+"Hora inicio" + horaInicio + "Hora final" + horaFinal + "Dia" + dia +  code, 2, "NoActualizadoException");;
 
 				}
+	    		
 
 			}
 		}
