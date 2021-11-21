@@ -1,2 +1,0 @@
-Bloque Ingeniería,01
-Bloque Ciencias Basicas,02

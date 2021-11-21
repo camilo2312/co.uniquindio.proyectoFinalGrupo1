@@ -1,4 +1,6 @@
-nov 16, 2021 12:44:02 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
-INFORMACIÓN: Se agrega un estudiante,Nombre:Chacho Baracaldo identificación 1094978017,2021-11-16-0-44
-nov 20, 2021 11:03:26 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
-ADVERTENCIA: UsuarioExisteException,Nombre:Alejandra Toro C. identificación 1007609899,2021-11-20-11-3
+nov 20, 2021 9:00:11 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un estudiante,Nombre:Jose Martinez identificación 13566356774,2021-11-20-9-0
+nov 20, 2021 9:00:49 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: UsuarioExisteException,Nombre:Alejandra Toro C. identificación 1007609899,2021-11-20-9-0
+nov 20, 2021 9:01:05 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+GRAVE: Se elimina un estudiante,Nombre:Alejandra Toro C. identificación 1007609899,2021-11-20-9-1

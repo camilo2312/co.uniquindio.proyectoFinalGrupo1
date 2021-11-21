@@ -541,7 +541,7 @@ public class BienestarEstudiantil
 		}
 		else
 		{
-			lstLugares.remove(horario);
+			lstHorarios.remove(horario);
 			eliminado = true;
 		}
 

@@ -27,6 +27,6 @@ public class NoCreadoException extends Exception
 	 */
 	public NoCreadoException(String mensaje)
 	{
-
+		super(mensaje);
 	}
 }
