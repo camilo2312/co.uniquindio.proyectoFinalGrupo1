@@ -185,14 +185,7 @@ public class GestionHorarioController implements Initializable
 		Horario horario = null;
 		if(camposValidos())
 		{
-<<<<<<< HEAD
-			if(horarioSeleccionado != null)
-			{
-				txtCodigoH.setText(horarioSeleccionado.getCode());
-				txtHoraIni.setText(horarioSeleccionado.getHoraInicio());
-				txtHoraFin.setText(horarioSeleccionado.getHoraFinal());
-			  comboBoxDia.setValue (horarioSeleccionado.getDias());
-=======
+
     		String code = txtCodigoH.getText();
     		String horaInicio = txtHoraIni.getText();
     		String horaFinal = txtHoraFin.getText();
@@ -200,7 +193,7 @@ public class GestionHorarioController implements Initializable
 
     		try
     		{
-    				horario = aplicacion.agregarHorario(code,horaInicio,horaFinal,dia);
+    			horario = aplicacion.agregarHorario(code,horaInicio,horaFinal,dia);
 
 
     			if(horario != null)
@@ -217,10 +210,10 @@ public class GestionHorarioController implements Initializable
 				e.printStackTrace();
 				Persistencia.guardaRegistroLogHorario("Se genero un NoCreadoException en agregarHorario",2,"NoCreadoException");;
 			}
-    		catch (IOException e) {
+    		catch (IOException e)
+    		{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
->>>>>>> 5bd50abeb2ff1eb3c24989f6a56fd8ed396ccede
 			}
 		}
 	}
@@ -236,31 +229,12 @@ public class GestionHorarioController implements Initializable
 			{
 				boolean actualizado = false;
 
-
 				String code = txtCodigoH.getText();
 				String codigoActual = horarioSeleccionado.getCode();
 	    		String horaInicio = txtHoraIni.getText();
 	    		String horaFinal = txtHoraFin.getText();
-<<<<<<< HEAD
-	    		String  dia = txtDia.getText();
+	    		Dias  dia = comboBoxDia.getValue();
 
-	    		try
-	    		{
-	    			try {
-	    				horario = aplicacion.agregarHorario(code,horaInicio,horaFinal,dia);
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-
-	    			if(horario != null)
-	        		{
-	        			lstHorarioData.add(horario);
-	        			limpiarFormulario();
-	            		mostrarMensaje("Almacenar registro", "Datos guardados", "El registro ha sido almacenado correctamente", AlertType.INFORMATION);
-	        		}
-=======
-	    		Dias dia = comboBoxDia.getValue();
 				try
 				{
 					actualizado = aplicacion.actualizarHorario( code, codigoActual,horaInicio,horaFinal,dia);
@@ -272,7 +246,6 @@ public class GestionHorarioController implements Initializable
 		    			mostrarMensaje("Actualizar registro", "Datos guardados",
 								"El registro ha sido actualizado correctamente", AlertType.INFORMATION);
 		    		}
->>>>>>> 5bd50abeb2ff1eb3c24989f6a56fd8ed396ccede
 				}
 				catch (NoActualizadoException e)
 				{

@@ -2,8 +2,11 @@ package co.uniquindio.proyectoFinalGrupo1.model;
 
 public class CreditoDeportivo extends Credito
 {
-	double asistenciaMinima;
+	private double asistenciaMinima;
 
+	/**
+	 * Constructor de la clase
+	 */
 	public CreditoDeportivo()
 	{
 

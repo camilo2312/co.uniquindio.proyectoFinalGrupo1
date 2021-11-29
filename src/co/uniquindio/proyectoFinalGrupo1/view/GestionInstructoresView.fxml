@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="570.0" prefWidth="749.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="co.uniquindio.proyectoFinalGrupo1.controller.GestionInstructoresController">
+<AnchorPane prefHeight="576.0" prefWidth="764.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.proyectoFinalGrupo1.controller.GestionInstructoresController">
    <children>
       <Separator layoutX="39.0" layoutY="56.0" prefHeight="0.0" prefWidth="674.0" style="-fx-background-color: #2980B9;" />
       <Label layoutX="38.0" layoutY="24.0" text="Gestión Instructores">

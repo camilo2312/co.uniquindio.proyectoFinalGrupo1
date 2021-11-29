@@ -3,7 +3,7 @@ package co.uniquindio.proyectoFinalGrupo1.model;
 public class CreditoCultural extends Credito
 {
 
-	double costo;
+	private double costo;
 
 	/**
 	 * Constructor de la clase

@@ -17,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 /**
  *
@@ -34,7 +35,19 @@ public class DashBoardController implements Initializable
 	private InicioController inicioController;
 
 	@FXML
+	private VBox vBoxMenus;
+
+	@FXML
     private Button btnCreditos;
+
+	@FXML
+    private Button btnInscripcionCreditos;
+
+    @FXML
+    private Button btnAdminCreditos;
+
+    @FXML
+    private Button btnVerHorarios;
 
 	@FXML
     private Label lblNombreUsuario;
@@ -90,6 +103,18 @@ public class DashBoardController implements Initializable
 
     }
 
+	@FXML
+    void administrarCreditosAction(ActionEvent event)
+    {
+
+    }
+
+    @FXML
+    void inscripcionCreditosAction(ActionEvent event)
+    {
+
+    }
+
     @FXML
     void gestionLugaresAction(ActionEvent event)
     {
@@ -97,9 +122,15 @@ public class DashBoardController implements Initializable
     }
 
     @FXML
-    void gestionHorariosAction(ActionEvent event) 
+    void gestionHorariosAction(ActionEvent event)
     {
     	abrirVentana(NombreVentana.GESTION_HORARIOS);
+    }
+
+    @FXML
+    void verHorariosAction(ActionEvent event)
+    {
+
     }
 
     @FXML
@@ -126,9 +157,31 @@ public class DashBoardController implements Initializable
 	public void setAplicacion(Aplicacion aplicacion, TipoUsuario tipoUsuario, String nombreUsuario)
 	{
 		this.aplicacion = aplicacion;
+		habilitarDeshabilitarPermisos(tipoUsuario);
 		insertarImagenTipoUsuario(tipoUsuario, nombreUsuario);
-		abrirVentana(NombreVentana.INICIO);
 	}
+
+	private void habilitarDeshabilitarPermisos(TipoUsuario tipoUsuario)
+	{
+		switch (tipoUsuario)
+		{
+			case ADMINISTRADOR:
+				vBoxMenus.getChildren().remove(btnInscripcionCreditos);
+				abrirVentana(NombreVentana.INICIO);
+				break;
+			case ESTUDIANTE:
+			case INSTRUCTOR:
+				vBoxMenus.getChildren().remove(btnEstudiantes);
+				vBoxMenus.getChildren().remove(btnCreditos);
+				vBoxMenus.getChildren().remove(btnInstructores);
+				vBoxMenus.getChildren().remove(btnHorarios);
+				vBoxMenus.getChildren().remove(btnLugares);
+				break;
+			default:
+				break;
+		}
+	}
+
 
 	/**
 	 * Método que permite mostrar la imagen asociada al tipo
@@ -203,7 +256,7 @@ public class DashBoardController implements Initializable
 				this.gestionLugaresController.setAplicacion(this.aplicacion);;
 				break;
 			case GESTION_HORARIOS:
-				loader.setLocation(getClass().getResource("../view/GestionHorarioView.fxml"));                                                                   
+				loader.setLocation(getClass().getResource("../view/GestionHorarioView.fxml"));
 				vistaCargada = loader.load();
 				anchorPanePrincipal.getChildren().setAll(vistaCargada);
 				this.GestionHorarioController = loader.getController();
@@ -228,6 +281,6 @@ public class DashBoardController implements Initializable
     	aplicacion.guardarDatosRespaldo();
     	aplicacion.mostrarVentanaLogin();
     }
-    
-    
+
+
 }

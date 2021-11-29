@@ -3,8 +3,11 @@ package co.uniquindio.proyectoFinalGrupo1.model;
 public class CreditoAcademico extends Credito
 {
 
-	boolean homologable;
+	private boolean homologable;
 
+	/**
+	 * Constructor de la clase
+	 */
 	public CreditoAcademico()
 	{
 

@@ -8,45 +8,45 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="570.0" prefWidth="749.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.proyectoFinalGrupo1.controller.GestionLugaresController">
+<AnchorPane prefHeight="576.0" prefWidth="764.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.proyectoFinalGrupo1.controller.GestionLugaresController">
    <children>
-      <Separator layoutX="39.0" layoutY="56.0" prefHeight="0.0" prefWidth="674.0" style="-fx-background-color: #2980B9;" />
-      <Label layoutX="38.0" layoutY="24.0" text="Gestión Lugares">
+      <Separator layoutX="45.0" layoutY="56.0" prefHeight="0.0" prefWidth="674.0" style="-fx-background-color: #2980B9;" />
+      <Label layoutX="44.0" layoutY="24.0" text="Gestión Lugares">
          <font>
             <Font name="Century Gothic" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="391.0" layoutY="74.0" text="Código ">
+      <Label layoutX="397.0" layoutY="74.0" text="Código ">
          <font>
             <Font name="Century Gothic" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtCodigo" layoutX="391.0" layoutY="97.0" prefHeight="25.0" prefWidth="321.0" promptText="Documento" style="-fx-background-color: transparent; -fx-border-color: #032D49; -fx-border-width: 0px 0px 2px 0px;">
+      <TextField fx:id="txtCodigo" layoutX="397.0" layoutY="97.0" prefHeight="25.0" prefWidth="321.0" promptText="Documento" style="-fx-background-color: transparent; -fx-border-color: #032D49; -fx-border-width: 0px 0px 2px 0px;">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtNombre" layoutX="39.0" layoutY="96.0" prefHeight="25.0" prefWidth="321.0" promptText="Nombre" style="-fx-background-color: transparent; -fx-border-color: #032D49; -fx-border-width: 0px 0px 2px 0px;">
+      <TextField fx:id="txtNombre" layoutX="45.0" layoutY="96.0" prefHeight="25.0" prefWidth="321.0" promptText="Nombre" style="-fx-background-color: transparent; -fx-border-color: #032D49; -fx-border-width: 0px 0px 2px 0px;">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font>
       </TextField>
-      <Label layoutX="39.0" layoutY="73.0" text="Nombre">
+      <Label layoutX="45.0" layoutY="73.0" text="Nombre">
          <font>
             <Font name="Century Gothic" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtBuscar" layoutX="41.0" layoutY="317.0" prefHeight="25.0" prefWidth="321.0" promptText="Buscar" style="-fx-background-color: transparent; -fx-border-color: #032D49; -fx-border-width: 0px 0px 2px 0px;">
+      <TextField fx:id="txtBuscar" layoutX="47.0" layoutY="317.0" prefHeight="25.0" prefWidth="321.0" promptText="Buscar" style="-fx-background-color: transparent; -fx-border-color: #032D49; -fx-border-width: 0px 0px 2px 0px;">
          <font>
             <Font name="Century Gothic" size="12.0" />
          </font>
       </TextField>
-      <Label layoutX="40.0" layoutY="292.0" text="Buscar">
+      <Label layoutX="46.0" layoutY="292.0" text="Buscar">
          <font>
             <Font name="Century Gothic" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="btnNuevo" alignment="CENTER" layoutX="392.0" layoutY="317.0" mnemonicParsing="false" onAction="#nuevoAction" prefHeight="18.0" prefWidth="93.0" style="-fx-background-color: linear-gradient(to left, #2980B9, #032D49);" styleClass="btns-gestion-estudiantes" stylesheets="@../application.css" text="Nuevo" textFill="WHITE">
+      <Button fx:id="btnNuevo" alignment="CENTER" layoutX="398.0" layoutY="317.0" mnemonicParsing="false" onAction="#nuevoAction" prefHeight="18.0" prefWidth="93.0" style="-fx-background-color: linear-gradient(to left, #2980B9, #032D49);" styleClass="btns-gestion-estudiantes" stylesheets="@../application.css" text="Nuevo" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -61,7 +61,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnAgregar" alignment="CENTER" layoutX="493.0" layoutY="317.0" mnemonicParsing="false" onAction="#agregarAction" prefHeight="34.0" prefWidth="101.0" style="-fx-background-color: linear-gradient(to left, #2980B9, #032D49);" styleClass="btns-gestion-estudiantes" stylesheets="@../application.css" text="Agregar" textFill="WHITE">
+      <Button fx:id="btnAgregar" alignment="CENTER" layoutX="499.0" layoutY="317.0" mnemonicParsing="false" onAction="#agregarAction" prefHeight="34.0" prefWidth="101.0" style="-fx-background-color: linear-gradient(to left, #2980B9, #032D49);" styleClass="btns-gestion-estudiantes" stylesheets="@../application.css" text="Agregar" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -76,7 +76,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnActualizar" alignment="CENTER" layoutX="604.0" layoutY="317.0" mnemonicParsing="false" onAction="#actualizarAction" prefHeight="34.0" prefWidth="112.0" style="-fx-background-color: linear-gradient(to left, #2980B9, #032D49);" styleClass="btns-gestion-estudiantes" stylesheets="@../application.css" text="Actualizar" textFill="WHITE">
+      <Button fx:id="btnActualizar" alignment="CENTER" layoutX="610.0" layoutY="317.0" mnemonicParsing="false" onAction="#actualizarAction" prefHeight="34.0" prefWidth="112.0" style="-fx-background-color: linear-gradient(to left, #2980B9, #032D49);" styleClass="btns-gestion-estudiantes" stylesheets="@../application.css" text="Actualizar" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -91,7 +91,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnEliminar" alignment="CENTER" layoutX="609.0" layoutY="530.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#eliminarAction" prefHeight="30.0" prefWidth="106.0" style="-fx-background-color: linear-gradient(to left, #FD3F3F, #AE0606);" styleClass="btns-gestion-estudiantes-delete" stylesheets="@../application.css" text="Eliminar" textFill="WHITE">
+      <Button fx:id="btnEliminar" alignment="CENTER" layoutX="615.0" layoutY="530.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#eliminarAction" prefHeight="30.0" prefWidth="106.0" style="-fx-background-color: linear-gradient(to left, #FD3F3F, #AE0606);" styleClass="btns-gestion-estudiantes-delete" stylesheets="@../application.css" text="Eliminar" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -106,7 +106,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <TableView fx:id="tableLugares" layoutX="41.0" layoutY="368.0" prefHeight="152.0" prefWidth="674.0" style="-fx-background-color: #D5EDFD;">
+      <TableView fx:id="tableLugares" layoutX="47.0" layoutY="368.0" prefHeight="152.0" prefWidth="674.0" style="-fx-background-color: #D5EDFD;">
          <columns>
             <TableColumn fx:id="columnNombre" prefWidth="336.0" text="Nombre" />
             <TableColumn fx:id="columnCodigo" minWidth="0.0" prefWidth="337.0" text="Código " />
