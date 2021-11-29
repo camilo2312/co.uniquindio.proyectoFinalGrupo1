@@ -185,6 +185,7 @@ public class GestionHorarioController implements Initializable
 		Horario horario = null;
 		if(camposValidos())
 		{
+<<<<<<< HEAD
 
     		String code = txtCodigoH.getText();
     		String horaInicio = txtHoraIni.getText();
@@ -214,6 +215,38 @@ public class GestionHorarioController implements Initializable
     		{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+=======
+			if(horarioSeleccionado != null)
+			{
+				String code = txtCodigoH.getText();
+				String horaIni = txtHoraIni.getText();
+				String horaFin = txtHoraFin.getText();
+				Dias dia = comboBoxDia.getValue();
+
+				try
+				{
+					horario = aplicacion.agregarHorario(code, horaIni, horaFin, dia);
+    				
+					if(horario != null)
+					{
+						lstHorarioData.add(horario);
+						limpiarFormulario();
+						mostrarMensaje("Almacenar registro", "Datos guardados", "El registro ha sido almacenado correctamente", AlertType.INFORMATION);
+					}
+				}
+				catch (NoCreadoException e)
+				{
+					mostrarMensaje("Agregar datos", "Datos no agregados", "El horario con el código "+ code  + " de la clase horario ya existe",
+						AlertType.INFORMATION);
+					e.printStackTrace();
+					Persistencia.guardaRegistroLogHorario("Se genero un NoCreadoException en agregarHorario",2,"NoCreadoException");;
+				}
+				catch (IOException e) 
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+>>>>>>> 2da91feed260fe2f636f7bed1894f69c12054109
 			}
 		}
 	}
@@ -233,8 +266,13 @@ public class GestionHorarioController implements Initializable
 				String codigoActual = horarioSeleccionado.getCode();
 	    		String horaInicio = txtHoraIni.getText();
 	    		String horaFinal = txtHoraFin.getText();
+<<<<<<< HEAD
 	    		Dias  dia = comboBoxDia.getValue();
 
+=======
+	    		Dias  dia = comboBoxDia.getValue();;
+	    		
+>>>>>>> 2da91feed260fe2f636f7bed1894f69c12054109
 				try
 				{
 					actualizado = aplicacion.actualizarHorario( code, codigoActual,horaInicio,horaFinal,dia);
@@ -255,6 +293,7 @@ public class GestionHorarioController implements Initializable
 					Persistencia.guardaRegistroLogHorario( "código "+"Hora inicio" + horaInicio + "Hora final" + horaFinal + "Dia" + dia +  code, 2, "NoActualizadoException");;
 
 				}
+	    		
 
 			}
 		}

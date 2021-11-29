@@ -1,0 +1,6 @@
+nov 20, 2021 9:00:11 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un estudiante,Nombre:Jose Martinez identificación 13566356774,2021-11-20-9-0
+nov 20, 2021 9:00:49 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+ADVERTENCIA: UsuarioExisteException,Nombre:Alejandra Toro C. identificación 1007609899,2021-11-20-9-0
+nov 20, 2021 9:01:05 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+GRAVE: Se elimina un estudiante,Nombre:Alejandra Toro C. identificación 1007609899,2021-11-20-9-1
