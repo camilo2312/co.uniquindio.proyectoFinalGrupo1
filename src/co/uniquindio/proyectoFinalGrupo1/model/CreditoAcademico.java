@@ -17,7 +17,7 @@ public class CreditoAcademico extends Credito
 	 * Método que permite obtener si es homologable o no del credito academico
 	 * @return homologable
 	 */
-	public boolean gethomologable()
+	public boolean getHomologable()
 	{
 		return homologable;
 	}
@@ -26,7 +26,7 @@ public class CreditoAcademico extends Credito
 	 * Método que permite asignar y/o actualizar si es homologable o no del credito academico
 	 * @param homologable
 	 */
-	public void sethomologable(boolean homologable)
+	public void setHomologable(boolean homologable)
 	{
 		this.homologable = homologable;
 	}

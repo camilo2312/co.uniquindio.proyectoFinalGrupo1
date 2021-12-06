@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="461.0" prefWidth="428.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.proyectoFinalGrupo1.controller.SeleccionarHorariosController">
+   <children>
+      <Label layoutX="115.0" layoutY="16.0" text="Seleccionar Horarios">
+         <font>
+            <Font name="Century Gothic" size="20.0" />
+         </font>
+      </Label>
+      <Separator layoutX="31.0" layoutY="43.0" prefHeight="4.0" prefWidth="371.0" style="-fx-background-color: #2980B9;" />
+      <ListView fx:id="listViewHorarios" layoutX="31.0" layoutY="68.0" prefHeight="314.0" prefWidth="371.0" style="-fx-border-color: #032D49; -fx-border-radius: 4px; -fx-background-color: transparent;" />
+      <Button fx:id="btnGuardar" layoutX="173.0" layoutY="410.0" mnemonicParsing="false" onAction="#guardarAction" style="-fx-background-color: linear-gradient(to left, #2980B9, #032D49);" styleClass="btns-gestion-estudiantes" stylesheets="@../application.css" text="Guardar" textFill="WHITE">
+         <font>
+            <Font name="Century Gothic" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/diskette.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="btnCancelar" layoutX="290.0" layoutY="410.0" mnemonicParsing="false" onAction="#cancelarAction" style="-fx-background-color: linear-gradient(to left, #2980B9, #032D49);" styleClass="btns-gestion-estudiantes" stylesheets="@../application.css" text="Cancelar" textFill="WHITE">
+         <font>
+            <Font name="Century Gothic" size="14.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="23.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/cancel.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

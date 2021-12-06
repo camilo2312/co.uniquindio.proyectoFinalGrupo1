@@ -97,8 +97,7 @@ public class Horario
 	 */
 	@Override
 	public String toString() {
-		return "Horario [code=" + code + ", horaInicio=" + horaInicio + ", horaFinal=" + horaFinal + ", dia=" + dia
-				+ "]";
+		return "Día: " + dia + "\nHora inicial: " + horaInicio + "\nHora final: " + horaFinal;
 	}
 
 

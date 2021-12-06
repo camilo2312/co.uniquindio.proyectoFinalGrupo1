@@ -31,7 +31,8 @@ public class DashBoardController implements Initializable
 	private GestionEstudiantesController gestionEstudiantesController;
 	private GestionInstructoresController gestionInstructoresController;
 	private GestionLugaresController gestionLugaresController;
-	private GestionHorarioController GestionHorarioController;
+	private GestionHorarioController gestionHorarioController;
+	private GestionCreditosController gestionCreditosController;
 	private InicioController inicioController;
 
 	@FXML
@@ -100,7 +101,7 @@ public class DashBoardController implements Initializable
     @FXML
     void gestionCreditosAction(ActionEvent event)
     {
-
+    	abrirVentana(NombreVentana.GESTION_CREDITOS);
     }
 
 	@FXML
@@ -247,6 +248,11 @@ public class DashBoardController implements Initializable
 				this.gestionInstructoresController.setAplicacion(this.aplicacion);
 				break;
 			case GESTION_CREDITOS:
+				loader.setLocation(getClass().getResource("../view/GestionCreditosView.fxml"));
+				vistaCargada = loader.load();
+				anchorPanePrincipal.getChildren().setAll(vistaCargada);
+				this.gestionCreditosController = loader.getController();
+				this.gestionCreditosController.setAplicacion(this.aplicacion);
 				break;
 			case GESTION_LUGARES:
 				loader.setLocation(getClass().getResource("../view/GestionLugaresView.fxml"));
@@ -259,8 +265,8 @@ public class DashBoardController implements Initializable
 				loader.setLocation(getClass().getResource("../view/GestionHorarioView.fxml"));
 				vistaCargada = loader.load();
 				anchorPanePrincipal.getChildren().setAll(vistaCargada);
-				this.GestionHorarioController = loader.getController();
-				this.GestionHorarioController.setAplicacion(this.aplicacion);;
+				this.gestionHorarioController = loader.getController();
+				this.gestionHorarioController.setAplicacion(this.aplicacion);;
 				break;
 			default:
 				break;

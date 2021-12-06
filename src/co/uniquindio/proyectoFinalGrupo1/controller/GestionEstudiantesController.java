@@ -215,7 +215,8 @@ public class GestionEstudiantesController implements Initializable
 				e.printStackTrace();
     			Persistencia.guardaRegistroLogEstudiante("Nombre:"+nombre+" identificación "+documento,2,"UsuarioExisteException");
 
-			} catch (IOException e)
+			}
+    		catch (IOException e)
     		{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -247,15 +248,15 @@ public class GestionEstudiantesController implements Initializable
 
 		    		actualizado = aplicacion.actualizarEstudiante(documentoActual, documento, nombre, tipoDocumento, edad, usuario, contrasena);
 
-			    		if(actualizado)
-			    		{
-			    			tableEstudiantes.refresh();
-			    			limpiarFormulario();
-			    			mostrarMensaje("Actualizar registro", "Datos guardados",
-									"El registro ha sido actualizado correctamente", AlertType.INFORMATION);
+		    		if(actualizado)
+		    		{
+		    			tableEstudiantes.refresh();
+		    			limpiarFormulario();
+		    			mostrarMensaje("Actualizar registro", "Datos guardados",
+								"El registro ha sido actualizado correctamente", AlertType.INFORMATION);
 
-			    			Persistencia.guardaRegistroLogEstudiante("Nombre:"+nombre+" identificación "+documento,1,"Se actualiza un estudiante");
-			    		}		    			
+		    			Persistencia.guardaRegistroLogEstudiante("Nombre:"+nombre+" identificación "+documento,1,"Se actualiza un estudiante");
+		    		}
 
 				}
 				catch (NoActualizadoException e)
@@ -281,10 +282,10 @@ public class GestionEstudiantesController implements Initializable
     private void eliminarEstudiante()
     {
 		boolean eliminado = false;
+		String nombre = txtNombre.getText();
+		String documento = txtDocumento.getText();
 		try
 		{
-			String nombre = txtNombre.getText();
-			String documento = txtDocumento.getText();
 			if(estudianteSeleccionado != null)
 			{
 				boolean confirmado = mostrarMensajeConfirmacion("¿Esta seguro de eliminar el registro?");
@@ -311,6 +312,7 @@ public class GestionEstudiantesController implements Initializable
 		} catch (NoEliminadoException e)
 		{
 			mostrarMensaje("Eliminar registro", "", "El estudiante no existe", AlertType.WARNING);
+			Persistencia.guardaRegistroLogEstudiante("Nombre:"+nombre+" identificación "+documento,3,"NoEliminadoException");
 			e.printStackTrace();
 		}
 

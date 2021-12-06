@@ -61,7 +61,7 @@ public class Lugar
 	 */
 	@Override
 	public String toString() {
-		return "Lugar [codigo=" + codigo + ", nombre=" + nombre + "]";
+		return nombre;
 	}
 
 

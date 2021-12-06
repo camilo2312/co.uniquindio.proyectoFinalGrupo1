@@ -5,16 +5,19 @@ import java.util.ArrayList;
 
 import co.uniquindio.proyectoFinalGrupo1.controller.DashBoardController;
 import co.uniquindio.proyectoFinalGrupo1.controller.LoginController;
+import co.uniquindio.proyectoFinalGrupo1.exceptions.CreditoExisteException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoActualizadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoCreadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoEliminadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.UsuarioExisteException;
 import co.uniquindio.proyectoFinalGrupo1.model.BienestarEstudiantil;
+import co.uniquindio.proyectoFinalGrupo1.model.Credito;
 import co.uniquindio.proyectoFinalGrupo1.model.Dias;
 import co.uniquindio.proyectoFinalGrupo1.model.Estudiante;
 import co.uniquindio.proyectoFinalGrupo1.model.Horario;
 import co.uniquindio.proyectoFinalGrupo1.model.Instructor;
 import co.uniquindio.proyectoFinalGrupo1.model.Lugar;
+import co.uniquindio.proyectoFinalGrupo1.model.TipoCredito;
 import co.uniquindio.proyectoFinalGrupo1.model.TipoUsuario;
 import co.uniquindio.proyectoFinalGrupo1.model.Usuario;
 import javafx.application.Application;
@@ -33,8 +36,8 @@ public class Aplicacion extends Application {
 	{
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Bienestar universitario");
-		mostrarVentanaLogin();
-//		mostrarVentanaPrincipal(TipoUsuario.ADMINISTRADOR, "Juan Camilo Ramos R.");
+//		mostrarVentanaLogin();
+		mostrarVentanaPrincipal(TipoUsuario.ADMINISTRADOR, "Juan Camilo Ramos R.");
 	}
 
 	public static void main(String[] args)
@@ -63,6 +66,7 @@ public class Aplicacion extends Application {
 			loginController.setAplicacion(this);
 
 			Scene scene = new Scene(rootLayout);
+			primaryStage.setResizable(false);
 			primaryStage.setScene(scene);
 			primaryStage.centerOnScreen();
 			primaryStage.show();
@@ -91,6 +95,7 @@ public class Aplicacion extends Application {
 
 			Scene scene = new Scene(rootLayout);
 			scene.getStylesheets().add(Aplicacion.class.getResource("application.css").toExternalForm());
+			primaryStage.setResizable(false);
 			primaryStage.setScene(scene);
 			primaryStage.centerOnScreen();
 			primaryStage.show();
@@ -359,5 +364,67 @@ public class Aplicacion extends Application {
 	public ArrayList<Dias> obtenerListaDiasData()
 	{
 		return bienestarEstudiantil.obtenerListaDiasData();
+	}
+
+	/**
+	 * Método que permite agregar un credito
+	 * @param codigo
+	 * @param nombre
+	 * @param duracion
+	 * @param cupoMaximo
+	 * @param lugar
+	 * @param instructor
+	 * @param tipo
+	 * @param homologable
+	 * @param costo
+	 * @param asistenciaMinima
+	 * @return credito
+	 */
+	public Credito agregarCredito(String codigo, String nombre, int duracion, int cupoMaximo, Lugar lugar,
+			Instructor instructor, TipoCredito tipo, boolean homologable, double costo, int asistenciaMinima, ArrayList<Horario> lstHorariosSeleccionados) throws CreditoExisteException
+	{
+		return bienestarEstudiantil.agregarCredito(codigo, nombre, duracion, cupoMaximo, lugar, instructor, tipo, homologable, costo, asistenciaMinima, lstHorariosSeleccionados);
+	}
+
+	/**
+	 * Método que permite obtener la lista de creditos
+	 * @return
+	 */
+	public ArrayList<Credito> obtenerListaCreditosData()
+	{
+		return bienestarEstudiantil.getLstCreditos();
+	}
+
+	/**
+	 * Método que permite actualizar el credito
+	 * @param codigoActual
+	 * @param codigo
+	 * @param nombre
+	 * @param duracion
+	 * @param cupoMaximo
+	 * @param lugar
+	 * @param instructor
+	 * @param tipo
+	 * @param homologable
+	 * @param costo
+	 * @param asistenciaMinima
+	 * @return actualizado
+	 */
+	public boolean actualizarCredito(String codigoActual, String codigo, String nombre, int duracion, int cupoMaximo,
+			Lugar lugar, Instructor instructor, TipoCredito tipo, boolean homologable, double costo,
+			int asistenciaMinima) throws NoActualizadoException
+	{
+		return bienestarEstudiantil.actualizarCredito(codigoActual, codigo, nombre, duracion, cupoMaximo, lugar, instructor,
+													  tipo, homologable, costo, asistenciaMinima);
+	}
+
+	/**
+	 * Método que permite eliminar un credito
+	 * @param codigo
+	 * @return eliminado
+	 */
+	public boolean eliminarCredito(String codigo) throws NoEliminadoException
+	{
+		return bienestarEstudiantil.eliminarCredito(codigo);
 	}
 }

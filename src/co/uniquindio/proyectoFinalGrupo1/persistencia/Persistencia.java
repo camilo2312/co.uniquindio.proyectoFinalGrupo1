@@ -166,7 +166,7 @@ public class Persistencia
 		for(Credito credito:lstCreditos)
 		{
 			contenido+= credito.getNombre()+","+credito.getCodigo()+","+credito.getDuracion()+","+credito.getCupoMaximo()+","+
-					credito.getLstEstudiantes()+","+credito.getHorario()+","+credito.getLugar()+","+credito.getInstructor()+"\n";
+					credito.getLstEstudiantes()+","+credito.getHorarios()+","+credito.getLugar()+","+credito.getInstructor()+"\n";
 		}
 		ArchivoUtil.guardarArchivo(RUTA_ARCHIVO_LOG_CREDITO, contenido, false);
 	}

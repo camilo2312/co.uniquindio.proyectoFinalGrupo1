@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import co.uniquindio.proyectoFinalGrupo1.exceptions.CreditoExisteException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoActualizadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoCreadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoEliminadoException;
@@ -164,7 +165,7 @@ public class BienestarEstudiantil
 		lstLugares.add((Lugar) Persistencia.cargarDatosXML(Persistencia.RUTA_ARCHIVO_MODELO_LUGARES_XML));
 
 		lstHorarios.add((Horario) Persistencia.cargarDatosXML(Persistencia.RUTA_ARCHIVO_MODELO_HORARIOS_XML));
-		
+
 
 	}
 
@@ -305,7 +306,6 @@ public class BienestarEstudiantil
 		if(estudiante == null)
 		{
 			throw new NoEliminadoException("error al eliminar los datos del estudiante");
-
 		}
 		else
 		{
@@ -703,6 +703,232 @@ public class BienestarEstudiantil
 		lstDias.add(Dias.VIERNES);
 
 		return lstDias;
+	}
+
+	/**
+	 * Método que permite crear un credito
+	 * @param codigo2
+	 * @param nombre
+	 * @param duracion
+	 * @param cupoMaximo
+	 * @param lugar
+	 * @param instructor
+	 * @param tipo
+	 * @param homologable
+	 * @param costo
+	 * @param asistenciaMinima
+	 * @return credito
+	 */
+	public Credito agregarCredito(String codigo, String nombre, int duracion, int cupoMaximo, Lugar lugar,
+			Instructor instructor, TipoCredito tipo, boolean homologable, double costo, int asistenciaMinima, ArrayList<Horario> lstHorariosSeleccionados) throws CreditoExisteException
+	{
+
+		switch (tipo)
+		{
+			case ACADEMICO:
+				CreditoAcademico credito = (CreditoAcademico)obtenerCredito(codigo);
+				if(credito == null)
+				{
+					credito = new CreditoAcademico();
+					credito.setCodigo(codigo);
+					credito.setNombre(nombre);
+					credito.setDuracion(duracion);
+					credito.setCupoMaximo(cupoMaximo);
+					credito.setLugar(lugar);
+					credito.setInstructor(instructor);
+					credito.setTipoCredito(tipo);
+					credito.setHorarios(lstHorariosSeleccionados);
+					credito.setHomologable(homologable);
+
+					lstCreditos.add(credito);
+
+					return credito;
+				}
+				else
+				{
+					throw new CreditoExisteException("Error el crédito" + codigo + " ya existe");
+				}
+			case CULTURAL:
+				CreditoCultural creditoCultural = (CreditoCultural)obtenerCredito(codigo);
+				if(creditoCultural == null)
+				{
+					creditoCultural = new CreditoCultural();
+					creditoCultural.setCodigo(codigo);
+					creditoCultural.setNombre(nombre);
+					creditoCultural.setDuracion(duracion);
+					creditoCultural.setCupoMaximo(cupoMaximo);
+					creditoCultural.setLugar(lugar);
+					creditoCultural.setInstructor(instructor);
+					creditoCultural.setTipoCredito(tipo);
+					creditoCultural.setHorarios(lstHorariosSeleccionados);
+					creditoCultural.setCosto(costo);
+
+					lstCreditos.add(creditoCultural);
+
+					return creditoCultural;
+				}
+				else
+				{
+					throw new CreditoExisteException("Error el crédito" + codigo + " ya existe");
+				}
+			case DEPORTIVO:
+				CreditoDeportivo creditoDeportivo = (CreditoDeportivo)obtenerCredito(codigo);
+				if(creditoDeportivo == null)
+				{
+					creditoDeportivo = new CreditoDeportivo();
+					creditoDeportivo.setCodigo(codigo);
+					creditoDeportivo.setNombre(nombre);
+					creditoDeportivo.setDuracion(duracion);
+					creditoDeportivo.setCupoMaximo(cupoMaximo);
+					creditoDeportivo.setLugar(lugar);
+					creditoDeportivo.setInstructor(instructor);
+					creditoDeportivo.setTipoCredito(tipo);
+					creditoDeportivo.setHorarios(lstHorariosSeleccionados);
+					creditoDeportivo.setAsistenciaMinima(asistenciaMinima);
+
+					lstCreditos.add(creditoDeportivo);
+
+					return creditoDeportivo;
+				}
+				else
+				{
+					throw new CreditoExisteException("Error el crédito" + codigo + " ya existe");
+				}
+			default:
+				break;
+		}
+
+		return null;
+	}
+
+	/**
+	 * Método que permite actualizar el credito
+	 * @param codigoActual
+	 * @param codigo
+	 * @param nombre
+	 * @param duracion
+	 * @param cupoMaximo
+	 * @param lugar
+	 * @param instructor
+	 * @param tipo
+	 * @param homologable
+	 * @param costo
+	 * @param asistenciaMinima
+	 * @return actualizado
+	 */
+	public boolean actualizarCredito(String codigoActual, String codigo, String nombre, int duracion, int cupoMaximo,
+			Lugar lugar, Instructor instructor, TipoCredito tipo, boolean homologable, double costo,
+			int asistenciaMinima) throws NoActualizadoException
+	{
+		boolean actualizado = true;
+		int index = 0;
+		Credito credito = obtenerCredito(codigoActual);
+		if(credito != null)
+		{
+			switch (tipo) {
+			case ACADEMICO:
+				CreditoAcademico academico = new CreditoAcademico();
+				academico.setCodigo(codigo);
+				academico.setNombre(nombre);
+				academico.setDuracion(duracion);
+				academico.setCupoMaximo(cupoMaximo);
+				academico.setLugar(lugar);
+				academico.setInstructor(instructor);
+				academico.setTipoCredito(tipo);
+				academico.setHomologable(homologable);
+
+				index = lstCreditos.indexOf(credito);
+				lstCreditos.set(index, academico);
+
+				actualizado = true;
+
+				break;
+			case CULTURAL:
+				CreditoCultural cultural = new CreditoCultural();
+				cultural.setCodigo(codigo);
+				cultural.setNombre(nombre);
+				cultural.setDuracion(duracion);
+				cultural.setCupoMaximo(cupoMaximo);
+				cultural.setLugar(lugar);
+				cultural.setInstructor(instructor);
+				cultural.setTipoCredito(tipo);
+				cultural.setCosto(costo);
+
+				index = lstCreditos.lastIndexOf(credito);
+				lstCreditos.set(index, cultural);
+
+				actualizado = true;
+				break;
+			case DEPORTIVO:
+				CreditoDeportivo deportivo = new CreditoDeportivo();
+				deportivo.setCodigo(codigo);
+				deportivo.setNombre(nombre);
+				deportivo.setDuracion(duracion);
+				deportivo.setCupoMaximo(cupoMaximo);
+				deportivo.setLugar(lugar);
+				deportivo.setInstructor(instructor);
+				deportivo.setTipoCredito(tipo);
+				deportivo.setAsistenciaMinima(asistenciaMinima);
+
+				index = lstCreditos.lastIndexOf(credito);
+				lstCreditos.set(index, deportivo);
+
+				actualizado = true;
+				break;
+
+			default:
+				break;
+			}
+
+			actualizado = true;
+		}
+		else
+		{
+			throw new NoActualizadoException("Error al intentar actualizar el crédito");
+		}
+
+
+		return actualizado;
+	}
+
+	/**
+	 * Método que permite obtener el un credito mediante
+	 * su código
+	 * @param codigo
+	 * @return credito
+	 */
+	private Credito obtenerCredito(String codigo)
+	{
+		for (Credito credito : lstCreditos)
+		{
+			if(credito.getCodigo().equals(codigo))
+			{
+				return credito;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Método que permite eliminar un crédito
+	 * @param codigo2
+	 * @return eliminado
+	 */
+	public boolean eliminarCredito(String codigo) throws NoEliminadoException
+	{
+		boolean eliminado = false;
+		Credito credito = obtenerCredito(codigo);
+		if(credito != null)
+		{
+			lstCreditos.remove(credito);
+			eliminado = true;
+		}
+		else
+		{
+			throw new NoEliminadoException("Error al intentar eliminar el crédito con código " + codigo);
+		}
+
+		return eliminado;
 	}
 
 }

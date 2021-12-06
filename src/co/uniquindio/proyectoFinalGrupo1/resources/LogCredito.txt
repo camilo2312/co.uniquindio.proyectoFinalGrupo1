@@ -1,0 +1,66 @@
+nov 29, 2021 8:28:31 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: Programación Codigo: 001,2021-11-29-8-28
+nov 29, 2021 9:55:26 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: Programación Codigo: 001,2021-11-29-9-55
+nov 29, 2021 9:58:40 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: Programación Codigo: 1,2021-11-29-9-58
+nov 29, 2021 10:00:00 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: pepe Codigo: 3,2021-11-29-10-0
+nov 29, 2021 10:01:29 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: programación Codigo: 1,2021-11-29-10-1
+nov 29, 2021 10:01:44 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: programación Codigo: 2,2021-11-29-10-1
+nov 29, 2021 10:03:20 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: pepe Codigo: 3,2021-11-29-10-3
+nov 29, 2021 10:06:10 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: pepe Codigo: 1,2021-11-29-10-6
+nov 29, 2021 10:06:33 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: 3 Codigo: 3,2021-11-29-10-6
+nov 29, 2021 10:08:18 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: 1 Codigo: 1,2021-11-29-10-8
+nov 29, 2021 10:11:37 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: 1 Codigo: 1,2021-11-29-10-11
+nov 29, 2021 10:15:47 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: 1 Codigo: 1,2021-11-29-10-15
+nov 29, 2021 10:30:28 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: 1 Codigo: 1,2021-11-29-10-30
+nov 29, 2021 10:30:46 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: 2 Codigo: 2,2021-11-29-10-30
+nov 29, 2021 10:32:25 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: 1 Codigo: 1,2021-11-29-10-32
+nov 29, 2021 10:36:08 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: 1 Codigo: 1,2021-11-29-10-36
+nov 29, 2021 10:38:36 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: 1 Codigo: 1,2021-11-29-10-38
+nov 29, 2021 10:40:41 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: 1 Codigo: 1,2021-11-29-10-40
+nov 29, 2021 10:51:23 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: 1 Codigo: 1,2021-11-29-10-51
+nov 29, 2021 10:51:35 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: 2 Codigo: 2,2021-11-29-10-51
+nov 29, 2021 10:52:38 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: 1 Codigo: 1,2021-11-29-10-52
+nov 29, 2021 10:54:26 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: 1 Codigo: 1,2021-11-29-10-54
+nov 29, 2021 10:54:54 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: 1 Codigo: 1,2021-11-29-10-54
+nov 29, 2021 10:57:39 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: 1 Codigo: 1,2021-11-29-10-57
+nov 29, 2021 10:59:13 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: 1 Codigo: 1,2021-11-29-10-59
+nov 29, 2021 11:00:20 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: 1 Codigo: 1,2021-11-29-11-0
+dic 05, 2021 10:01:01 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: a Codigo: a,2021-12-05-10-1
+dic 05, 2021 10:01:40 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: a Codigo: a,2021-12-05-10-1
+dic 05, 2021 10:02:36 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: a Codigo: a12,2021-12-05-10-2
+dic 05, 2021 10:03:18 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: a Codigo: a,2021-12-05-10-3
+dic 05, 2021 10:04:04 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: a Codigo: a,2021-12-05-10-4
+dic 05, 2021 10:08:59 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: a Codigo: a,2021-12-05-10-8
+dic 05, 2021 10:10:25 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: a Codigo: a,2021-12-05-10-10

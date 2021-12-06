@@ -103,8 +103,7 @@ public class Instructor extends Usuario
 	 */
 	@Override
 	public String toString() {
-		return "Instructor [nombre=" + nombre + ", documento=" + documento + ", tipoDocumento=" + tipoDocumento
-				+ ", asignatura=" + asignatura + "]";
+		return nombre;
 	}
 
 

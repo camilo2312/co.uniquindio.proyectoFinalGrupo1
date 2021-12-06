@@ -8,6 +8,9 @@ import java.util.ArrayList;
  */
 public class Credito
 {
+	/**
+	 * Atributos de la clase
+	 */
 	private String codigo;
 	private String nombre;
 	private int duracion;
@@ -16,6 +19,7 @@ public class Credito
 	private ArrayList<Horario> horarios;
 	private Lugar lugar;
 	private Instructor instructor;
+	private TipoCredito tipoCredito;
 
 	/**
 	 * Constructor de la clase
@@ -140,15 +144,6 @@ public class Credito
 	}
 
 	/**
-	 * Método que permite obtener los horario del credito
-	 * @return horario
-	 */
-	public ArrayList<Horario> getHorario()
-	{
-		return horarios;
-	}
-
-	/**
 	 * Método que permite asignar y/o actualizar el horario del credito
 	 * @param horario
 	 */
@@ -193,6 +188,25 @@ public class Credito
 	}
 
 	/**
+	 * Método que permite obtener el tipo de crédito
+	 * @return tipoCredito
+	 */
+	public TipoCredito getTipoCredito()
+	{
+		return tipoCredito;
+	}
+
+	/**
+	 * Método que permite asignar y/o actualizar el tipo de credito
+	 * @param tipoCredito
+	 */
+	public void setTipoCredito(TipoCredito tipoCredito)
+	{
+		this.tipoCredito = tipoCredito;
+	}
+
+
+	/**
 	 * Método que permite imprimir las propiedades del credito
 	 */
 	@Override
@@ -201,7 +215,6 @@ public class Credito
 		return "Credito [nombre=" + nombre + ", lstEstudiantes=" + lstEstudiantes + ", horarios=" + horarios
 				+ ", lugar=" + lugar + ", instructor=" + instructor + "]";
 	}
-
 
 
 }

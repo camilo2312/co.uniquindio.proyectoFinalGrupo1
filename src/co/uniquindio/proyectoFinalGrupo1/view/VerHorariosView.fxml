@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="409.0" prefWidth="428.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="co.uniquindio.proyectoFinalGrupo1.controller.VerHorariosController">
+   <children>
+      <Separator layoutX="29.0" layoutY="39.0" prefHeight="4.0" prefWidth="371.0" style="-fx-background-color: #2980B9;" />
+      <Label layoutX="157.0" layoutY="14.0" text="Ver Horarios">
+         <font>
+            <Font name="Century Gothic" size="20.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableHorarios" layoutX="29.0" layoutY="66.0" prefHeight="265.0" prefWidth="371.0">
+        <columns>
+          <TableColumn fx:id="columnCodigo" prefWidth="96.0" text="Código" />
+          <TableColumn fx:id="columnHoraInicio" prefWidth="88.0" text="Hora inicio" />
+            <TableColumn fx:id="columnHoraFinal" prefWidth="91.0" text="Hora final" />
+            <TableColumn fx:id="columnDia" prefWidth="93.0" text="Día" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnAceptar" layoutX="323.0" layoutY="357.0" mnemonicParsing="false" onAction="#aceptarAction" style="-fx-background-color: linear-gradient(to left, #2980B9, #032D49);" styleClass="btns-gestion-estudiantes" stylesheets="@../application.css" text="Aceptar" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Century Gothic" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

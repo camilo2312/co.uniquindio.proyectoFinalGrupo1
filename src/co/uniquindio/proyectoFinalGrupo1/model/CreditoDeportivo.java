@@ -2,7 +2,7 @@ package co.uniquindio.proyectoFinalGrupo1.model;
 
 public class CreditoDeportivo extends Credito
 {
-	private double asistenciaMinima;
+	private int asistenciaMinima;
 
 	/**
 	 * Constructor de la clase
@@ -17,25 +17,19 @@ public class CreditoDeportivo extends Credito
 	 * credito Deportivo
 	 * @param asistenciaMinima
 	 */
-	public void setAsistenciaMinima(double asistenciaMinima)
+	public void setAsistenciaMinima(int asistenciaMinima)
 	{
 		this.asistenciaMinima = asistenciaMinima;
-	}
-	public double getasistenciaMinima()
-	{
-		return asistenciaMinima;
 	}
 
 	/**
-	 * Método que permite asignar y/o actualizar la asistencia mnima del
-	 * credito Deportivo
-	 * @param asistenciaMinima
+	 * Método que permite obtener la asistencia minima
+	 * @return asistenciaMinima
 	 */
-	public void setasistenciaMinima(double asistenciaMinima)
+	public int getAsistenciaMinima()
 	{
-		this.asistenciaMinima = asistenciaMinima;
+		return asistenciaMinima;
 	}
-
 
 	/**
 	 * Método que permite imprimir las propiedades del creditoDeportivo
