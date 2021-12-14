@@ -12,7 +12,7 @@ import javafx.scene.control.Label;
 public class InicioController
 {
 
-	Aplicacion aplicacion;
+	private Aplicacion aplicacion;
 
 	@FXML
     private Label lblCantidadCreditos;

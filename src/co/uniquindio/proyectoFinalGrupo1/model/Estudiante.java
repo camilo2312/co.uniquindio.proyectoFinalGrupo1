@@ -103,8 +103,7 @@ public class Estudiante extends Usuario
 	 */
 	@Override
 	public String toString() {
-		return "Estudiante [nombre=" + nombre + ", documento=" + documento + ", tipoDocumento=" + tipoDocumento
-				+ ", edad=" + edad + "]";
+		return nombre;
 	}
 
 

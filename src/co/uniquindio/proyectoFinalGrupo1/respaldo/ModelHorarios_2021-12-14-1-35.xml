@@ -1,0 +1,60 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_291" class="java.beans.XMLDecoder">
+ <object class="co.uniquindio.proyectoFinalGrupo1.model.Horario">
+  <void property="code">
+   <string>1</string>
+  </void>
+  <void property="dia">
+   <object class="java.lang.Enum" method="valueOf">
+    <class>co.uniquindio.proyectoFinalGrupo1.model.Dias</class>
+    <string>JUEVES</string>
+   </object>
+  </void>
+  <void property="horaFinal">
+   <string>10:00</string>
+  </void>
+  <void property="horaInicio">
+   <string>8:00</string>
+  </void>
+ </object>
+</java>
+ <?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_291" class="java.beans.XMLDecoder">
+ <object class="co.uniquindio.proyectoFinalGrupo1.model.Horario">
+  <void property="code">
+   <string>1</string>
+  </void>
+  <void property="dia">
+   <object class="java.lang.Enum" method="valueOf">
+    <class>co.uniquindio.proyectoFinalGrupo1.model.Dias</class>
+    <string>JUEVES</string>
+   </object>
+  </void>
+  <void property="horaFinal">
+   <string>10:00</string>
+  </void>
+  <void property="horaInicio">
+   <string>8:00</string>
+  </void>
+ </object>
+</java>
+ <?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_291" class="java.beans.XMLDecoder">
+ <object class="co.uniquindio.proyectoFinalGrupo1.model.Horario">
+  <void property="code">
+   <string>1</string>
+  </void>
+  <void property="dia">
+   <object class="java.lang.Enum" method="valueOf">
+    <class>co.uniquindio.proyectoFinalGrupo1.model.Dias</class>
+    <string>JUEVES</string>
+   </object>
+  </void>
+  <void property="horaFinal">
+   <string>10:00</string>
+  </void>
+  <void property="horaInicio">
+   <string>8:00</string>
+  </void>
+ </object>
+</java>

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import co.uniquindio.proyectoFinalGrupo1.controller.DashBoardController;
 import co.uniquindio.proyectoFinalGrupo1.controller.LoginController;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.CreditoExisteException;
+import co.uniquindio.proyectoFinalGrupo1.exceptions.CupoMaximoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoActualizadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoCreadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoEliminadoException;
@@ -21,6 +22,7 @@ import co.uniquindio.proyectoFinalGrupo1.model.TipoCredito;
 import co.uniquindio.proyectoFinalGrupo1.model.TipoUsuario;
 import co.uniquindio.proyectoFinalGrupo1.model.Usuario;
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -426,5 +428,49 @@ public class Aplicacion extends Application {
 	public boolean eliminarCredito(String codigo) throws NoEliminadoException
 	{
 		return bienestarEstudiantil.eliminarCredito(codigo);
+	}
+
+	/**
+	 * Método que permite obtener el usuario conectado
+	 * @return usuario
+	 */
+	public Usuario obtenerUsuarioActual()
+	{
+		return bienestarEstudiantil.getUsuarioActual();
+	}
+
+	/**
+	 * Método que permite obtener la lista de
+	 * creditos por estudiante
+	 * @param estudiante
+	 * @return lstCreditos
+	 */
+	public ArrayList<Credito> obtenerListaCreditosInscritosEstudiante(Estudiante estudiante)
+	{
+		return bienestarEstudiantil.obtenerListaCreditosInscritosEstudiante(estudiante);
+	}
+
+	/**
+	 * Método que permite actualizar la inscripcion de Creditos
+	 * @param lstCreditosData
+	 * @param lstCreditosInscritosData
+	 * @param estudiante
+	 * @return actualizado
+	 */
+	public boolean actualizarInscripcionCreditos(ObservableList<Credito> lstCreditosData,
+			ObservableList<Credito> lstCreditosInscritosData, Estudiante estudiante) throws CupoMaximoException
+	{
+		return bienestarEstudiantil.actualizarInscripcionCreditos(lstCreditosData, lstCreditosInscritosData, estudiante);
+	}
+
+	/**
+	 * Método que permite obtener la lista de creditos
+	 * por instructor
+	 * @param instructor
+	 * @return lstCreditos
+	 */
+	public ArrayList<Credito> obtenerListaCreditosInstructor(Instructor instructor)
+	{
+		return bienestarEstudiantil.obtenerListaCreditosInstructor(instructor);
 	}
 }

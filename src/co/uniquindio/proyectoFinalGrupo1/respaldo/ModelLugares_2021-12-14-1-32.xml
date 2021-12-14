@@ -1,0 +1,22 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_291" class="java.beans.XMLDecoder">
+ <object class="co.uniquindio.proyectoFinalGrupo1.model.Lugar">
+  <void property="codigo">
+   <string>01</string>
+  </void>
+  <void property="nombre">
+   <string>Bloque Ingeniería</string>
+  </void>
+ </object>
+</java>
+ <?xml version="1.0" encoding="UTF-8"?>
+<java version="1.8.0_291" class="java.beans.XMLDecoder">
+ <object class="co.uniquindio.proyectoFinalGrupo1.model.Lugar">
+  <void property="codigo">
+   <string>01</string>
+  </void>
+  <void property="nombre">
+   <string>Bloque Ingeniería</string>
+  </void>
+ </object>
+</java>

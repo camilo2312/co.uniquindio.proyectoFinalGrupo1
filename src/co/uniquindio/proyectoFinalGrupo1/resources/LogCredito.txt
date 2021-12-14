@@ -64,3 +64,61 @@ dic 05, 2021 10:08:59 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoU
 INFORMACIÓN: Se agrega un credito,Nombre: a Codigo: a,2021-12-05-10-8
 dic 05, 2021 10:10:25 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
 INFORMACIÓN: Se agrega un credito,Nombre: a Codigo: a,2021-12-05-10-10
+dic 13, 2021 11:16:27 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: Programación Codigo: 001,2021-12-13-11-16
+dic 13, 2021 11:21:02 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: Programación Codigo: 001,2021-12-13-11-21
+dic 13, 2021 11:33:48 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: Programación Codigo: 001,2021-12-13-11-33
+dic 13, 2021 11:53:37 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: Programación Codigo: 001,2021-12-13-11-53
+dic 13, 2021 11:54:31 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: Programación Codigo: 001,2021-12-13-11-54
+dic 13, 2021 11:58:45 PM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: Programación Codigo: 001,2021-12-13-11-58
+dic 14, 2021 12:03:23 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: Programación Codigo: 001,2021-12-14-0-3
+dic 14, 2021 12:05:30 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: programación Codigo: 001,2021-12-14-0-5
+dic 14, 2021 12:09:29 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: programacion Codigo: 001,2021-12-14-0-9
+dic 14, 2021 12:12:32 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: programacion Codigo: 001,2021-12-14-0-12
+dic 14, 2021 12:16:43 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: o Codigo: 00,2021-12-14-0-16
+dic 14, 2021 12:17:39 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: o Codigo: 3,2021-12-14-0-17
+dic 14, 2021 12:19:22 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: o Codigo: o,2021-12-14-0-19
+dic 14, 2021 12:20:48 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: u Codigo: y,2021-12-14-0-20
+dic 14, 2021 12:21:48 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: y Codigo: 01,2021-12-14-0-21
+dic 14, 2021 12:28:48 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: y Codigo: 6,2021-12-14-0-28
+dic 14, 2021 1:15:07 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: programación Codigo: 001,2021-12-14-1-15
+dic 14, 2021 1:18:29 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: programación Codigo: 001,2021-12-14-1-18
+dic 14, 2021 1:23:37 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: programación Codigo: 001,2021-12-14-1-23
+dic 14, 2021 1:27:57 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: programación Codigo: 1,2021-12-14-1-27
+dic 14, 2021 1:32:13 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: programación Codigo: 1,2021-12-14-1-32
+dic 14, 2021 3:16:56 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: programacion Codigo: 001,2021-12-14-3-16
+dic 14, 2021 3:19:04 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: p Codigo: 001,2021-12-14-3-19
+dic 14, 2021 3:22:51 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: p Codigo: 1,2021-12-14-3-22
+dic 14, 2021 3:25:18 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: p Codigo: 1,2021-12-14-3-25
+dic 14, 2021 3:29:55 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: p Codigo: 1,2021-12-14-3-29
+dic 14, 2021 3:32:35 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: p Codigo: 1,2021-12-14-3-32
+dic 14, 2021 3:43:43 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: p Codigo: 1,2021-12-14-3-43
+dic 14, 2021 3:47:41 AM co.uniquindio.proyectoFinalGrupo1.persistencia.ArchivoUtil guardarRegistroLog
+INFORMACIÓN: Se agrega un credito,Nombre: p Codigo: 1,2021-12-14-3-47

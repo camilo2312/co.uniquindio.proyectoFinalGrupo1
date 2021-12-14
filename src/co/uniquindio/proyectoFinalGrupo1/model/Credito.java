@@ -212,8 +212,7 @@ public class Credito
 	@Override
 	public String toString()
 	{
-		return "Credito [nombre=" + nombre + ", lstEstudiantes=" + lstEstudiantes + ", horarios=" + horarios
-				+ ", lugar=" + lugar + ", instructor=" + instructor + "]";
+		return "Nombre: " + nombre + "\n" + "Instructor: " + instructor.getNombre() + "\n";
 	}
 
 

@@ -5,11 +5,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import co.uniquindio.proyectoFinalGrupo1.exceptions.CreditoExisteException;
+import co.uniquindio.proyectoFinalGrupo1.exceptions.CupoMaximoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoActualizadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoCreadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.NoEliminadoException;
 import co.uniquindio.proyectoFinalGrupo1.exceptions.UsuarioExisteException;
 import co.uniquindio.proyectoFinalGrupo1.persistencia.Persistencia;
+import javafx.collections.ObservableList;
 
 /**
  * Clase bienestar estudiantil
@@ -25,6 +27,7 @@ public class BienestarEstudiantil
 	private ArrayList<Horario> lstHorarios;
 	private ArrayList<Lugar> lstLugares;
 	private Administrador administrador;
+	private Usuario usuarioActual;
 
 	/**
 	 * Constructor de la clase
@@ -152,6 +155,15 @@ public class BienestarEstudiantil
 	}
 
 	/**
+	 * Método que permite obtener el usuario conectado
+	 * @return
+	 */
+	public Usuario getUsuarioActual()
+	{
+		return usuarioActual;
+	}
+
+	/**
 	 * Método que permite inicializar los datos
 	 */
 	private void inicializarDatos()
@@ -178,7 +190,7 @@ public class BienestarEstudiantil
 	 */
 	public Usuario ingresar(String nombreUsuario, String contrasena, TipoUsuario tipoUsuario)
 	{
-		Usuario usuario = null;
+		usuarioActual = null;
 		Estudiante estudiante = null;
 		Instructor instructor = null;
 
@@ -187,25 +199,25 @@ public class BienestarEstudiantil
 			estudiante = lstEstudiantes.stream().filter(x -> x.getUsuario().equals(nombreUsuario) && x.getContrasena().equals(contrasena)).findAny().orElse(null);
 
 			if(estudiante != null)
-				usuario = estudiante;
+				usuarioActual = estudiante;
 
 			break;
 		case INSTRUCTOR:
 			instructor = lstInstructores.stream().filter(x -> x.getUsuario().equals(nombreUsuario) && x.getContrasena().equals(contrasena)).findAny().orElse(null);
 
 			if(instructor != null)
-				usuario = instructor;
+				usuarioActual = instructor;
 
 			break;
 		case ADMINISTRADOR:
 			if(administrador.getUsuario().equals(nombreUsuario) && administrador.getContrasena().equals(contrasena))
-				usuario = administrador;
+				usuarioActual = administrador;
 			break;
 		default:
 			break;
 		}
 
-		return usuario;
+		return usuarioActual;
 	}
 
 	/**
@@ -739,6 +751,7 @@ public class BienestarEstudiantil
 					credito.setTipoCredito(tipo);
 					credito.setHorarios(lstHorariosSeleccionados);
 					credito.setHomologable(homologable);
+					credito.setLstEstudiantes(new ArrayList<>());
 
 					lstCreditos.add(credito);
 
@@ -762,6 +775,7 @@ public class BienestarEstudiantil
 					creditoCultural.setTipoCredito(tipo);
 					creditoCultural.setHorarios(lstHorariosSeleccionados);
 					creditoCultural.setCosto(costo);
+					creditoCultural.setLstEstudiantes(new ArrayList<>());
 
 					lstCreditos.add(creditoCultural);
 
@@ -785,6 +799,7 @@ public class BienestarEstudiantil
 					creditoDeportivo.setTipoCredito(tipo);
 					creditoDeportivo.setHorarios(lstHorariosSeleccionados);
 					creditoDeportivo.setAsistenciaMinima(asistenciaMinima);
+					creditoDeportivo.setLstEstudiantes(new ArrayList<>());
 
 					lstCreditos.add(creditoDeportivo);
 
@@ -929,6 +944,92 @@ public class BienestarEstudiantil
 		}
 
 		return eliminado;
+	}
+
+	/**
+	 * Método que permite obtener la lista de creditos por
+	 * estudiante
+	 * @param documento
+	 * @return lstCreditos
+	 */
+	public ArrayList<Credito> obtenerListaCreditosInscritosEstudiante(Estudiante estudiante)
+	{
+		ArrayList<Credito> lstCreditosEstudiante = new ArrayList<>();
+
+		if(lstCreditos != null && lstCreditos.size() > 0)
+		{
+			for (Credito credito : lstCreditos)
+			{
+				if(credito.getLstEstudiantes() != null && credito.getLstEstudiantes().contains(estudiante))
+				{
+					lstCreditosEstudiante.add(credito);
+				}
+			}
+		}
+
+		return lstCreditosEstudiante;
+	}
+
+	/**
+	 * Método que permite actualizar los creditos inscritos por estudiante
+	 * @param lstCreditosData
+	 * @param lstCreditosInscritosData
+	 * @param estudiante
+	 * @return actualizado
+	 */
+	public boolean actualizarInscripcionCreditos(ObservableList<Credito> lstCreditosData,
+			ObservableList<Credito> lstCreditosInscritosData, Estudiante estudiante) throws CupoMaximoException
+	{
+		Credito creditoAux = null;
+		boolean actualizado = true;
+
+		for (Credito credito : lstCreditosData)
+		{
+			creditoAux = obtenerCredito(credito.getCodigo());
+			if(creditoAux != null && creditoAux.getLstEstudiantes().contains(estudiante))
+			{
+				creditoAux.getLstEstudiantes().remove(estudiante);
+			}
+		}
+
+		for (Credito credito : lstCreditosInscritosData)
+		{
+			creditoAux = obtenerCredito(credito.getCodigo());
+			if(creditoAux != null && !creditoAux.getLstEstudiantes().contains(estudiante))
+			{
+				if(creditoAux.getLstEstudiantes().size() != creditoAux.getCupoMaximo())
+				{
+					creditoAux.getLstEstudiantes().add(estudiante);
+				}
+				else
+				{
+					actualizado = false;
+					throw new CupoMaximoException("No se pueden inscribir más estudiantes");
+				}
+			}
+		}
+
+		return actualizado;
+	}
+
+	/**
+	 * Método que permite obtener la lista de creditos por
+	 * instructor
+	 * @param instructor
+	 * @return lstCreditos
+	 */
+	public ArrayList<Credito> obtenerListaCreditosInstructor(Instructor instructor)
+	{
+		ArrayList<Credito> lstCreditosInstructor = new ArrayList<>();
+		for (Credito credito : lstCreditos)
+		{
+			if(credito.getInstructor().getDocumento().equals(instructor.getDocumento()))
+			{
+				lstCreditosInstructor.add(credito);
+			}
+		}
+
+		return lstCreditosInstructor;
 	}
 
 }

@@ -35,8 +35,9 @@ public class CreditoAcademico extends Credito
 	 * Método que permite imprimir las propiedades del credito Academico
 	 */
 	@Override
-	public String toString() {
-		return "credito academico [homologable=" + homologable + "]";
+	public String toString()
+	{
+		return super.toString();
 	}
 }
 

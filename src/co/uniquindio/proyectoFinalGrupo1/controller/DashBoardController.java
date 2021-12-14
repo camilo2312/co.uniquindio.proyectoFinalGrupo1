@@ -20,7 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 
 /**
- *
+ * Controlador de la vista principal
  * @author Juan Camilo Ramos R.
  *
  */
@@ -33,6 +33,8 @@ public class DashBoardController implements Initializable
 	private GestionLugaresController gestionLugaresController;
 	private GestionHorarioController gestionHorarioController;
 	private GestionCreditosController gestionCreditosController;
+	private InscripcionCreditosController inscripcionCreditosController;
+	private HorariosEstudianteInstructorController horariosEstudianteInstructorController;
 	private InicioController inicioController;
 
 	@FXML
@@ -104,16 +106,10 @@ public class DashBoardController implements Initializable
     	abrirVentana(NombreVentana.GESTION_CREDITOS);
     }
 
-	@FXML
-    void administrarCreditosAction(ActionEvent event)
-    {
-
-    }
-
     @FXML
     void inscripcionCreditosAction(ActionEvent event)
     {
-
+    	abrirVentana(NombreVentana.INSCRIPCION_CREDITOS);
     }
 
     @FXML
@@ -131,7 +127,7 @@ public class DashBoardController implements Initializable
     @FXML
     void verHorariosAction(ActionEvent event)
     {
-
+    	abrirVentana(NombreVentana.VER_HORARIOS);
     }
 
     @FXML
@@ -162,6 +158,11 @@ public class DashBoardController implements Initializable
 		insertarImagenTipoUsuario(tipoUsuario, nombreUsuario);
 	}
 
+	/**
+	 * Método que permite inicializar los menus que puede ver
+	 * el tipo de usuario que ingreso
+	 * @param tipoUsuario
+	 */
 	private void habilitarDeshabilitarPermisos(TipoUsuario tipoUsuario)
 	{
 		switch (tipoUsuario)
@@ -171,12 +172,23 @@ public class DashBoardController implements Initializable
 				abrirVentana(NombreVentana.INICIO);
 				break;
 			case ESTUDIANTE:
-			case INSTRUCTOR:
+				vBoxMenus.getChildren().remove(btnInicio);
 				vBoxMenus.getChildren().remove(btnEstudiantes);
 				vBoxMenus.getChildren().remove(btnCreditos);
 				vBoxMenus.getChildren().remove(btnInstructores);
 				vBoxMenus.getChildren().remove(btnHorarios);
 				vBoxMenus.getChildren().remove(btnLugares);
+				abrirVentana(NombreVentana.INSCRIPCION_CREDITOS);
+				break;
+			case INSTRUCTOR:
+				vBoxMenus.getChildren().remove(btnInicio);
+				vBoxMenus.getChildren().remove(btnEstudiantes);
+				vBoxMenus.getChildren().remove(btnCreditos);
+				vBoxMenus.getChildren().remove(btnInstructores);
+				vBoxMenus.getChildren().remove(btnHorarios);
+				vBoxMenus.getChildren().remove(btnLugares);
+				vBoxMenus.getChildren().remove(btnInscripcionCreditos);
+				abrirVentana(NombreVentana.VER_HORARIOS);
 				break;
 			default:
 				break;
@@ -267,6 +279,20 @@ public class DashBoardController implements Initializable
 				anchorPanePrincipal.getChildren().setAll(vistaCargada);
 				this.gestionHorarioController = loader.getController();
 				this.gestionHorarioController.setAplicacion(this.aplicacion);;
+				break;
+			case INSCRIPCION_CREDITOS:
+				loader.setLocation(getClass().getResource("../view/InscripcionCreditosView.fxml"));
+				vistaCargada = loader.load();
+				anchorPanePrincipal.getChildren().setAll(vistaCargada);
+				this.inscripcionCreditosController = loader.getController();
+				this.inscripcionCreditosController.setAplicacion(this.aplicacion);
+				break;
+			case VER_HORARIOS:
+				loader.setLocation(getClass().getResource("../view/HorariosEstudianteInstructorView.fxml"));
+				vistaCargada = loader.load();
+				anchorPanePrincipal.getChildren().setAll(vistaCargada);
+				this.horariosEstudianteInstructorController = loader.getController();
+				this.horariosEstudianteInstructorController.setAplicacion(this.aplicacion);
 				break;
 			default:
 				break;

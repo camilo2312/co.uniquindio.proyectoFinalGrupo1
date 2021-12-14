@@ -35,8 +35,9 @@ public class CreditoDeportivo extends Credito
 	 * Método que permite imprimir las propiedades del creditoDeportivo
 	 */
 	@Override
-	public String toString() {
-		return "credito deportivo [asistenciaMinima=" + asistenciaMinima + "]";
+	public String toString()
+	{
+		return super.toString();
 	}
 
 

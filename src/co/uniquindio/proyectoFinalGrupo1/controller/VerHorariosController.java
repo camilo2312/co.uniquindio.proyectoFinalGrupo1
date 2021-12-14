@@ -25,8 +25,10 @@ import javafx.stage.Stage;
  */
 public class VerHorariosController implements Initializable
 {
+	@SuppressWarnings("unused")
 	private Aplicacion aplicacion;
 	private ObservableList<Horario> lstHorariosData = FXCollections.observableArrayList();
+	@SuppressWarnings("unused")
 	private ArrayList<Horario> lstHorarios = new ArrayList<>();
 
 	@FXML
@@ -88,8 +90,6 @@ public class VerHorariosController implements Initializable
 	{
 		return lstHorariosData;
 	}
-
-
 
 
 	/**

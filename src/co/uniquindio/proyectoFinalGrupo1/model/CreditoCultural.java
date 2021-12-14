@@ -39,6 +39,6 @@ public class CreditoCultural extends Credito
 	@Override
 	public String toString()
 	{
-		return "Credito Cultural [costo=" + costo + "]";
+		return super.toString();
 	}
 }

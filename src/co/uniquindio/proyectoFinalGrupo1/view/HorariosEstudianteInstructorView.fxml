@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="576.0" prefWidth="764.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.uniquindio.proyectoFinalGrupo1.controller.HorariosEstudianteInstructorController">
+   <children>
+      <Separator layoutX="42.0" layoutY="44.0" prefHeight="0.0" prefWidth="674.0" style="-fx-background-color: #2980B9;" />
+      <Label layoutX="42.0" layoutY="16.0" text="Ver Horarios">
+         <font>
+            <Font name="Century Gothic" size="20.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableCreditos" layoutX="42.0" layoutY="185.0" prefHeight="270.0" prefWidth="674.0">
+        <columns>
+          <TableColumn fx:id="columnCodigo" prefWidth="200.0" text="Código" />
+          <TableColumn fx:id="columnNombreCredito" prefWidth="256.0" text="Nombre credito" />
+            <TableColumn fx:id="columnInstructor" prefWidth="216.0" text="Instructor" />
+        </columns>
+      </TableView>
+      <Label layoutX="43.0" layoutY="117.0" text="Nombre">
+         <font>
+            <Font name="Century Gothic" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtNombre" layoutX="43.0" layoutY="140.0" prefHeight="25.0" prefWidth="321.0" promptText="Nombre" style="-fx-background-color: transparent; -fx-border-color: #032D49; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font name="Century Gothic" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtCodigo" layoutX="395.0" layoutY="140.0" prefHeight="25.0" prefWidth="321.0" promptText="Documento" style="-fx-background-color: transparent; -fx-border-color: #032D49; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font name="Century Gothic" size="12.0" />
+         </font>
+      </TextField>
+      <Label layoutX="395.0" layoutY="117.0" text="Documento">
+         <font>
+            <Font name="Century Gothic" size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnVerDetalle" layoutX="624.0" layoutY="518.0" mnemonicParsing="false" onAction="#verDetalleAction" prefHeight="28.0" prefWidth="92.0" style="-fx-background-color: linear-gradient(to left, #2980B9, #032D49);" styleClass="btns-gestion-estudiantes" stylesheets="@../application.css" text="Ver detalle" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Century Gothic" size="12.0" />
+         </font>
+      </Button>
+      <Label fx:id="lblTipo" layoutX="43.0" layoutY="53.0" text="Tipo">
+         <font>
+            <Font name="Century Gothic" size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="comboBoxTipo" layoutX="42.0" layoutY="77.0" onAction="#tipoAction" prefHeight="25.0" prefWidth="321.0" promptText="Seleccione" style="-fx-background-color: transparent; -fx-border-color: #032D49; -fx-border-width: 0px 0px 2px 0px;" />
+      <Label fx:id="lblTexto" layoutX="395.0" layoutY="53.0" text="Instructores">
+         <font>
+            <Font name="Century Gothic" size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="comboBoxInstructores" layoutX="395.0" layoutY="76.0" onAction="#changeInstructorAction" prefHeight="25.0" prefWidth="321.0" promptText="Seleccione" style="-fx-background-color: transparent; -fx-border-color: #032D49; -fx-border-width: 0px 0px 2px 0px;" />
+      <ComboBox fx:id="comboBoxEstudiantes" layoutX="395.0" layoutY="77.0" onAction="#changeEstudianteAction" prefHeight="25.0" prefWidth="321.0" promptText="Seleccione" style="-fx-background-color: transparent; -fx-border-color: #032D49; -fx-border-width: 0px 0px 2px 0px;" />
+      <Label fx:id="lblCantEstudiantes" layoutX="42.0" layoutY="475.0" text="Cantidad estudiantes: ">
+         <font>
+            <Font name="Century Gothic" size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
